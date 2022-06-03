@@ -1,7 +1,8 @@
-#include <iostream>
+#include"Jogo.h"
 
-int main(void)
+int main()
 {
-	std::cout << "begin!" << std::endl;
-	return 0;
+    Jogo jogoTecProg;
+
+    return 0;
 }
