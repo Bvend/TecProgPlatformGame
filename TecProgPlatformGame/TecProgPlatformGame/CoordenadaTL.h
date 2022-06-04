@@ -11,8 +11,6 @@ private: //Nessa versão x e y são privados, por isso use getX() e getY()
 	TL y;
 
 public:
-	//TL y;
-	//TL x;
 
 	Coordenada(TL x, TL y);
 	Coordenada();

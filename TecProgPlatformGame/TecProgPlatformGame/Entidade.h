@@ -21,10 +21,12 @@ protected:
 	sf::RectangleShape body;
 	CoordF proximaPosicao;
 	bool estaNoAr;
+	sf::Texture* characterTexture;
 
 public:
 	Entidade(CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
 	~Entidade();
+
 	ID getID() const;
 	virtual void colisao(Entidade* outraEntidade, CoordF interseccao, bool* estaNoChao) = 0;
 	void setEstaNoAr(bool noAr);

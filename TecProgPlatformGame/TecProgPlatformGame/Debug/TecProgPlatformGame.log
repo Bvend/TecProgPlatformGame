@@ -1,6 +1,5 @@
 ﻿  AnimacaoEstatica.cpp
   AnimacaoMovimento.cpp
-  Ente.cpp
   Entidade.cpp
   EntidadeEstatica.cpp
   Fase.cpp
@@ -9,23 +8,21 @@
   Gerenciador_Colisoes.cpp
   Gerenciador_Eventos.cpp
   Gerenciador_Grafico.cpp
-  Gerenciador_Input.cpp
   Inimigo.cpp
   Inimigo_A.cpp
   Inimigo_B.cpp
   Inimigo_C.cpp
   Jogador.cpp
   Jogo.cpp
-C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Jogo.cpp(10,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   ListaEntidades.cpp
   Main.cpp
-  Generating Code...
-  Compiling...
-  Menu.cpp
-  Obstaculo.cpp
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Main.cpp(6,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Obst_A.cpp
   Obst_B.cpp
+  Generating Code...
+  Compiling...
   Obst_C.cpp
+  Obstaculo.cpp
   Personagem.cpp
   Projetil.cpp
   Generating Code...

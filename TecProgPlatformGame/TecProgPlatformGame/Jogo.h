@@ -20,6 +20,7 @@ private:
 
 	Obst_A* parede;
 	Obst_A* parede1;
+	Obst_A* parede2;
 	Inimigo_A* inimigo;
 	Jogador *player1;
 	ListaEntidades* LES;
