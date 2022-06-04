@@ -10,6 +10,6 @@ Obst_A::~Obst_A()
 }
 
 /* Parede é fixa, portanto em colisao se mantém no mesmo local*/
-void Obst_A::colisao(Entidade* outraEntidade, CoordF interseccao, bool* estaNoChao)
+void Obst_A::colisao(Entidade* outraEntidade)
 {
 }

@@ -8,6 +8,6 @@ public:
     ~Obst_A();
 
     // Paredes tem essa função mas não usam para nada
-    void colisao(Entidade* outraEntidade, CoordF interseccao, bool* estaNoChao);
+    void colisao(Entidade* outraEntidade);
 };
 

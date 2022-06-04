@@ -20,7 +20,6 @@ protected:
 	ID id;
 	sf::RectangleShape body;
 	CoordF proximaPosicao;
-	bool estaNoAr;
 	sf::Texture* characterTexture;
 
 public:
@@ -28,10 +27,9 @@ public:
 	~Entidade();
 
 	ID getID() const;
-	virtual void colisao(Entidade* outraEntidade, CoordF interseccao, bool* estaNoChao) = 0;
-	void setEstaNoAr(bool noAr);
-
 	sf::RectangleShape* getBody();
 	CoordF getProximaPosicao();
+
+	virtual void colisao(Entidade* outraEntidade) = 0;
 };
 

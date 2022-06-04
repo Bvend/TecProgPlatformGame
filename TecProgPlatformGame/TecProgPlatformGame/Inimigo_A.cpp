@@ -2,8 +2,9 @@
 
 #define VELMOV 300.f
 
-Inimigo_A::Inimigo_A(int vidas, CoordF des, CoordF pos, CoordF tam, ID ind):
-Inimigo(vidas, des, pos, tam, ind),
+Inimigo_A::Inimigo_A(int vidas, CoordF pos, CoordF tam, ID ind):
+Inimigo(vidas, pos, tam, ind),
+pJogador(NULL),
 trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 distPercorrida(0)
 {
@@ -32,30 +33,43 @@ void Inimigo_A::setJogador(Jogador* pJogador)
 
 void Inimigo_A::move(float dt)
 {
-	deslocamento.setX(0);
+	proximaPosicao = posicao;
+
+	if (estaNoAr)
+	{
+		deslocamentoY += GRAVIDADE * dt;
+		proximaPosicao.atualizarY(deslocamentoY);
+	}
 
 	if (distPercorrida < trajeto)
 	{
-		deslocamento.setX(direcao * VELMOV * dt);
-		distPercorrida += fabs(deslocamento.getX());
+		proximaPosicao.atualizarX(direcao * VELMOV * dt);
+		distPercorrida += fabs(proximaPosicao.getX() - posicao.getX());
 	}
 	else
 	{
 		distPercorrida = 0;
 		direcao *= -1;
 	}
-
-	if (estaNoAr == true)
-	{
-		deslocamento.atualizarY(GRAVIDADE * dt);
-		deslocamento.setX(0);
-	}
-
-	proximaPosicao = posicao + deslocamento;
 }
 
 /* Essa função fica vazia por enquanto */
-void Inimigo_A::colisao(Entidade* Entidade2, CoordF interseccao, bool* estaNoChao)
+void Inimigo_A::colisao(Entidade* Entidade2)
 {
-	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho(), interseccao, estaNoChao);
+	/*
+	if (interseccao.getX() < interseccao.getY())
+	{
+		if (Entidade2->getID() == inimigo_A)
+		{
+			num_vidas--;
+			cout << num_vidas << endl;
+			if (num_vidas <= 0)
+			{
+				body.setFillColor(sf::Color::Yellow);
+			}
+		}
+	}
+	*/
+
+	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }

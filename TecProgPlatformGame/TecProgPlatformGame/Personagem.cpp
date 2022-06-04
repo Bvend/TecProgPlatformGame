@@ -1,9 +1,10 @@
 #include "Personagem.h"
 
-Personagem::Personagem(int vidas, CoordF des, CoordF pos, CoordF tam, ID ind):
+Personagem::Personagem(int vidas, CoordF pos, CoordF tam, ID ind):
 Entidade(pos, tam, ind),
 num_vidas(vidas),
-deslocamento(des)
+estaNoAr(true),
+deslocamentoY(0.f)
 {
 }
 
@@ -11,69 +12,69 @@ Personagem::~Personagem()
 {
 }
 
-float Personagem::getDeslocamentoY()
+void Personagem::setEstaNoAr(bool NoAr)
 {
-    return deslocamento.getY();
+    this->estaNoAr = NoAr;
 }
 
-float Personagem::getDeslocamentoX()
+void Personagem::setDeslocamentoY(float desY)
 {
-    return deslocamento.getX();
+    this->deslocamentoY = desY;
 }
 
 /* Atualiza posicao do personagem de acordo com deslocamento */
 void Personagem::atualizarPos()
 {
-    posicao += deslocamento;
-
-    if (posicao.getX() < 0)
+    if (proximaPosicao.getX() < 0)
     {
-        deslocamento.atualizarX(-posicao.getX());
-        posicao.setX(0);
+        proximaPosicao.setX(0);
     }
 
-    body.move(sf::Vector2f(deslocamento.getX(), deslocamento.getY()));
-    //std::cout << "posicao y: " << posicao.getY() << std::endl;
+    posicao = proximaPosicao;
+
+    body.setPosition(sf::Vector2f(posicao.getX(), posicao.getY()));
 }
 
 /* Função reposiciona entidade de acordo com colisão com outra entidade */
-void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, CoordF interseccao, bool* estaNoChao)
+void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2)
 {
     // Colisão pela direita
     if (posicao.getX() < posEntidade2.getX()
-        && posicao.getX() + tamanho.getX() < posEntidade2.getX() + tamEntidade2.getX()
+        && getDireita() < posEntidade2.getX() + tamEntidade2.getX()
         && posicao.getY() < posEntidade2.getY() + tamEntidade2.getY()
         && posicao.getY() + tamanho.getY() > posEntidade2.getY()
         )
     {
-        deslocamento.setX(0.f);
+        proximaPosicao.setX(posEntidade2.getX() - tamanho.getX());
     }
     // Colisão pela esquerda
     else if (posicao.getX() > posEntidade2.getX()
-        && posicao.getX() + tamanho.getX() > posEntidade2.getX() + tamEntidade2.getX()
+        && getDireita() > posEntidade2.getX() + tamEntidade2.getX()
         && posicao.getY() < posEntidade2.getY() + tamEntidade2.getY()
         && posicao.getY() + tamanho.getY() > posEntidade2.getY()
         )
     {
-        deslocamento.setX(0.f);
+        proximaPosicao.setX(posEntidade2.getX() + tamEntidade2.getX());
     }
     // Colisão por baixo
     else if (posicao.getY() < posEntidade2.getY()
         && posicao.getY() + tamanho.getY() < posEntidade2.getY() + tamEntidade2.getY()
         && posicao.getX() < posEntidade2.getX() + tamEntidade2.getX()
-        && posicao.getX() + tamanho.getX() > posEntidade2.getX()
+        && getDireita() > posEntidade2.getX()
         )
     {
-        deslocamento.setY(0.f);
-        *estaNoChao = true;
+        proximaPosicao.setY(posEntidade2.getY() - tamanho.getY());
+        estaNoAr = false;
+        cout << "colisao por baixo" << endl;
     }
     // Colisão por cima
     else if (posicao.getY() > posEntidade2.getY()
         && posicao.getY() + tamanho.getY() > posEntidade2.getY() + tamEntidade2.getY()
         && posicao.getX() < posEntidade2.getX() + tamEntidade2.getX()
-        && posicao.getX() + tamanho.getX() > posEntidade2.getX()
+        && getDireita() > posEntidade2.getX()
         )
     {
-        deslocamento.setY(0.f);
+        proximaPosicao.setY(posEntidade2.getY() + tamanho.getY());
+        deslocamentoY = 0.f;
     }
 }

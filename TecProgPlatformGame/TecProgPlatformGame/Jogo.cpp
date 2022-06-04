@@ -6,11 +6,11 @@ LES(new ListaEntidades()),
 GerenciadorEventos(new Gerenciador_Eventos(GerenciadorGrafico)),
 dt(1.f / 60.f)
 {
-    player1 = new Jogador(500, CoordF((0.f), (0.f)), CoordF((100.f), (100.f)), CoordF((100.f), (100.f)), jogador);
+    player1 = new Jogador(500, CoordF((100.f), (100.f)), CoordF((100.f), (100.f)), jogador);
     parede = new Obst_A(CoordF(40.f, 620.f), CoordF((1200.f), (100.f)));
     parede1 = new Obst_A(CoordF(440.f, 220.f), CoordF((400.f), (100.f)));
     parede2 = new Obst_A(CoordF(1280.f, 620.f), CoordF((1200.f), (100.f)));
-    inimigo = new Inimigo_A(0, CoordF((0.f), (0.f)), CoordF(610.f, 520.f), CoordF(100.f, 100.f), inimigo_A);
+    inimigo = new Inimigo_A(0, CoordF(610.f, 520.f), CoordF(100.f, 100.f), inimigo_A);
 
     // Inclui entidades na lista
     LES->adicionarEntidade(player1);

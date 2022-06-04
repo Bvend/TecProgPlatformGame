@@ -7,6 +7,6 @@ public:
 	Obstaculo(CoordF pos, CoordF tam, ID ind = vazio);
 	~Obstaculo();
 
-	virtual void colisao(Entidade* outraEntidade, CoordF interseccao, bool* estaNoChao) = 0;
+	virtual void colisao(Entidade* outraEntidade) = 0;
 };
 
