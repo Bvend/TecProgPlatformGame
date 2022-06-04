@@ -46,6 +46,7 @@ void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2)
         )
     {
         proximaPosicao.setX(posEntidade2.getX() - tamanho.getX());
+        cout << "colisao direita" << endl;
     }
     // Colisão pela esquerda
     else if (posicao.getX() > posEntidade2.getX()
@@ -55,6 +56,7 @@ void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2)
         )
     {
         proximaPosicao.setX(posEntidade2.getX() + tamEntidade2.getX());
+        cout << "colisao esquerda" << endl;
     }
     // Colisão por baixo
     else if (posicao.getY() < posEntidade2.getY()
@@ -65,7 +67,7 @@ void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2)
     {
         proximaPosicao.setY(posEntidade2.getY() - tamanho.getY());
         estaNoAr = false;
-        cout << "colisao por baixo" << endl;
+        cout << "colisao BAIXO" << endl;
     }
     // Colisão por cima
     else if (posicao.getY() > posEntidade2.getY()
@@ -75,6 +77,10 @@ void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2)
         )
     {
         proximaPosicao.setY(posEntidade2.getY() + tamanho.getY());
-        deslocamentoY = 0.f;
+        if (deslocamentoY < 0)
+        {
+            deslocamentoY = 0.f;
+        }
+        cout << "colisao dima" << endl;;
     }
 }

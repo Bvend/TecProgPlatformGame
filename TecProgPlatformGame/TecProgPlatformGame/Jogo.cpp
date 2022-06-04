@@ -10,14 +10,14 @@ dt(1.f / 60.f)
     parede = new Obst_A(CoordF(40.f, 620.f), CoordF((1200.f), (100.f)));
     parede1 = new Obst_A(CoordF(440.f, 220.f), CoordF((400.f), (100.f)));
     parede2 = new Obst_A(CoordF(1280.f, 620.f), CoordF((1200.f), (100.f)));
-    inimigo = new Inimigo_A(0, CoordF(610.f, 520.f), CoordF(100.f, 100.f), inimigo_A);
+    inimigo = new Inimigo_A(5, CoordF(610.f, 520.f), CoordF(100.f, 100.f), inimigo_A);
 
     // Inclui entidades na lista
-    LES->adicionarEntidade(player1);
     LES->adicionarEntidade(parede); 
     LES->adicionarEntidade(parede1);
     LES->adicionarEntidade(parede2);
     LES->adicionarEntidade(inimigo);
+    LES->adicionarEntidade(player1);
 
     // Inicializa Gerenciador de colisões
     GerenciadorColisoes = new Gerenciador_Colisoes(LES);

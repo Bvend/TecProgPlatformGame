@@ -40,36 +40,39 @@ void Inimigo_A::move(float dt)
 		deslocamentoY += GRAVIDADE * dt;
 		proximaPosicao.atualizarY(deslocamentoY);
 	}
-
-	if (distPercorrida < trajeto)
-	{
-		proximaPosicao.atualizarX(direcao * VELMOV * dt);
-		distPercorrida += fabs(proximaPosicao.getX() - posicao.getX());
-	}
 	else
 	{
-		distPercorrida = 0;
-		direcao *= -1;
+		if (distPercorrida < trajeto)
+		{
+			proximaPosicao.atualizarX(direcao * VELMOV * dt);
+			distPercorrida += fabs(proximaPosicao.getX() - posicao.getX());
+		}
+		else
+		{
+			distPercorrida = 0;
+			direcao *= -1;
+		}
 	}
 }
 
 /* Essa função fica vazia por enquanto */
 void Inimigo_A::colisao(Entidade* Entidade2)
 {
-	/*
-	if (interseccao.getX() < interseccao.getY())
+	if ((posicao.getY() > Entidade2->getCima()
+		&& posicao.getY() + tamanho.getY() > Entidade2->getCima() + Entidade2->getAltura()
+		&& posicao.getX() < Entidade2->getDireita()
+		&& getDireita() > Entidade2->getEsquerda())
+		)
 	{
-		if (Entidade2->getID() == inimigo_A)
+		if (Entidade2->getID() == jogador)
 		{
 			num_vidas--;
-			cout << num_vidas << endl;
 			if (num_vidas <= 0)
 			{
 				body.setFillColor(sf::Color::Yellow);
 			}
 		}
 	}
-	*/
 
 	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }

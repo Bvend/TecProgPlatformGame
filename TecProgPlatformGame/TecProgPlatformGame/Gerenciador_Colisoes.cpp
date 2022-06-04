@@ -52,14 +52,16 @@ void Gerenciador_Colisoes::checarColisoes()
 			{
 				pEntidade2 = pElEntidade2->getItem();
 				
-				sf::FloatRect ent2Bounds = (pEntidade2->getBody())->getGlobalBounds();
 				sf::FloatRect ent1Bounds = (pEntidade1->getBody())->getGlobalBounds();
+				sf::FloatRect ent2Bounds = (pEntidade2->getBody())->getGlobalBounds();
+
 				ent1Bounds.left = (pEntidade1->getProximaPosicao()).getX();
 				ent1Bounds.top = (pEntidade1->getProximaPosicao()).getY();
 
 				if (ent2Bounds.intersects(ent1Bounds))
 				{
 					pEntidade1->colisao(pEntidade2);
+					pEntidade2->colisao(pEntidade1);
 				}
 
 				// Talvez melhorar isso
