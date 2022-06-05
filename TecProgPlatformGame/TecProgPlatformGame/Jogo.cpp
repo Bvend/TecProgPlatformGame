@@ -4,19 +4,35 @@ Jogo::Jogo() :
 GerenciadorGrafico(new Gerenciador_Grafico),
 LES(new ListaEntidades()),
 GerenciadorEventos(new Gerenciador_Eventos(GerenciadorGrafico)),
-dt(1.f / 60.f)
+dt(1.f / 60.f),
+BackGroundShape(Vector2f(1280.f, 720.f))
 {
+    /*Textura de Player*/
+    Texture playerTexture;
+    playerTexture.loadFromFile("HeroiTeste2.png");
+    
+    /*Textura de BackGround*/
+    /*Texture BackGroundTexture;
+    BackGroundTexture.loadFromFile("Sidney.jpg");
+
+    BackGroundShape.setTexture(&BackGroundTexture);
+    */
+
     player1 = new Jogador(500, CoordF((100.f), (100.f)), CoordF((100.f), (100.f)), jogador);
     parede = new Obst_A(CoordF(40.f, 620.f), CoordF((1200.f), (100.f)));
     parede1 = new Obst_A(CoordF(440.f, 220.f), CoordF((400.f), (100.f)));
     parede2 = new Obst_A(CoordF(1280.f, 620.f), CoordF((1200.f), (100.f)));
+    parede3 = new Obst_A(CoordF(1250.f, 350.f), CoordF((400.f), (100.f)));
     inimigo = new Inimigo_A(0, CoordF(610.f, 520.f), CoordF(100.f, 100.f), inimigo_A);
+
+    player1->setTexture(&playerTexture);
 
     // Inclui entidades na lista
     LES->adicionarEntidade(player1);
     LES->adicionarEntidade(parede); 
     LES->adicionarEntidade(parede1);
     LES->adicionarEntidade(parede2);
+    LES->adicionarEntidade(parede3);
     LES->adicionarEntidade(inimigo);
 
     // Inicializa Gerenciador de colisões
@@ -68,10 +84,12 @@ void Jogo::executar()
         // Renderiza as coisas tudo
         GerenciadorGrafico->clearWindow();
         GerenciadorGrafico->centralizarView(player1);
+        //GerenciadorGrafico->render(&BackGroundShape);
         GerenciadorGrafico->render(player1->getBody());
         GerenciadorGrafico->render(parede->getBody());
         GerenciadorGrafico->render(parede1->getBody());
         GerenciadorGrafico->render(parede2->getBody());
+        GerenciadorGrafico->render(parede3->getBody());
         GerenciadorGrafico->render(inimigo->getBody());
         GerenciadorGrafico->display();
     }

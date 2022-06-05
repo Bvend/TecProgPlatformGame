@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animacao.h" />
     <ClInclude Include="AnimacaoEstatica.h" />
     <ClInclude Include="AnimacaoMovimento.h" />
     <ClInclude Include="CoordenadaTL.h" />
@@ -50,6 +51,7 @@
     <ClInclude Include="Projetil.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animacao.cpp" />
     <ClCompile Include="AnimacaoEstatica.cpp" />
     <ClCompile Include="AnimacaoMovimento.cpp" />
     <ClCompile Include="Ente.cpp" />
@@ -77,6 +79,11 @@
     <ClCompile Include="Obst_C.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Projetil.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Pictures\HeroiTeste2.png" />
+    <Image Include="Enemy2Teste.png" />
+    <Image Include="Sidney.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

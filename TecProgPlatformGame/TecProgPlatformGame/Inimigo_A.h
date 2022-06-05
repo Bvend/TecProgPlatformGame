@@ -18,5 +18,7 @@ public:
 	void move(float dt);
 
 	void colisao(Entidade* Entidade2);
+
+	void setTexture();
 };
 

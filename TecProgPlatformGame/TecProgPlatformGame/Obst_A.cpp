@@ -13,3 +13,7 @@ Obst_A::~Obst_A()
 void Obst_A::colisao(Entidade* outraEntidade)
 {
 }
+
+void Obst_A::setTexture()
+{
+}

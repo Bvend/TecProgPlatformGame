@@ -9,5 +9,6 @@ public:
 
     // Paredes tem essa função mas não usam para nada
     void colisao(Entidade* outraEntidade);
+    void setTexture();
 };
 

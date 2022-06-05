@@ -11,5 +11,6 @@ public:
     ~Inimigo();
 
     virtual void colisao(Entidade* outraEntidade) = 0;
+    //virtual void setTexture() = 0;
 };
 

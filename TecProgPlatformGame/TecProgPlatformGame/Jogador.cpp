@@ -1,4 +1,6 @@
 #include "Jogador.h"
+#include <SFML/Graphics.hpp>
+using namespace sf;
 //#include <iostream>
 
 #define VELMOV 300.f
@@ -7,7 +9,7 @@
 Jogador::Jogador(int vidas, CoordF pos, CoordF tam, ID ind):
 Personagem(vidas, pos, tam, ind)
 {
-    body.setFillColor(sf::Color::Cyan);
+    
 }
 
 Jogador::~Jogador()
@@ -61,4 +63,9 @@ void Jogador::move(float dt)
         deslocamentoY = -VELPULO * dt;
         proximaPosicao.atualizarY(deslocamentoY);
     }
+}
+
+void Jogador::setTexture(Texture* texture)
+{
+    body.setTexture(texture);
 }

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Personagem.h"
 
 class Jogador : public Personagem
@@ -12,5 +11,7 @@ public:
 
     void colisao(Entidade* Entidade2);
     void move(float dt);
+
+    void setTexture(Texture* texture);
 };
 

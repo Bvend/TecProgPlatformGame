@@ -73,3 +73,7 @@ void Inimigo_A::colisao(Entidade* Entidade2)
 
 	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }
+
+void Inimigo_A::setTexture()
+{
+}

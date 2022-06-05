@@ -20,7 +20,7 @@ protected:
 	ID id;
 	sf::RectangleShape body;
 	CoordF proximaPosicao;
-	sf::Texture* characterTexture;
+	//sf::Texture* characterTexture;
 
 public:
 	Entidade(CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
@@ -31,5 +31,6 @@ public:
 	CoordF getProximaPosicao();
 
 	virtual void colisao(Entidade* outraEntidade) = 0;
+	//virtual void setTexture() = 0;
 };
 

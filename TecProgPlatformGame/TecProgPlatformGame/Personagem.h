@@ -1,5 +1,6 @@
 #pragma once
 #include "Entidade.h"
+#include "Animacao.h"
 
 #define GRAVIDADE 9.81f
 
@@ -20,4 +21,5 @@ public:
 	void atualizarPos();
 	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2);
 	virtual void colisao(Entidade* outraEntidade) = 0;
+	//virtual void setTexture() = 0;
 };

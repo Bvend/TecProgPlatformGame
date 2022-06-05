@@ -102,6 +102,9 @@
     <ClInclude Include="Projetil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Animacao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimacaoEstatica.cpp">
@@ -185,5 +188,19 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Animacao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Pictures\HeroiTeste2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Enemy2Teste.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sidney.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
