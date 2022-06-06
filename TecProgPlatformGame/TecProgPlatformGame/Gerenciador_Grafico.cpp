@@ -62,15 +62,18 @@ void Gerenciador_Grafico::closeWindow()
    ATENCAO - TAVA USANDO ENTE AGR USO PERSONAGEM */
 void Gerenciador_Grafico::centralizarView(Ente* pEnte)
 {
-	if (pEnte->getDireita() > LARGURA / 2.f)
+	if (pEnte)
 	{
-		view->setCenter(sf::Vector2f(pEnte->getDireita(), pEnte->getCima()));//ALTURA / 2 + (pEnte->getCima() - ALTURA / 2)/5));
+		if (pEnte->getDireita() > LARGURA / 2.f)
+		{
+			view->setCenter(sf::Vector2f(pEnte->getDireita(), pEnte->getCima()));//ALTURA / 2 + (pEnte->getCima() - ALTURA / 2)/5));
+		}
+		else
+		{
+			view->setCenter(sf::Vector2f(LARGURA / 2.f, pEnte->getCima()));
+		}
+		window->setView(*view);
 	}
-	else
-	{
-		view->setCenter(sf::Vector2f(LARGURA / 2.f, pEnte->getCima()));
-	}
-	window->setView(*view);
 }
 
 sf::Texture* Gerenciador_Grafico::loadTextura(const char* path)

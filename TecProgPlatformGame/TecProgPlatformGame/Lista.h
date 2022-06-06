@@ -1,20 +1,21 @@
 #pragma once
 #include "Elemento.h"
+#include <stdlib.h>
 
 template <class TL> class Lista
 {
 private:
 	Elemento<TL>* pPrimeiro;
 	Elemento<TL>* pUltimo;
-	int len;
+	int tam;
 
 public:
 	Lista();
 	~Lista();
 
-	int getLen() 
+	int getTam() 
 	{
-		return this->len; 
+		return this->tam; 
 	}
 
 	TL* getItem(int posicao) 
@@ -52,10 +53,10 @@ public:
 			pUltimo->setPprox(temp);
 			pUltimo = temp;
 		}
-		len++;
+		tam++;
 	}
-
-	void pop(TL* item)
+	
+	TL* pop(TL* item)
 	{
 		Elemento<TL> *temp = pPrimeiro;
 		Elemento<TL> *tempAnt = nullptr;
@@ -75,7 +76,45 @@ public:
 			tempAnt->setPprox(temp->getPprox());
 		}
 		delete temp;
-		len--;
+		tam--;
+	}
+
+	TL* pop(int pos)
+	{
+		if (pos >= tam || pos < 0)
+		{
+			exit(1);
+		}
+
+		Elemento<TL>* tmp = pPrimeiro;
+		Elemento<TL>* tmpAnt = nullptr;
+
+		for (int i = 0; i < pos; i++)
+		{
+			tmpAnt = tmp;
+			tmp = tmp->getPprox();
+		}
+
+		if (tmp == pPrimeiro)
+		{
+			pPrimeiro = tmp->getPprox();
+		}
+		else if (tmp == pUltimo) 
+		{
+			pUltimo = tmpAnt;
+			tmpAnt->setPprox(nullptr);
+		}
+		else 
+		{
+			tmpAnt->setPprox(tmp->getPprox());
+		}
+
+		TL* pItem = tmp->getItem();
+
+		delete (tmp);
+		tam--;
+
+		return pItem;
 	}
 
 	void esvaziar()
@@ -83,9 +122,9 @@ public:
 		Elemento<TL>* tmp = pPrimeiro;
 		int i = 0;
 
-		while (tmp != nullptr && i < len)
+		while (tmp != nullptr && i < tam)
 		{
-			// delete pPrimeiro->getItem(); ----------------------atention please
+			delete pPrimeiro->getItem(); //----------------------atention please
 			pPrimeiro = tmp->getPprox();
 			delete tmp;
 			tmp = pPrimeiro;
@@ -93,7 +132,7 @@ public:
 		}
 
 		pUltimo = nullptr;
-		len = 0;
+		tam = 0;
 	}
 };
 
@@ -102,7 +141,7 @@ Lista<TL>::Lista()
 {
 	pPrimeiro = nullptr;
 	pUltimo = nullptr;
-	len = 0;
+	tam = 0;
 }
 
 template<class TL>

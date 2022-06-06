@@ -1,23 +1,31 @@
 #pragma once
-#include "Ente.h"
-#include "Jogador.h"
-#include "Inimigo.h"
+#include "Gerenciador_Grafico.h"
+#include "Gerenciador_Colisoes.h"
 #include "ListaEntidades.h"
-#include <SFML/Graphics.hpp>
-class Fase:
-	public Ente
+#include "Inimigo_A.h"
+#include "Jogador.h"
+#include "Obst_A.h"
+
+class Fase
 {
 protected:
+	Gerenciador_Grafico* pGerenciadorGrafico;
+	Gerenciador_Colisoes* pGerenciadorColisoes;
 	ListaEntidades* listaEntidades;
-	Inimigo* i1;
+	const float dt;
+
 	Jogador* jogador1;
-	sf::RenderWindow* window;
+
 public:
-	Fase(Jogador* j1, sf::RenderWindow* w);
+	Fase(Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciador_Colisoes* pGerenciadorColisoes = NULL, float deltaTime = (1.f/60.f));
 	~Fase();
-	void inicializaElementos();
-	ListaEntidades* getListaEntidades() { return listaEntidades; }
-	void executar() {};
-	void gerenciar_colisoes();
+
+	void inicializarEntidades();
+
+	void updateFase();
+	void moveEntidades();
+	void colidirEntidades();
+	void atualizarPosicaoEntidades();
+	void renderizarEntidades();
 };
 

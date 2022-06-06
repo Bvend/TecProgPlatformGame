@@ -33,9 +33,6 @@
     <ClInclude Include="Entidade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EntidadeEstatica.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Fase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -102,6 +99,9 @@
     <ClInclude Include="Projetil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Entidade_Movel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimacaoEstatica.cpp">
@@ -114,9 +114,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entidade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EntidadeEstatica.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fase.cpp">
@@ -183,6 +180,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Projetil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entidade_Movel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

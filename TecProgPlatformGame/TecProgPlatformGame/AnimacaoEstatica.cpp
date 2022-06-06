@@ -1,8 +1,8 @@
 #include "AnimacaoEstatica.h"
 
 AnimacaoEstatica::AnimacaoEstatica() :
-	body(),
-	textura(nullptr)
+body(),
+textura(nullptr)
 {
 }
 

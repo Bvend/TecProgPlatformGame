@@ -15,6 +15,7 @@ public:
 	void adicionarEntidade(Entidade* E);
 	Entidade* operator[](int i);
 	Elemento<Entidade>* getElemento(int posicao);
-	void limpar();
+	void deletarEntidades();
+
 };
 

@@ -42,7 +42,8 @@ void Jogador::move(float dt)
     // Caso entidade estiver no ar, aplica aceleração da gravidade
     if (estaNoAr)
     {
-        deslocamentoY += GRAVIDADE * dt;
+        if (deslocamentoY < VELMOV)
+            deslocamentoY += GRAVIDADE * dt;
         proximaPosicao.atualizarY(deslocamentoY);
     }
 

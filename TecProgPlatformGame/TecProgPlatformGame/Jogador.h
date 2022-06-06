@@ -11,6 +11,7 @@ public:
     ~Jogador();
 
     void colisao(Entidade* Entidade2);
+
     void move(float dt);
 };
 

@@ -8,6 +8,7 @@ private:
 	float trajeto;
 	float distPercorrida;
 	int direcao;
+	int cooldown;
 
 public:
 	Inimigo_A(int vidas = 0, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
@@ -15,8 +16,8 @@ public:
 
 	void setJogador(Jogador* pJogador);
 
-	void move(float dt);
-
 	void colisao(Entidade* Entidade2);
+
+	void move(float dt);
 };
 

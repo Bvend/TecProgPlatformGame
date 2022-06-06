@@ -12,18 +12,11 @@
 class Jogo
 {
 private:
-	Gerenciador_Grafico* GerenciadorGrafico;
-	Gerenciador_Eventos* GerenciadorEventos;
-	Gerenciador_Colisoes* GerenciadorColisoes;
-
+	Gerenciador_Grafico* gerenciadorGrafico;
+	Gerenciador_Eventos* gerenciadorEventos;
+	Gerenciador_Colisoes* gerenciadorColisoes;
+	Fase* faseTeste;
 	const float dt;
-
-	Obst_A* parede;
-	Obst_A* parede1;
-	Obst_A* parede2;
-	Inimigo_A* inimigo;
-	Jogador *player1;
-	ListaEntidades* LES;
 
 public:
 	Jogo();

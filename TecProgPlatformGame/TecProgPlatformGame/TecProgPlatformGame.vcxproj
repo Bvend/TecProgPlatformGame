@@ -25,7 +25,7 @@
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
-    <ClInclude Include="EntidadeEstatica.h" />
+    <ClInclude Include="Entidade_Movel.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="Fase1.h" />
     <ClInclude Include="Fase2.h" />
@@ -54,7 +54,7 @@
     <ClCompile Include="AnimacaoMovimento.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
-    <ClCompile Include="EntidadeEstatica.cpp" />
+    <ClCompile Include="Entidade_Movel.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Fase1.cpp" />
     <ClCompile Include="Fase2.cpp" />

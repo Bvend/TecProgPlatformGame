@@ -1,2 +1,28 @@
-﻿  Personagem.cpp
+﻿  AnimacaoEstatica.cpp
+  AnimacaoMovimento.cpp
+  Entidade.cpp
+  Entidade_Movel.cpp
+  Fase.cpp
+  Fase1.cpp
+  Fase2.cpp
+  Gerenciador_Colisoes.cpp
+  Gerenciador_Eventos.cpp
+  Gerenciador_Grafico.cpp
+  Inimigo.cpp
+  Inimigo_A.cpp
+  Inimigo_B.cpp
+  Inimigo_C.cpp
+  Jogador.cpp
+  Jogo.cpp
+  ListaEntidades.cpp
+  Main.cpp
+  Obst_A.cpp
+  Obst_B.cpp
+  Generating Code...
+  Compiling...
+  Obst_C.cpp
+  Obstaculo.cpp
+  Personagem.cpp
+  Projetil.cpp
+  Generating Code...
   TecProgPlatformGame.vcxproj -> C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\Debug\TecProgPlatformGame.exe

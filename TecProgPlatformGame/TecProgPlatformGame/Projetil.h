@@ -1,7 +1,6 @@
 #pragma once
 #include "Inimigo_A.h"
-class Projetil :
-    public Inimigo_A
+class Projetil : public Entidade_Movel
 {
 private:
 public:

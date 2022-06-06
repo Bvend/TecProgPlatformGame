@@ -3,6 +3,11 @@
 #include"Ente.h"
 #include<math.h>
 
+#define COLISAO_DIREITA -1
+#define COLISAO_ESQUERDA 1
+#define COLISAO_BAIXO -2
+#define COLISAO_CIMA 2
+
 enum ID {
 	vazio = 0,
 	jogador,
@@ -29,7 +34,15 @@ public:
 	ID getID() const;
 	sf::RectangleShape* getBody();
 	CoordF getProximaPosicao();
+	void atualizarX();
+	void atualizarY();
+
+	void atualizarPos();
+
+	int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
 
 	virtual void colisao(Entidade* outraEntidade) = 0;
+
+	virtual void move(float dt) = 0;
 };
 

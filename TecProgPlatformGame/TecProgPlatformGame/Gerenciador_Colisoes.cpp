@@ -1,8 +1,8 @@
 #include "Gerenciador_Colisoes.h"
 
-Gerenciador_Colisoes::Gerenciador_Colisoes(ListaEntidades* LE)
+Gerenciador_Colisoes::Gerenciador_Colisoes(ListaEntidades* LE):
+pListaEntidades(LE)
 {
-	Entidades = LE;
 }
 
 /*
@@ -15,9 +15,14 @@ ListaPersonagens(ListaPers)
 
 Gerenciador_Colisoes::~Gerenciador_Colisoes()
 {
-	Entidades = NULL;
+	pListaEntidades = NULL;
 	//ListaObstaculos = NULL;
 	//ListaPersonagens = NULL;
+}
+
+void Gerenciador_Colisoes::setListaEntidades(ListaEntidades* LE)
+{
+	pListaEntidades = LE;
 }
 
 /* Função para gerenciar as colisoes entre entidades.
@@ -33,17 +38,17 @@ void Gerenciador_Colisoes::checarColisoes()
 	Entidade* pEntidade1 = NULL;
 	Entidade* pEntidade2 = NULL;
 
-	Personagem* pPersonagem = NULL;
+	Entidade_Movel* pEntidade_Movel = NULL;
 
-	int qtdEntidades = Entidades->getLength();
+	int qtdEntidades = pListaEntidades->getLength();
 
 	bool estaNoChao = false;
 
-	pElEntidade1 = Entidades->getElemento(0);
+	pElEntidade1 = pListaEntidades->getElemento(0);
 
 	for (i = 0; i < qtdEntidades; i++)
 	{
-		pElEntidade2 = Entidades->getElemento(0);
+		pElEntidade2 = pListaEntidades->getElemento(0);
 		pEntidade1 = pElEntidade1->getItem();
 
 		for (j = 0; j < qtdEntidades; j++)
@@ -53,19 +58,20 @@ void Gerenciador_Colisoes::checarColisoes()
 				pEntidade2 = pElEntidade2->getItem();
 				
 				sf::FloatRect ent1Bounds = (pEntidade1->getBody())->getGlobalBounds();
-				sf::FloatRect ent2Bounds = (pEntidade2->getBody())->getGlobalBounds();
-
 				ent1Bounds.left = (pEntidade1->getProximaPosicao()).getX();
 				ent1Bounds.top = (pEntidade1->getProximaPosicao()).getY();
 
+				sf::FloatRect ent2Bounds = (pEntidade2->getBody())->getGlobalBounds();
+
 				if (ent2Bounds.intersects(ent1Bounds))
 				{
+					int p = pEntidade2->detectarColisao(pEntidade1->getPosicao(), pEntidade1->getTamanho());
+					cout << p << endl;
 					pEntidade1->colisao(pEntidade2);
-					pEntidade2->colisao(pEntidade1);
 				}
 
 				// Talvez melhorar isso
-				if (fabs(pEntidade1->getBaixo() - pEntidade2->getCima()) < 0.1f
+				if (fabs(pEntidade1->getBaixo() - pEntidade2->getCima()) < 0.2f
 					&& (pEntidade1->getDireita() >= pEntidade2->getEsquerda()
 					&& pEntidade1->getEsquerda() <= pEntidade2->getDireita()))
 				{
@@ -76,16 +82,16 @@ void Gerenciador_Colisoes::checarColisoes()
 		}
 
 		/* Checa se um personagem esta caindo */
-		if (pPersonagem = dynamic_cast<Personagem*>(pEntidade1))
+		if (pEntidade_Movel = dynamic_cast<Entidade_Movel*>(pEntidade1))
 		{
 			if (estaNoChao)
 			{
-				pPersonagem->setEstaNoAr(false);
-				pPersonagem->setDeslocamentoY(0.f);
+				pEntidade_Movel->setEstaNoAr(false);
+				pEntidade_Movel->setDeslocamentoY(0.f);
 			}
 			else
 			{
-				pPersonagem->setEstaNoAr(true);
+				pEntidade_Movel->setEstaNoAr(true);
 			}
 		}
 			

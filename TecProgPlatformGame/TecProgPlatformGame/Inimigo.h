@@ -11,5 +11,7 @@ public:
     ~Inimigo();
 
     virtual void colisao(Entidade* outraEntidade) = 0;
+
+    virtual void move(float dt) = 0;
 };
 
