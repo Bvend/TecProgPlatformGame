@@ -7,7 +7,7 @@ Inimigo(vidas, pos, tam, ind),
 pJogador(NULL),
 trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 distPercorrida(0),
-cooldown(0)
+cooldown(15)
 {
 	body.setFillColor(sf::Color::Magenta);
 
@@ -21,10 +21,12 @@ cooldown(0)
 	{
 		direcao = -1;
 	}
+	cout << direcao << endl;
 }
 
 Inimigo_A::~Inimigo_A()
 {
+	pJogador = NULL;
 }
 
 void Inimigo_A::setJogador(Jogador* pJogador)
@@ -32,13 +34,12 @@ void Inimigo_A::setJogador(Jogador* pJogador)
 	this->pJogador = pJogador;
 }
 
-void Inimigo_A::move(float dt)
+void Inimigo_A::executar(float dt)
 {
 	proximaPosicao = posicao;
 
 	if (cooldown > 0)
 	{
-		cout << cooldown << endl;
 		cooldown--;
 		return;
 	}
@@ -64,29 +65,19 @@ void Inimigo_A::move(float dt)
 }
 
 /* Essa função fica vazia por enquanto */
-void Inimigo_A::colisao(Entidade* Entidade2)
+void Inimigo_A::colisao(int direcao_colisao, ID ind)
 {
-	cooldown = 50;
+	cooldown = 20;
 
-	if ((posicao.getY() > Entidade2->getCima()
-		&& posicao.getY() + tamanho.getY() > Entidade2->getCima() + Entidade2->getAltura()
-		&& posicao.getX() < Entidade2->getDireita()
-		&& getDireita() > Entidade2->getEsquerda())
-		)
+	if (direcao_colisao == COLISAO_CIMA)
 	{
-		if (Entidade2->getID() == jogador)
+		if (ind == jogador)
 		{
 			num_vidas -= 5;
-			if (num_vidas <= 0)
-			{
-				body.setFillColor(sf::Color::Yellow);
-			}
 		}
 	}
 	else
 	{
 		direcao *= -1;
 	}
-
-	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }

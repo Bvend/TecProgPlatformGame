@@ -10,7 +10,9 @@ public:
 	Personagem(int vidas = 0, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
 	~Personagem();
 
-	virtual void colisao(Entidade* outraEntidade) = 0;
+	int getNumVidas();
 
-	virtual void move(float dt) = 0;
+	virtual void colisao(int direcao_colisao, ID ind) = 0;
+
+	virtual void executar(float dt) = 0;
 };

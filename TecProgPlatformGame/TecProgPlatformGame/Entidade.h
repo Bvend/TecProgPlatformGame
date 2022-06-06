@@ -34,15 +34,13 @@ public:
 	ID getID() const;
 	sf::RectangleShape* getBody();
 	CoordF getProximaPosicao();
-	void atualizarX();
-	void atualizarY();
 
 	void atualizarPos();
 
 	int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
 
-	virtual void colisao(Entidade* outraEntidade) = 0;
+	virtual void colisao(int direcao_colisao, ID ind) = 0;
 
-	virtual void move(float dt) = 0;
+	virtual void executar(float dt) = 0;
 };
 

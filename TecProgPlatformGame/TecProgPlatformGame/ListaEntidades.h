@@ -17,5 +17,6 @@ public:
 	Elemento<Entidade>* getElemento(int posicao);
 	void deletarEntidades();
 
+	void deletarEntidade(Entidade* pEntidade);
 };
 

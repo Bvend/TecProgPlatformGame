@@ -24,6 +24,7 @@ inline Elemento<TE>::Elemento()
 template<class TE>
 inline Elemento<TE>::~Elemento()
 {
+	delete getItem();
 	pProx = nullptr;
 	pitem = nullptr;
 }

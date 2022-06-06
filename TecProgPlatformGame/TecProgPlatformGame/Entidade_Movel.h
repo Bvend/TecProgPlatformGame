@@ -16,8 +16,8 @@ public:
 	void setEstaNoAr(bool estaNoAr);
 	void setDeslocamentoY(float deslocamenoY);
 
-	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2);
-	virtual void colisao(Entidade* outraEntidade) = 0;
+	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao);
+	virtual void colisao(int direcao_colisao, ID ind) = 0;
 
-	virtual void move(float dt) = 0;
+	virtual void executar(float dt) = 0;
 };

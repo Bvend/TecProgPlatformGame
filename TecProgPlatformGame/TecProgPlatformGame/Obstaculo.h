@@ -7,8 +7,8 @@ public:
 	Obstaculo(CoordF pos, CoordF tam, ID ind = vazio);
 	~Obstaculo();
 
-	virtual void colisao(Entidade* outraEntidade) = 0;
+	virtual void colisao(int direcao_colisao, ID ind) = 0;
 
-	virtual void move(float dt) = 0;
+	virtual void executar(float dt) = 0;
 };
 

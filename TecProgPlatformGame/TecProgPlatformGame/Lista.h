@@ -61,22 +61,27 @@ public:
 		Elemento<TL> *temp = pPrimeiro;
 		Elemento<TL> *tempAnt = nullptr;
 		
-		while (temp->getItem() != item) {
+		while (temp != nullptr) {
+			if (temp->getItem() == item)
+			{
+				if (temp == pPrimeiro) {
+					pPrimeiro = temp->getPprox();
+				}
+				else if (temp == pUltimo) {
+					tempAnt->setPprox(nullptr);
+					pUltimo = tempAnt;
+				}
+				else {
+					tempAnt->setPprox(temp->getPprox());
+				}
+				delete temp;
+				tam--;
+				return item;
+			}
 			tempAnt = temp;
 			temp = temp->getPprox();
 		}
-		if (temp == pPrimeiro) {
-			pPrimeiro = temp->getPprox();
-		}
-		else if (temp == pUltimo) {
-			tempAnt->getPprox() = nullptr;
-			pUltimo = tempAnt;
-		}
-		else {
-			tempAnt->setPprox(temp->getPprox());
-		}
-		delete temp;
-		tam--;
+		return nullptr;
 	}
 
 	TL* pop(int pos)
@@ -124,7 +129,6 @@ public:
 
 		while (tmp != nullptr && i < tam)
 		{
-			delete pPrimeiro->getItem(); //----------------------atention please
 			pPrimeiro = tmp->getPprox();
 			delete tmp;
 			tmp = pPrimeiro;

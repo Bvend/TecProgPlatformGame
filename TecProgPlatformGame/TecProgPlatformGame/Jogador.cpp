@@ -1,5 +1,4 @@
 #include "Jogador.h"
-//#include <iostream>
 
 #define VELMOV 300.f
 #define VELPULO 700.f
@@ -14,14 +13,12 @@ Jogador::~Jogador()
 {
 }
 
-void Jogador::colisao(Entidade* Entidade2)
+
+void Jogador::colisao(int direcao_colisao, ID ind)
 {
-    if (!(posicao.getY() < Entidade2->getCima()
-        && posicao.getY() + tamanho.getY() < Entidade2->getCima() + Entidade2->getAltura()
-        && posicao.getX() < Entidade2->getDireita()
-        && getDireita() > Entidade2->getEsquerda()))
+    if (direcao_colisao != COLISAO_BAIXO)
     {
-        if (Entidade2->getID() == inimigo_A)
+        if (ind == inimigo_A)
         {
             num_vidas--;
             if (num_vidas <= 0)
@@ -30,12 +27,10 @@ void Jogador::colisao(Entidade* Entidade2)
             }
         }
     }
-
-    reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }
 
 /* Coleta input do teclado e atualiza a posição futura do jogador */
-void Jogador::move(float dt)
+void Jogador::executar(float dt)
 {
     proximaPosicao = posicao;
 

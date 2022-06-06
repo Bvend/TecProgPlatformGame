@@ -12,10 +12,10 @@ faseTeste(new Fase(gerenciadorGrafico, gerenciadorColisoes))
 
 Jogo::~Jogo()
 {
+    delete faseTeste;
     delete gerenciadorGrafico;
     delete gerenciadorEventos;
     delete gerenciadorColisoes;
-    delete faseTeste;
 }
 
 void Jogo::executar()

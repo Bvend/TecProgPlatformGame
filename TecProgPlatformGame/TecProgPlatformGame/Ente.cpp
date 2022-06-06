@@ -4,10 +4,12 @@ Ente::Ente(CoordF pos, CoordF tam) :
 tamanho(tam),
 posicao(pos)
 {
+	//pGerenGrafico = NULL;
 }
 
 Ente::~Ente()
 {
+	//pGerenGrafico = NULL;
 }
 
 void Ente::setPosicao(CoordF pos)
@@ -59,3 +61,8 @@ float Ente::getBaixo()
 {
 	return posicao.getY() + tamanho.getY();
 }
+
+//void Ente::setGerenciadorGrafico(Gerenciador_Grafico* GerenciadorGrafico)
+//{
+//	pGerenGrafico = GerenciadorGrafico;
+//}

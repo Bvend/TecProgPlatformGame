@@ -16,8 +16,8 @@ public:
 
 	void setJogador(Jogador* pJogador);
 
-	void colisao(Entidade* Entidade2);
+	void colisao(int direcao_colisao, ID ind);
 
-	void move(float dt);
+	void executar(float dt);
 };
 

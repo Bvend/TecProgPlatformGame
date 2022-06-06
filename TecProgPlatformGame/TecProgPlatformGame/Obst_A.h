@@ -8,8 +8,8 @@ public:
     ~Obst_A();
 
     // Paredes tem essa função mas não usam para nada
-    void colisao(Entidade* outraEntidade);
+    void colisao(int direcao_colisao, ID ind);
 
-    void move(float dt);
+    void executar(float dt);
 };
 

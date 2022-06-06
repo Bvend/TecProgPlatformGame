@@ -22,4 +22,9 @@ public:
 	float getDireita();
 	float getCima();
 	float getBaixo();
+
+	//void setGerenciadorGrafico(Gerenciador_Grafico* GerenciadorGrafico);
+
+	//virtual void rederizar() = 0;
+	virtual void executar(float dt) = 0;
 };

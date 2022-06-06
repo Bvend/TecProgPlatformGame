@@ -7,7 +7,6 @@ LE(new Lista<Entidade>())
 
 ListaEntidades::~ListaEntidades()
 {
-	//deletarEntidades();
 	delete LE;
 }
 
@@ -48,5 +47,15 @@ void ListaEntidades::deletarEntidades()
 		{
 			delete pEntidade;
 		}
+	}
+}
+
+void ListaEntidades::deletarEntidade(Entidade* pEntidade)
+{
+	Entidade* tmp = NULL;
+	tmp = LE->pop(pEntidade);
+	if (pEntidade)
+	{
+		delete pEntidade;
 	}
 }

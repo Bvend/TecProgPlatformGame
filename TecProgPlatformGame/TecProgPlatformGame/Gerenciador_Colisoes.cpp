@@ -65,9 +65,13 @@ void Gerenciador_Colisoes::checarColisoes()
 
 				if (ent2Bounds.intersects(ent1Bounds))
 				{
-					int p = pEntidade2->detectarColisao(pEntidade1->getPosicao(), pEntidade1->getTamanho());
-					cout << p << endl;
-					pEntidade1->colisao(pEntidade2);
+					int direcao_colisao = pEntidade1->detectarColisao(pEntidade2->getPosicao(), pEntidade2->getTamanho());
+					if (pEntidade_Movel = dynamic_cast<Entidade_Movel*>(pEntidade1))
+					{
+						pEntidade_Movel->reposicionarColisao(pEntidade2->getPosicao(), pEntidade2->getTamanho(), direcao_colisao);
+					}
+					pEntidade1->colisao(direcao_colisao, pEntidade2->getID());
+					pEntidade2->colisao(direcao_colisao * -1, pEntidade1->getID());
 				}
 
 				// Talvez melhorar isso

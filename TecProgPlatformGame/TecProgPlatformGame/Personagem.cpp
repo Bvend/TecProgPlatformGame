@@ -9,3 +9,8 @@ num_vidas(vidas)
 Personagem::~Personagem()
 {
 }
+
+int Personagem::getNumVidas()
+{
+    return num_vidas;
+}

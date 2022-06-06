@@ -10,10 +10,10 @@ Obst_A::~Obst_A()
 }
 
 /* Parede é fixa, portanto em colisao se mantém no mesmo local*/
-void Obst_A::colisao(Entidade* outraEntidade)
+void Obst_A::colisao(int direcao_colisao, ID ind)
 {
 }
 
-void Obst_A::move(float dt)
+void Obst_A::executar(float dt)
 {
 }
