@@ -202,5 +202,11 @@
     <Image Include="Sidney.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="BackGround.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Player1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

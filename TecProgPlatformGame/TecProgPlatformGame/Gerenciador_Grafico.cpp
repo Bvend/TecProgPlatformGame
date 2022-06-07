@@ -29,6 +29,11 @@ sf::RenderWindow* Gerenciador_Grafico::getWindow() const
 	return window;
 }
 
+View* Gerenciador_Grafico::getView()
+{
+	return view;
+}
+
 bool Gerenciador_Grafico::isWindowOpen()
 {
 	return window->isOpen();
@@ -62,7 +67,9 @@ void Gerenciador_Grafico::closeWindow()
    ATENCAO - TAVA USANDO ENTE AGR USO PERSONAGEM */
 void Gerenciador_Grafico::centralizarView(Ente* pEnte)
 {
-	if (pEnte->getDireita() > LARGURA / 2.f)
+	/*if (pEnte->getDireita() > LARGURA / 2.f)*/
+	//Agora view sempre seguirá o primeiro padrao
+	if(1)
 	{
 		view->setCenter(sf::Vector2f(pEnte->getDireita(), pEnte->getCima()));//ALTURA / 2 + (pEnte->getCima() - ALTURA / 2)/5));
 	}

@@ -8,7 +8,7 @@ pJogador(NULL),
 trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 distPercorrida(0)
 {
-	body.setFillColor(sf::Color::Magenta);
+	//body.setFillColor(sf::Color::Magenta);
 
 	// Atribui aleatoriamente direcao, sendo
 	// 1 para *** e -1 para ***
@@ -74,6 +74,7 @@ void Inimigo_A::colisao(Entidade* Entidade2)
 	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }
 
-void Inimigo_A::setTexture()
+void Inimigo_A::setTexture(Vector2u* size, int posX, int posY)
 {
+	body.setTextureRect(IntRect(size->x * posX, size->y * posY, size->x, size->y));
 }

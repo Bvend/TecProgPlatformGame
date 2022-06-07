@@ -19,6 +19,7 @@ public:
 	~Gerenciador_Grafico();
 
 	sf::RenderWindow* getWindow() const;
+	View* getView();
 	bool isWindowOpen();
 	void clearWindow();
 	void render(sf::RectangleShape* body);

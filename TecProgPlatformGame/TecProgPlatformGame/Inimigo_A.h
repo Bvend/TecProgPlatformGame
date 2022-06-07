@@ -19,6 +19,6 @@ public:
 
 	void colisao(Entidade* Entidade2);
 
-	void setTexture();
+	void setTexture(Vector2u* size, int posX, int posY);
 };
 

@@ -82,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Pictures\HeroiTeste2.png" />
+    <Image Include="BackGround.jpg" />
     <Image Include="Enemy2Teste.png" />
+    <Image Include="Player1.png" />
     <Image Include="Sidney.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
