@@ -1,17 +1,14 @@
 #pragma once
 #include<SFML/Graphics.hpp>
-using namespace sf;
 #include"CoordenadaTL.h"
 #include <map>
-#include "Personagem.h"
-using namespace std;
 
 class Gerenciador_Grafico
 {
 private:
 	sf::RenderWindow* window;
 	sf::View* view;
-	map<const char*, Texture*> mapaTextura;
+	std::map<const char*, sf::Texture*> mapaTextura;
 	
 public:
 	Gerenciador_Grafico();
@@ -20,9 +17,9 @@ public:
 	sf::RenderWindow* getWindow() const;
 	bool isWindowOpen();
 	void clearWindow();
-	void render(sf::RectangleShape* body);
+	void renderizar(sf::RectangleShape* body);
 	void display();
 	void closeWindow();
-	void centralizarView(Ente* pEnte);
+	void centralizarView(CoordF pos, CoordF tam);
 	sf::Texture* loadTextura(const char* path);
 };

@@ -1,68 +1,22 @@
 #include "Ente.h"
 
-Ente::Ente(CoordF pos, CoordF tam) :
-tamanho(tam),
-posicao(pos)
+Ente::Ente(Id ind, Gerenciador_Grafico* ger):
+id(ind),
+pGerenciadorGrafico(ger)
 {
-	//pGerenGrafico = NULL;
 }
 
 Ente::~Ente()
 {
-	//pGerenGrafico = NULL;
+	pGerenciadorGrafico = NULL;
 }
 
-void Ente::setPosicao(CoordF pos)
+Id Ente::getId() const
 {
-	this->posicao = pos;
+	return id;
 }
 
-CoordF Ente::getPosicao() const
+void Ente::setGerenciadorGrafico(Gerenciador_Grafico* ger)
 {
-	return posicao;
+	pGerenciadorGrafico = ger;
 }
-
-void Ente::setTamanho(CoordF tam)
-{
-	this->tamanho = tam;
-}
-
-CoordF Ente::getTamanho() const
-{
-	return tamanho;
-}
-
-float Ente::getLargura()
-{
-	return tamanho.getX();
-}
-
-float Ente::getAltura()
-{
-	return tamanho.getY();
-}
-
-float Ente::getEsquerda()
-{
-	return posicao.getX();
-}
-
-float Ente::getDireita()
-{
-	return posicao.getX() + tamanho.getX();
-}
-
-float Ente::getCima()
-{
-	return posicao.getY();
-}
-
-float Ente::getBaixo()
-{
-	return posicao.getY() + tamanho.getY();
-}
-
-//void Ente::setGerenciadorGrafico(Gerenciador_Grafico* GerenciadorGrafico)
-//{
-//	pGerenGrafico = GerenciadorGrafico;
-//}

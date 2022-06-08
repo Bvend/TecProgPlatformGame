@@ -1,17 +1,17 @@
 #pragma once
 #include "Jogador.h"
-#include "Inimigo.h"
+#include "Personagem.h"
 
 class Inimigo : public Personagem
 {
 protected:
 
 public:
-    Inimigo(int vidas = 0, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
+    Inimigo(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
     ~Inimigo();
 
-    virtual void colisao(int direcao_colisao, ID ind) = 0;
+    virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
 
-    virtual void executar(float dt) = 0;
+    virtual void executar() = 0;
 };
 

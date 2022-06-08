@@ -1,5 +1,5 @@
 #pragma once
-#include<SFML/Graphics.hpp>
+#include <time.h>
 #include "Fase.h"
 #include "Gerenciador_Eventos.h"
 
@@ -10,11 +10,12 @@ private:
 	Gerenciador_Eventos* gerenciadorEventos;
 	Gerenciador_Colisoes* gerenciadorColisoes;
 	Fase* faseTeste;
-	const float dt;
+	static const float dt;
 
 public:
-	Jogo();
+	static const float getDt();
 
+	Jogo();
 	~Jogo();
 
 	void executar();

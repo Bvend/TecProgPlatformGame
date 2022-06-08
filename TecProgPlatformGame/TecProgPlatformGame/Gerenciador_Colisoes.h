@@ -1,8 +1,6 @@
 #pragma once
 #include "ListaEntidades.h"
-#include "lista.h"
-#include "Entidade_Movel.h"
-#include "Obstaculo.h"
+#include "Personagem.h"
 
 class Gerenciador_Colisoes
 {

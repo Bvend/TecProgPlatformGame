@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <cmath>
-using namespace std;
 
 template <typename TL>
 class Coordenada
@@ -131,7 +130,7 @@ void Coordenada<TL>::operator/=(float escalar)
 		this->y = escalar;
 	}
 	else {
-		cout << "Erro!! Não eh possivel dividir por 0!" << endl;
+		std::cout << "Erro!! Não eh possivel dividir por 0!" << std::endl;
 	}
 }
 
@@ -163,7 +162,7 @@ template<typename TL>
 Coordenada<TL> Coordenada<TL>::operator/(Coordenada<TL> outro)
 {
 	if (outro.getX() == 0.0f || outro.getY() == 0.0f) {
-		cout << "Erro!! Não eh possivel dividir por 0!" << endl;
+		std::cout << "Erro!! Não eh possivel dividir por 0!" << std::endl;
 		exit(1);
 	}
 
@@ -174,7 +173,7 @@ template<typename TL>
 Coordenada<TL> Coordenada<TL>::operator/(double escalar)
 {
 	if (escalar == 0.0f) {
-		cout << "Erro!! Não eh possivel dividir por 0!" << endl;
+		std::cout << "Erro!! Não eh possivel dividir por 0!" << std::endl;
 		exit(1);
 	}
 	

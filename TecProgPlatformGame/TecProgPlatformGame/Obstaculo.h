@@ -1,14 +1,15 @@
 #pragma once
 #include "Entidade.h"
+
 class Obstaculo : public Entidade
 {
 protected:
 public:
-	Obstaculo(CoordF pos, CoordF tam, ID ind = vazio);
+	Obstaculo(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.f, 0.f), CoordF tam = CoordF(0.f, 0.f));
 	~Obstaculo();
 
-	virtual void colisao(int direcao_colisao, ID ind) = 0;
+	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
 
-	virtual void executar(float dt) = 0;
+	virtual void executar() = 0;
 };
 

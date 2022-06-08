@@ -2,32 +2,43 @@
 
 /*Construtora
 Inicializa a entidade na posição informada no canto superior esquerdo*/
-Entidade::Entidade(CoordF pos, CoordF tam, ID ind):
-Ente(pos, tam),
-id(ind),
-body(sf::Vector2f(tamanho.getX(), tamanho.getY())),
-proximaPosicao(pos)
+Entidade::Entidade(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
+Ente(ind, ger),
+posicao(pos),
+proximaPosicao(pos),
+tamanho(tam),
+corpo(sf::Vector2f(tamanho.getX(), tamanho.getY()))
 {
-	body.setPosition(posicao.getX(), posicao.getY());
+	corpo.setPosition(posicao.getX(), posicao.getY());
 }
 
 Entidade::~Entidade()
 {
 }
 
-ID Entidade::getID() const
+void Entidade::setPosicao(CoordF pos)
 {
-	return id;
+    posicao = pos;
 }
 
-sf::RectangleShape* Entidade::getBody()
+CoordF Entidade::getPosicao() const
 {
-	return &body;
+    return posicao;
+}
+
+float Entidade::getEsquerda()
+{
+    return posicao.getX();
+}
+
+float Entidade::getDireita()
+{
+    return posicao.getX() + tamanho.getX();
 }
 
 CoordF Entidade::getProximaPosicao()
 {
-	return proximaPosicao;
+    return proximaPosicao;
 }
 
 /* Atualiza posicao do personagem de acordo com deslocamento */
@@ -40,7 +51,42 @@ void Entidade::atualizarPos()
 
     posicao = proximaPosicao;
 
-    body.setPosition(sf::Vector2f(posicao.getX(), posicao.getY()));
+    corpo.setPosition(sf::Vector2f(posicao.getX(), posicao.getY()));
+}
+
+float Entidade::getCima()
+{
+    return posicao.getY();
+}
+
+float Entidade::getBaixo()
+{
+    return posicao.getY() + tamanho.getY();
+}
+
+void Entidade::setTamanho(CoordF tam)
+{
+    tamanho = tam;
+}
+
+CoordF Entidade::getTamanho() const
+{
+    return tamanho;
+}
+
+float Entidade::getLargura()
+{
+    return (tamanho.getX());
+}
+
+float Entidade::getAltura()
+{
+    return tamanho.getY();
+}
+
+sf::RectangleShape* Entidade::getCorpo()
+{
+	return &corpo;
 }
 
 int Entidade::detectarColisao(CoordF posEntidade2, CoordF tamEntidade2)
@@ -83,4 +129,12 @@ int Entidade::detectarColisao(CoordF posEntidade2, CoordF tamEntidade2)
     }
 
     return 0;
+}
+
+void Entidade::renderizar()
+{
+    if (pGerenciadorGrafico)
+    {
+        pGerenciadorGrafico->renderizar(&corpo);
+    }
 }

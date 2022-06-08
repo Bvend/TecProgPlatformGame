@@ -1,10 +1,16 @@
 #include "Jogo.h"
 
-Jogo::Jogo() :
-gerenciadorGrafico(new Gerenciador_Grafico),
+const float Jogo::dt = (1.f / 60);
+
+const float Jogo::getDt()
+{
+    return dt;
+}
+
+Jogo::Jogo():
+gerenciadorGrafico(new Gerenciador_Grafico()),
 gerenciadorEventos(new Gerenciador_Eventos(gerenciadorGrafico)),
 gerenciadorColisoes(new Gerenciador_Colisoes()),
-dt(1.f/60.f),
 faseTeste(new Fase(gerenciadorGrafico, gerenciadorColisoes))
 {
 	executar();
@@ -12,10 +18,10 @@ faseTeste(new Fase(gerenciadorGrafico, gerenciadorColisoes))
 
 Jogo::~Jogo()
 {
-    delete faseTeste;
     delete gerenciadorGrafico;
     delete gerenciadorEventos;
     delete gerenciadorColisoes;
+    delete faseTeste;
 }
 
 void Jogo::executar()
@@ -36,6 +42,7 @@ void Jogo::executar()
 
             // Novamente processa eventos
             faseTeste->updateFase();
+
         }
 
         // Renderiza as coisas tudo

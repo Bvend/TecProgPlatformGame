@@ -7,6 +7,7 @@ LE(new Lista<Entidade>())
 
 ListaEntidades::~ListaEntidades()
 {
+	deletarEntidades();
 	delete LE;
 }
 
@@ -19,7 +20,7 @@ void ListaEntidades::adicionarEntidade(Entidade* E)
 {
 	if (E == NULL)
 	{
-		cout << "Erro ao adicionar entidade" << endl;
+		std::cout << "Erro ao adicionar entidade" << std::endl;
 		return;
 	}
 

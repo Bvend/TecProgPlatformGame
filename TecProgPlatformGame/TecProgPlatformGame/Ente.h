@@ -1,30 +1,34 @@
 #pragma once
-#include "CoordenadaTL.h"
+#include "Gerenciador_Grafico.h"
 #include <time.h>
+
+enum class Id {
+	VAZIO,
+	JOGADOR,
+	PAREDE,
+	MOLA,
+	ESPINHO,
+	INIMIGO_A,
+	INIMIGO_B,
+	INIMIGO_C,
+	PROJETIL
+};
 
 class Ente
 {
 protected:
-	CoordF posicao;
-	CoordF tamanho;
+	Id id;
+	Gerenciador_Grafico* pGerenciadorGrafico;
 
 public:
-	Ente(CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
+	Ente(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL);
 	~Ente();
 
-	void setPosicao(CoordF pos);
-	CoordF getPosicao() const;
-	void setTamanho(CoordF tam);
-	CoordF getTamanho() const;
-	float getLargura();
-	float getAltura();
-	float getEsquerda();
-	float getDireita();
-	float getCima();
-	float getBaixo();
+	Id getId() const;
 
-	//void setGerenciadorGrafico(Gerenciador_Grafico* GerenciadorGrafico);
+	void setGerenciadorGrafico(Gerenciador_Grafico* ger);
 
-	//virtual void rederizar() = 0;
-	virtual void executar(float dt) = 0;
+	virtual void renderizar() = 0;
+
+	virtual void executar() = 0;
 };

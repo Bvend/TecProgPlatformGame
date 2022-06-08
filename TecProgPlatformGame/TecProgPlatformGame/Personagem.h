@@ -1,18 +1,30 @@
 #pragma once
-#include "Entidade_Movel.h"
+#include "Entidade.h"
 
-class Personagem : public Entidade_Movel
+#define GRAVIDADE 9.81f
+
+class Jogo;
+
+class Personagem : public Entidade
 {
 protected:
 	int num_vidas;
+	bool estaNoAr;
+	float deslocamentoY;
 
 public:
-	Personagem(int vidas = 0, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
+	Personagem(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
 	~Personagem();
 
 	int getNumVidas();
 
-	virtual void colisao(int direcao_colisao, ID ind) = 0;
+	void setEstaNoAr(bool NoAr);
 
-	virtual void executar(float dt) = 0;
+	void setDeslocamentoY(float deslY);
+
+	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao);
+
+	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
+
+	virtual void executar() = 0;
 };

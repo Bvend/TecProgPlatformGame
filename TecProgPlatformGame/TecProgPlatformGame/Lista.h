@@ -124,15 +124,18 @@ public:
 
 	void esvaziar()
 	{
-		Elemento<TL>* tmp = pPrimeiro;
-		int i = 0;
-
-		while (tmp != nullptr && i < tam)
+		if (pPrimeiro)
 		{
-			pPrimeiro = tmp->getPprox();
-			delete tmp;
-			tmp = pPrimeiro;
-			i++;
+			Elemento<TL>* tmp = pPrimeiro;
+			int i = 0;
+
+			while (tmp != nullptr && i < tam)
+			{
+				pPrimeiro = (tmp->getPprox());
+				delete tmp;
+				tmp = pPrimeiro;
+				i++;
+			}
 		}
 
 		pUltimo = nullptr;

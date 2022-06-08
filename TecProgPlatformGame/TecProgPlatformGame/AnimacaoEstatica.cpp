@@ -25,7 +25,7 @@ void AnimacaoEstatica::update(CoordF posicao)
 	body.setPosition(Vector2f(posicao.getX(), posicao.getY()));
 }
 
-void AnimacaoEstatica::render()
-{
-	pGerenGrafico->render(&body);
-}
+//void AnimacaoEstatica::render()
+//{
+//	pGerenGrafico->render(&body);
+//}

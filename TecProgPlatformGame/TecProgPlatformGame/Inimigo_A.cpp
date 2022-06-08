@@ -1,18 +1,17 @@
 #include "Inimigo_A.h"
+#include "Jogo.h"
 
-#define VELMOV 150.f
-
-Inimigo_A::Inimigo_A(int vidas, CoordF pos, CoordF tam, ID ind):
-Inimigo(vidas, pos, tam, ind),
+Inimigo_A::Inimigo_A(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid):
+Inimigo(ind, ger, pos, tam, vid),
 pJogador(NULL),
 trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 distPercorrida(0),
-cooldown(15)
+cooldown(0),
+velMov(100.f + rand() % 51)
 {
-	body.setFillColor(sf::Color::Magenta);
+	corpo.setFillColor(sf::Color::Magenta);
 
-	// Atribui aleatoriamente direcao, sendo
-	// 1 para *** e -1 para ***
+	// Atribui aleatoriamente direcao inciall de movimento
 	if (rand() % 2)
 	{
 		direcao = 1;
@@ -21,7 +20,6 @@ cooldown(15)
 	{
 		direcao = -1;
 	}
-	cout << direcao << endl;
 }
 
 Inimigo_A::~Inimigo_A()
@@ -34,26 +32,31 @@ void Inimigo_A::setJogador(Jogador* pJogador)
 	this->pJogador = pJogador;
 }
 
-void Inimigo_A::executar(float dt)
+void Inimigo_A::executar()
 {
 	proximaPosicao = posicao;
 
 	if (cooldown > 0)
 	{
-		cooldown--;
-		return;
+		cooldown -= Jogo::getDt();
+		if (cooldown > 5)
+		{
+			return;
+		}
 	}
+
+	cooldown = 0;
 
 	if (estaNoAr)
 	{
-		deslocamentoY += GRAVIDADE * dt;
+		deslocamentoY += GRAVIDADE * Jogo::getDt();
 		proximaPosicao.atualizarY(deslocamentoY);
 	}
 	else
 	{
 		if (distPercorrida < trajeto)
 		{
-			proximaPosicao.atualizarX(direcao * VELMOV * dt);
+			proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
 			distPercorrida += fabs(proximaPosicao.getX() - posicao.getX());
 		}
 		else
@@ -65,19 +68,22 @@ void Inimigo_A::executar(float dt)
 }
 
 /* Essa função fica vazia por enquanto */
-void Inimigo_A::colisao(int direcao_colisao, ID ind)
+void Inimigo_A::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 {
-	cooldown = 20;
-
-	if (direcao_colisao == COLISAO_CIMA)
+	if (reposicionar)
 	{
-		if (ind == jogador)
-		{
-			num_vidas -= 5;
-		}
+		reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
 	}
-	else
+
+	Id ind = pEntidade->getId();
+	if (ind == Id::JOGADOR && direcao_colisao == COLISAO_CIMA)
+	{
+		num_vidas -= 1;
+	}
+	else  if (!cooldown)
 	{
 		direcao *= -1;
+		distPercorrida = 0;
+		cooldown = 10.f;
 	}
 }

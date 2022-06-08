@@ -8,16 +8,17 @@ private:
 	float trajeto;
 	float distPercorrida;
 	int direcao;
-	int cooldown;
+	float cooldown;
+	float velMov;
 
 public:
-	Inimigo_A(int vidas = 0, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
+	Inimigo_A(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
 	~Inimigo_A();
 
 	void setJogador(Jogador* pJogador);
 
-	void colisao(int direcao_colisao, ID ind);
+	void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar);
 
-	void executar(float dt);
+	void executar();
 };
 
