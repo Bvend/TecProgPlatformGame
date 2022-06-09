@@ -11,8 +11,12 @@ class Entidade : public Ente
 protected:
 	CoordF posicao;
 	CoordF proximaPosicao;
+<<<<<<< HEAD
 	CoordF tamanho;
 	sf::RectangleShape corpo;
+=======
+	//sf::Texture* characterTexture;
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 
 public:
 	// Construtora e destrutora
@@ -33,6 +37,7 @@ public:
 
 	CoordF getProximaPosicao();
 
+<<<<<<< HEAD
 	void atualizarPos();
 
 	// Tamanho
@@ -54,5 +59,9 @@ public:
 
 	// Executar
 	virtual void executar() = 0;
+=======
+	virtual void colisao(Entidade* outraEntidade) = 0;
+	//virtual void setTexture() = 0;
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 };
 

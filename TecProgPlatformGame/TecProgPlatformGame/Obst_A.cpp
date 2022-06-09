@@ -17,3 +17,7 @@ void Obst_A::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar
 void Obst_A::executar()
 {
 }
+
+void Obst_A::setTexture()
+{
+}

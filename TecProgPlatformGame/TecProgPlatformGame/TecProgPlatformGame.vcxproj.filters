@@ -13,88 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Entidades">
-      <UniqueIdentifier>{ed8ecea2-030c-4a5a-bef1-47b64b944eed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entidades">
-      <UniqueIdentifier>{9e5cffea-0a76-4728-84e8-61280f34e61c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ente.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fase1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fase2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Colisoes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Eventos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Grafico.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Jogo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaEntidades.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entidade.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo_B.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo_A.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo_C.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Jogador.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obst_A.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obst_B.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obst_C.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obstaculo.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Personagem.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Projetil.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="AnimacaoEstatica.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimacaoMovimento.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="CoordenadaTL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -102,6 +28,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntidadeEstatica.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fase.h">
@@ -125,6 +57,21 @@
     <ClInclude Include="Gerenciador_Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Inimigo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo_A.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo_B.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo_C.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jogador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Jogo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -137,41 +84,138 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entidade.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo_A.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo_B.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo_C.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Jogador.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
     <ClInclude Include="Obst_A.h">
-      <Filter>Header Files\Entidades</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obst_B.h">
-      <Filter>Header Files\Entidades</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obst_C.h">
-      <Filter>Header Files\Entidades</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obstaculo.h">
-      <Filter>Header Files\Entidades</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Personagem.h">
-      <Filter>Header Files\Entidades</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
-      <Filter>Header Files\Entidades</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Animacao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AnimacaoEstatica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimacaoMovimento.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ente.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entidade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntidadeEstatica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Colisoes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Eventos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Grafico.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo_A.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo_B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo_C.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEntidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obst_A.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obst_B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obst_C.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstaculo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Personagem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animacao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Pictures\HeroiTeste2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Enemy2Teste.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sidney.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="BackGround.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Player1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="AlienEnemy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="AlienEnemy2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Alien1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

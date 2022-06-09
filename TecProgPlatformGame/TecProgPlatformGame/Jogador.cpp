@@ -1,12 +1,22 @@
 #include "Jogador.h"
+<<<<<<< HEAD
 #include "Jogo.h"
+=======
+#include <SFML/Graphics.hpp>
+using namespace sf;
+//#include <iostream>
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 
 Jogador::Jogador(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid):
 Personagem(ind, ger, pos, tam, vid),
 velMov(300.f),
 velPulo(700.f)
 {
+<<<<<<< HEAD
     corpo.setFillColor(sf::Color::Cyan);
+=======
+    
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 }
 
 Jogador::~Jogador()
@@ -81,4 +91,9 @@ void Jogador::executar()
         deslocamentoY = -velPulo * Jogo::getDt();
         proximaPosicao.atualizarY(deslocamentoY);
     }
+}
+
+void Jogador::setTexture(Texture* texture)
+{
+    body.setTexture(texture);
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Entidade.h"
+#include "Animacao.h"
 
 #define GRAVIDADE 9.81f
 
@@ -18,6 +19,7 @@ public:
 
 	int getNumVidas();
 
+<<<<<<< HEAD
 	void setEstaNoAr(bool NoAr);
 
 	void setDeslocamentoY(float deslY);
@@ -27,4 +29,10 @@ public:
 	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
 
 	virtual void executar() = 0;
+=======
+	void atualizarPos();
+	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2);
+	virtual void colisao(Entidade* outraEntidade) = 0;
+	//virtual void setTexture() = 0;
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 };

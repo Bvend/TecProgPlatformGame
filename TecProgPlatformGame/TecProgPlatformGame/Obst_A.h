@@ -9,8 +9,13 @@ public:
     ~Obst_A();
 
     // Paredes tem essa função mas não usam para nada
+<<<<<<< HEAD
     void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar);
 
     void executar();
+=======
+    void colisao(Entidade* outraEntidade);
+    void setTexture();
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 };
 

@@ -9,7 +9,11 @@ distPercorrida(0),
 cooldown(0),
 velMov(100.f + rand() % 51)
 {
+<<<<<<< HEAD
 	corpo.setFillColor(sf::Color::Magenta);
+=======
+	//body.setFillColor(sf::Color::Magenta);
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
 
 	// Atribui aleatoriamente direcao inciall de movimento
 	if (rand() % 2)
@@ -90,3 +94,11 @@ void Inimigo_A::executar()
 	}
 }
 
+<<<<<<< HEAD
+=======
+void Inimigo_A::setTexture(Texture* texture)
+{
+	body.setTexture(texture);
+}
+
+>>>>>>> 91dcff85e6c0a5b60e1520e6cef76ba4e4b29c12
