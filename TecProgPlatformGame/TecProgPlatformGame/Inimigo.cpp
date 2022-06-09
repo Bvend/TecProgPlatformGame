@@ -1,7 +1,7 @@
 #include "Inimigo.h"
 
-Inimigo::Inimigo(int vidas, CoordF pos, CoordF tam, ID ind):
-Personagem(vidas, pos, tam, ind)
+Inimigo::Inimigo(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid):
+Personagem(ind, ger, pos, tam, vid)
 {
 }
 

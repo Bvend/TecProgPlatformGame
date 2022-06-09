@@ -1,20 +1,21 @@
 #pragma once
 #include "Elemento.h"
+#include <stdlib.h>
 
 template <class TL> class Lista
 {
 private:
 	Elemento<TL>* pPrimeiro;
 	Elemento<TL>* pUltimo;
-	int len;
+	int tam;
 
 public:
 	Lista();
 	~Lista();
 
-	int getLen() 
+	int getTam() 
 	{
-		return this->len; 
+		return this->tam; 
 	}
 
 	TL* getItem(int posicao) 
@@ -52,48 +53,93 @@ public:
 			pUltimo->setPprox(temp);
 			pUltimo = temp;
 		}
-		len++;
+		tam++;
 	}
-
-	void pop(TL* item)
+	
+	TL* pop(TL* item)
 	{
 		Elemento<TL> *temp = pPrimeiro;
 		Elemento<TL> *tempAnt = nullptr;
 		
-		while (temp->getItem() != item) {
+		while (temp != nullptr) {
+			if (temp->getItem() == item)
+			{
+				if (temp == pPrimeiro) {
+					pPrimeiro = temp->getPprox();
+				}
+				else if (temp == pUltimo) {
+					tempAnt->setPprox(nullptr);
+					pUltimo = tempAnt;
+				}
+				else {
+					tempAnt->setPprox(temp->getPprox());
+				}
+				delete temp;
+				tam--;
+				return item;
+			}
 			tempAnt = temp;
 			temp = temp->getPprox();
 		}
-		if (temp == pPrimeiro) {
-			pPrimeiro = temp->getPprox();
+		return nullptr;
+	}
+
+	TL* pop(int pos)
+	{
+		if (pos >= tam || pos < 0)
+		{
+			exit(1);
 		}
-		else if (temp == pUltimo) {
-			tempAnt->getPprox() = nullptr;
-			pUltimo = tempAnt;
+
+		Elemento<TL>* tmp = pPrimeiro;
+		Elemento<TL>* tmpAnt = nullptr;
+
+		for (int i = 0; i < pos; i++)
+		{
+			tmpAnt = tmp;
+			tmp = tmp->getPprox();
 		}
-		else {
-			tempAnt->setPprox(temp->getPprox());
+
+		if (tmp == pPrimeiro)
+		{
+			pPrimeiro = tmp->getPprox();
 		}
-		delete temp;
-		len--;
+		else if (tmp == pUltimo) 
+		{
+			pUltimo = tmpAnt;
+			tmpAnt->setPprox(nullptr);
+		}
+		else 
+		{
+			tmpAnt->setPprox(tmp->getPprox());
+		}
+
+		TL* pItem = tmp->getItem();
+
+		delete (tmp);
+		tam--;
+
+		return pItem;
 	}
 
 	void esvaziar()
 	{
-		Elemento<TL>* tmp = pPrimeiro;
-		int i = 0;
-
-		while (tmp != nullptr && i < len)
+		if (pPrimeiro)
 		{
-			// delete pPrimeiro->getItem(); ----------------------atention please
-			pPrimeiro = tmp->getPprox();
-			delete tmp;
-			tmp = pPrimeiro;
-			i++;
+			Elemento<TL>* tmp = pPrimeiro;
+			int i = 0;
+
+			while (tmp != nullptr && i < tam)
+			{
+				pPrimeiro = (tmp->getPprox());
+				delete tmp;
+				tmp = pPrimeiro;
+				i++;
+			}
 		}
 
 		pUltimo = nullptr;
-		len = 0;
+		tam = 0;
 	}
 };
 
@@ -102,7 +148,7 @@ Lista<TL>::Lista()
 {
 	pPrimeiro = nullptr;
 	pUltimo = nullptr;
-	len = 0;
+	tam = 0;
 }
 
 template<class TL>

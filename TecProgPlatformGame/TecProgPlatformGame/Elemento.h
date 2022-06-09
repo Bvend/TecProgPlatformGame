@@ -1,9 +1,11 @@
 #pragma once
+
 template <class TE> class Elemento
 {
 private:
 	Elemento<TE>* pProx;
 	TE* pitem;
+
 public:
 	Elemento();
 	~Elemento();
@@ -24,4 +26,6 @@ inline Elemento<TE>::Elemento()
 template<class TE>
 inline Elemento<TE>::~Elemento()
 {
+	pProx = nullptr;
+	pitem = nullptr;
 }

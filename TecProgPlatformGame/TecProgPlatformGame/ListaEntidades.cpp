@@ -7,20 +7,20 @@ LE(new Lista<Entidade>())
 
 ListaEntidades::~ListaEntidades()
 {
-	limpar();
+	deletarEntidades();
 	delete LE;
 }
 
 int ListaEntidades::getLength()
 {
-	return LE->getLen();
+	return LE->getTam();
 }
 
 void ListaEntidades::adicionarEntidade(Entidade* E)
 {
 	if (E == NULL)
 	{
-		cout << "Erro ao adicionar entidade" << endl;
+		std::cout << "Erro ao adicionar entidade" << std::endl;
 		return;
 	}
 
@@ -37,7 +37,26 @@ Elemento<Entidade>* ListaEntidades::getElemento(int posicao)
 	return (LE->getElemento(posicao));
 }
 
-void ListaEntidades::limpar()
+void ListaEntidades::deletarEntidades()
 {
-	LE->esvaziar();
+	Entidade* pEntidade = NULL;
+
+	while (LE->getTam())
+	{
+		pEntidade = LE->pop(0);
+		if (pEntidade)
+		{
+			delete pEntidade;
+		}
+	}
+}
+
+void ListaEntidades::deletarEntidade(Entidade* pEntidade)
+{
+	Entidade* tmp = NULL;
+	tmp = LE->pop(pEntidade);
+	if (pEntidade)
+	{
+		delete pEntidade;
+	}
 }

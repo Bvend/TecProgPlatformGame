@@ -1,35 +1,58 @@
 #pragma once
-#include<SFML/Graphics.hpp>
-#include"Ente.h"
-#include<math.h>
+#include "Ente.h"
 
-enum ID {
-	vazio = 0,
-	jogador,
-	obst_A,
-	obst_B,
-	obst_C,
-	inimigo_A,
-	inimigo_B,
-	inimigo_C
-};
+#define COLISAO_DIREITA -1
+#define COLISAO_ESQUERDA 1
+#define COLISAO_BAIXO -2
+#define COLISAO_CIMA 2
 
 class Entidade : public Ente
 {
 protected:
-	ID id;
-	sf::RectangleShape body;
+	CoordF posicao;
 	CoordF proximaPosicao;
-	sf::Texture* characterTexture;
+	CoordF tamanho;
+	sf::RectangleShape corpo;
 
 public:
-	Entidade(CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), ID ind = vazio);
+	// Construtora e destrutora
+	Entidade(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
 	~Entidade();
 
-	ID getID() const;
-	sf::RectangleShape* getBody();
+	// Posicao
+	void setPosicao(CoordF pos);
+	CoordF getPosicao() const;
+
+	float getEsquerda();
+
+	float getDireita();
+
+	float getCima();
+
+	float getBaixo();
+
 	CoordF getProximaPosicao();
 
-	virtual void colisao(Entidade* outraEntidade) = 0;
+	void atualizarPos();
+
+	// Tamanho
+	void setTamanho(CoordF tam);
+	CoordF getTamanho() const;
+
+	float getLargura();
+
+	float getAltura();
+
+	// Corpo e colisão
+	sf::RectangleShape* getCorpo();
+
+	void renderizar();
+
+	int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
+
+	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
+
+	// Executar
+	virtual void executar() = 0;
 };
 

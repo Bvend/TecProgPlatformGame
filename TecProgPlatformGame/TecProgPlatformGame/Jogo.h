@@ -1,33 +1,21 @@
 #pragma once
-#include<SFML/Graphics.hpp>
-#include "Jogador.h"
-#include "Inimigo.h"
-#include "ListaEntidades.h"
+#include <time.h>
 #include "Fase.h"
 #include "Gerenciador_Eventos.h"
-#include "Gerenciador_Colisoes.h"
-#include "Obst_A.h"
-#include "Inimigo_A.h"
 
 class Jogo
 {
 private:
-	Gerenciador_Grafico* GerenciadorGrafico;
-	Gerenciador_Eventos* GerenciadorEventos;
-	Gerenciador_Colisoes* GerenciadorColisoes;
-
-	const float dt;
-
-	Obst_A* parede;
-	Obst_A* parede1;
-	Obst_A* parede2;
-	Inimigo_A* inimigo;
-	Jogador *player1;
-	ListaEntidades* LES;
+	Gerenciador_Grafico* gerenciadorGrafico;
+	Gerenciador_Eventos* gerenciadorEventos;
+	Gerenciador_Colisoes* gerenciadorColisoes;
+	Fase* faseTeste;
+	static const float dt;
 
 public:
-	Jogo();
+	static const float getDt();
 
+	Jogo();
 	~Jogo();
 
 	void executar();

@@ -19,42 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimacaoEstatica.h" />
-    <ClInclude Include="AnimacaoMovimento.h" />
-    <ClInclude Include="CoordenadaTL.h" />
-    <ClInclude Include="Elemento.h" />
-    <ClInclude Include="Ente.h" />
-    <ClInclude Include="Entidade.h" />
-    <ClInclude Include="EntidadeEstatica.h" />
-    <ClInclude Include="Fase.h" />
-    <ClInclude Include="Fase1.h" />
-    <ClInclude Include="Fase2.h" />
-    <ClInclude Include="Gerenciador_Colisoes.h" />
-    <ClInclude Include="Gerenciador_Eventos.h" />
-    <ClInclude Include="Gerenciador_Grafico.h" />
-    <ClInclude Include="Gerenciador_Input.h" />
-    <ClInclude Include="Inimigo.h" />
-    <ClInclude Include="Inimigo_A.h" />
-    <ClInclude Include="Inimigo_B.h" />
-    <ClInclude Include="Inimigo_C.h" />
-    <ClInclude Include="Jogador.h" />
-    <ClInclude Include="Jogo.h" />
-    <ClInclude Include="Lista.h" />
-    <ClInclude Include="ListaEntidades.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="Obstaculo.h" />
-    <ClInclude Include="Obst_A.h" />
-    <ClInclude Include="Obst_B.h" />
-    <ClInclude Include="Obst_C.h" />
-    <ClInclude Include="Personagem.h" />
-    <ClInclude Include="Projetil.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AnimacaoEstatica.cpp" />
-    <ClCompile Include="AnimacaoMovimento.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
-    <ClCompile Include="EntidadeEstatica.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Fase1.cpp" />
     <ClCompile Include="Fase2.cpp" />
@@ -77,6 +43,34 @@
     <ClCompile Include="Obst_C.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Projetil.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CoordenadaTL.h" />
+    <ClInclude Include="Elemento.h" />
+    <ClInclude Include="Ente.h" />
+    <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Fase.h" />
+    <ClInclude Include="Fase1.h" />
+    <ClInclude Include="Fase2.h" />
+    <ClInclude Include="Gerenciador_Colisoes.h" />
+    <ClInclude Include="Gerenciador_Eventos.h" />
+    <ClInclude Include="Gerenciador_Grafico.h" />
+    <ClInclude Include="Gerenciador_Input.h" />
+    <ClInclude Include="Inimigo.h" />
+    <ClInclude Include="Inimigo_A.h" />
+    <ClInclude Include="Inimigo_B.h" />
+    <ClInclude Include="Inimigo_C.h" />
+    <ClInclude Include="Jogador.h" />
+    <ClInclude Include="Jogo.h" />
+    <ClInclude Include="Lista.h" />
+    <ClInclude Include="ListaEntidades.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="Obst_A.h" />
+    <ClInclude Include="Obst_B.h" />
+    <ClInclude Include="Obst_C.h" />
+    <ClInclude Include="Personagem.h" />
+    <ClInclude Include="Projetil.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
