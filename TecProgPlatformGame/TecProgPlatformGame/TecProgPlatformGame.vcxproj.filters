@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Entidades">
       <UniqueIdentifier>{9e5cffea-0a76-4728-84e8-61280f34e61c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Gerenciadores">
+      <UniqueIdentifier>{b4b36a39-3cee-4684-816e-7cbc077037bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gerenciadores">
+      <UniqueIdentifier>{7bd6f30f-c4da-4cb6-8e70-8ba08dbf42b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -34,18 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fase2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Colisoes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Eventos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Grafico.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Jogo.cpp">
@@ -93,6 +87,21 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Source Files\Entidades</Filter>
     </ClCompile>
+    <ClCompile Include="Corpo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Colisoes.cpp">
+      <Filter>Source Files\Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Eventos.cpp">
+      <Filter>Source Files\Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Grafico.cpp">
+      <Filter>Source Files\Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Input.cpp">
+      <Filter>Source Files\Gerenciadores</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoordenadaTL.h">
@@ -111,18 +120,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fase2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gerenciador_Colisoes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gerenciador_Eventos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gerenciador_Grafico.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gerenciador_Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Jogo.h">
@@ -172,6 +169,21 @@
     </ClInclude>
     <ClInclude Include="Projetil.h">
       <Filter>Header Files\Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Corpo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerenciador_Colisoes.h">
+      <Filter>Header Files\Gerenciadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerenciador_Eventos.h">
+      <Filter>Header Files\Gerenciadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerenciador_Grafico.h">
+      <Filter>Header Files\Gerenciadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerenciador_Input.h">
+      <Filter>Header Files\Gerenciadores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

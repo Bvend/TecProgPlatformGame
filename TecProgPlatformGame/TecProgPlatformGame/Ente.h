@@ -18,17 +18,12 @@ class Ente
 {
 protected:
 	Id id;
-	Gerenciador_Grafico* pGerenciadorGrafico;
 
 public:
-	Ente(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL);
+	Ente(Id ind = Id::VAZIO);
 	~Ente();
 
 	Id getId() const;
-
-	void setGerenciadorGrafico(Gerenciador_Grafico* ger);
-
-	virtual void renderizar() = 0;
 
 	virtual void executar() = 0;
 };

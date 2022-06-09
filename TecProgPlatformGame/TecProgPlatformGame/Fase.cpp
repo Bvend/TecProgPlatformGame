@@ -3,7 +3,7 @@
 Fase::Fase(Gerenciador_Grafico* GerenciadorGrafico, Gerenciador_Colisoes* GerenciadorColisoes, float deltaTime):
 pGerenciadorGrafico(GerenciadorGrafico),
 pGerenciadorColisoes(GerenciadorColisoes),
-jogador1(new Jogador(Id::JOGADOR, pGerenciadorGrafico, CoordF((100.f), (100.f)), CoordF((100.f), (100.f)), 10)),
+jogador1(new Jogador(Id::JOGADOR, pGerenciadorGrafico, CoordF((100.f), (100.f)), 10)),
 listaEntidades(new ListaEntidades())
 {
     inicializarEntidades();
@@ -24,26 +24,23 @@ void Fase::inicializarEntidades()
 {
     listaEntidades->adicionarEntidade(jogador1);
 
-    Obst_A*     parede0 = new Obst_A(pGerenciadorGrafico, CoordF(40.f, 620.f), CoordF((1200.f), (100.f)));
-    Obst_A*     parede1 = new Obst_A(pGerenciadorGrafico, CoordF(440.f, 220.f), CoordF((400.f), (100.f)));
-    Obst_A*     parede2 = new Obst_A(pGerenciadorGrafico, CoordF(1280.f, 620.f), CoordF((1200.f), (100.f)));
-    Obst_B*        mola = new Obst_B(pGerenciadorGrafico, CoordF(1140.f, 570.f), CoordF((150.f), (50.f)));
-    Obst_C*     espinho = new Obst_C(pGerenciadorGrafico, CoordF(1400.f, 590.f), CoordF((200.f), (30.f)));
-    Inimigo_A* inimigo0 = new Inimigo_A(pGerenciadorGrafico, CoordF(610.f, 520.f), CoordF(100.f, 100.f));
-    Inimigo_A* inimigo1 = new Inimigo_A(pGerenciadorGrafico, CoordF(720.f, 520.f), CoordF(100.f, 100.f));
-    Inimigo_B* inimigo2 = new Inimigo_B(pGerenciadorGrafico, CoordF(640.f, 120.f), CoordF(100.f, 100.f), listaEntidades, parede1);
+    Obst_A*     parede0 = new Obst_A(pGerenciadorGrafico, CoordF(0.f, 620.f), CoordF((1000.f), (100.f)));
+    Obst_A*     parede1 = new Obst_A(pGerenciadorGrafico, CoordF(250.f, 270.f), CoordF((500.f), (50.f)));
+    //Obst_B*        mola = new Obst_B(pGerenciadorGrafico, CoordF(1140.f, 570.f), CoordF((150.f), (50.f)));
+    //Obst_C*     espinho = new Obst_C(pGerenciadorGrafico, CoordF(1400.f, 590.f), CoordF((200.f), (30.f)));
+    Inimigo_A* inimigo0 = new Inimigo_A(pGerenciadorGrafico, CoordF(610.f, 520.f));
+    Inimigo_A* inimigo1 = new Inimigo_A(pGerenciadorGrafico, CoordF(720.f, 520.f));
+    Inimigo_B* inimigo2 = new Inimigo_B(pGerenciadorGrafico, CoordF(parede1->getEsquerda() + parede1->getLargura() / 2.f, parede1->getCima() - 100.f), listaEntidades, parede1);
     inimigo2->setJogador(jogador1);
 
     // Inclui entidades na lista
     listaEntidades->adicionarEntidade(parede0);
     listaEntidades->adicionarEntidade(parede1);
-    listaEntidades->adicionarEntidade(parede2);
-    listaEntidades->adicionarEntidade(mola);
-    listaEntidades->adicionarEntidade(espinho);
+    //listaEntidades->adicionarEntidade(mola);
+    //listaEntidades->adicionarEntidade(espinho);
     listaEntidades->adicionarEntidade(inimigo0);
     listaEntidades->adicionarEntidade(inimigo1);
     listaEntidades->adicionarEntidade(inimigo2);
-    //listaEntidades->adicionarEntidade(inimigo1);
 }
 
 /* Função para mover, colidir e atualizar a posicao de 
@@ -119,7 +116,7 @@ void Fase::renderizarEntidades()
     // renderizar entidades a partir da view do jogador
     if (jogador1)
     {
-        pGerenciadorGrafico->centralizarView(jogador1->getPosicao(), jogador1->getTamanho());
+        pGerenciadorGrafico->centralizarVista(jogador1->getPosicao(), jogador1->getTamanho());
     }
 
     Elemento<Entidade>* pElEntidade = NULL;

@@ -1,9 +1,11 @@
 #include "Obst_B.h"
 
-Obst_B::Obst_B(Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
-Obstaculo(Id::MOLA, ger, pos, tam)
+#define CAMINHO_ ""
+
+Obst_B::Obst_B(Gerenciador_Grafico* ger, CoordF pos):
+Obstaculo(Id::MOLA, pos, CoordF(100.f, 100.f))
 {
-	corpo.setFillColor(sf::Color::Red);
+	corpo.inicializar(CAMINHO_, posicao, tamanho, ger);
 }
 
 Obst_B::~Obst_B()

@@ -6,20 +6,20 @@
 class Gerenciador_Grafico
 {
 private:
-	sf::RenderWindow* window;
-	sf::View* view;
+	sf::RenderWindow* janela;
+	sf::View* vista;
 	std::map<const char*, sf::Texture*> mapaTextura;
 	
 public:
 	Gerenciador_Grafico();
 	~Gerenciador_Grafico();
 
-	sf::RenderWindow* getWindow() const;
-	bool isWindowOpen();
-	void clearWindow();
+	sf::RenderWindow* getJanela() const;
+	bool janelaEstaAberta();
+	void limparJanela();
 	void renderizar(sf::RectangleShape* body);
 	void display();
-	void closeWindow();
-	void centralizarView(CoordF pos, CoordF tam);
-	sf::Texture* loadTextura(const char* path);
+	void fecharJanela();
+	void centralizarVista(CoordF pos, CoordF tam);
+	sf::Texture* carregarTextura(const char* caminho);
 };

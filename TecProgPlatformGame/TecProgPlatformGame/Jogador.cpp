@@ -1,12 +1,14 @@
 #include "Jogador.h"
 #include "Jogo.h"
 
-Jogador::Jogador(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid):
-Personagem(ind, ger, pos, tam, vid),
+#define CAMINHO_JOGADOR "./recurssos/Jogador/Jogador.png"
+
+Jogador::Jogador(Id ind, Gerenciador_Grafico* ger, CoordF pos, int vid):
+Personagem(ind, pos, CoordF(100.f, 100.f), vid),
 velMov(300.f),
 velPulo(700.f)
 {
-    corpo.setFillColor(sf::Color::Cyan);
+    corpo.inicializar(CAMINHO_JOGADOR, posicao, tamanho, ger);
 }
 
 Jogador::~Jogador()
@@ -15,11 +17,6 @@ Jogador::~Jogador()
 
 void Jogador::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 {
-    if (reposicionar)
-    {
-        reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
-    }
-
     Id ind = pEntidade->getId();
     if (ind == Id::INIMIGO_A && direcao_colisao != COLISAO_BAIXO)
     {
@@ -48,16 +45,26 @@ void Jogador::colisao(int direcao_colisao, Entidade* pEntidade, bool reposiciona
 
     if (num_vidas <= 0)
     {
-        corpo.setFillColor(sf::Color::Yellow);
+    }
+
+    if (ind != Id::PROJETIL && reposicionar)
+    {
+        reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
     }
 }
 
 /* Coleta input do teclado e atualiza a posição futura do jogador */
 void Jogador::executar()
 {
-    proximaPosicao = posicao;
+    mover();
+}
 
-    // Caso entidade estiver no ar, aplica aceleração da gravidade
+/* Função para mover o Jogador, tanto em Y quanto em X */
+void Jogador::mover()
+{
+    //proximaPosicao = posicao;
+
+    // Caso entidade estiver no ar, aplica ação da gravidade
     if (estaNoAr)
     {
         if (deslocamentoY < 2 * velMov)

@@ -4,11 +4,11 @@
 #define ALTURA 720
 
 Gerenciador_Grafico::Gerenciador_Grafico():
-window(new sf::RenderWindow(sf::VideoMode(1280, 720), "Jogo", sf::Style::Titlebar | sf::Style::Close)),
-view(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
+janela(new sf::RenderWindow(sf::VideoMode(1280, 720), "Jogo", sf::Style::Titlebar | sf::Style::Close)),
+vista(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
 mapaTextura()
 {
-	window->setView(*view);
+	janela->setView(*vista);
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico()
@@ -17,87 +17,91 @@ Gerenciador_Grafico::~Gerenciador_Grafico()
 		delete (it->second);
 	}
 	
-	window = NULL;
-	delete view;
+	janela = NULL;
+	delete vista;
 }
 
-sf::RenderWindow* Gerenciador_Grafico::getWindow() const
+sf::RenderWindow* Gerenciador_Grafico::getJanela() const
 {
-	return window;
+	return janela;
 }
 
-bool Gerenciador_Grafico::isWindowOpen()
+bool Gerenciador_Grafico::janelaEstaAberta()
 {
-	return (window->isOpen());
+	return (janela->isOpen());
 }
 
-void Gerenciador_Grafico::clearWindow()
+void Gerenciador_Grafico::limparJanela()
 {
-	if (isWindowOpen())
+	if (janelaEstaAberta())
 	{
-		window->clear();
+		janela->clear();
 	}
 }
 
 void Gerenciador_Grafico::renderizar(sf::RectangleShape* body)
 {
-	if (isWindowOpen())
+	if (janelaEstaAberta())
 	{
-		window->draw(*body);
+		janela->draw(*body);
 	}
 }
 
 void Gerenciador_Grafico::display()
 {
-	if (isWindowOpen())
+	if (janelaEstaAberta())
 	{
-		window->display();
+		janela->display();
 	}
 }
 
-void Gerenciador_Grafico::closeWindow()
+void Gerenciador_Grafico::fecharJanela()
 {
-	if (isWindowOpen())
+	if (janelaEstaAberta())
 	{
-		window->close();
+		janela->close();
 	}
 }
 
 /* Função para ajustar a view de acordo de com a posição de 
    determinado ente, geralmente o jogador
    ATENCAO - TAVA USANDO ENTE AGR USO PERSONAGEM */
-void Gerenciador_Grafico::centralizarView(CoordF pos, CoordF tam)
+void Gerenciador_Grafico::centralizarVista(CoordF pos, CoordF tam)
 {
 	if (pos.getX() + tam.getX() > LARGURA / 2.f)
 	{
-		view->setCenter(sf::Vector2f(pos.getX() + tam.getX(), pos.getY()));//ALTURA / 2 + (pEnte->getCima() - ALTURA / 2)/5));
+		vista->setCenter(sf::Vector2f(pos.getX() + tam.getX(), pos.getY()));//ALTURA / 2 + (pEnte->getCima() - ALTURA / 2)/5));
 	}
 	else
 	{
-		view->setCenter(sf::Vector2f(LARGURA / 2.f, pos.getY()));
+		vista->setCenter(sf::Vector2f(LARGURA / 2.f, pos.getY()));
 	}
-	if (isWindowOpen())
+	if (janelaEstaAberta())
 	{
-		window->setView(*view);
+		janela->setView(*vista);
 	}
 }
 
-sf::Texture* Gerenciador_Grafico::loadTextura(const char* path)
+sf::Texture* Gerenciador_Grafico::carregarTextura(const char* caminho)
 {
 	std::map<const char*, sf::Texture*>::iterator it;
-	for (it = mapaTextura.begin(); it != mapaTextura.end(); ++it) {
-		if (!strcmp(it->first, path))
+	for (it = mapaTextura.begin(); it != mapaTextura.end(); it++) 
+	{
+		if (!strcmp(it->first, caminho))
+		{
 			return it->second;
+		}
 	}
 
 	sf::Texture* tex = new sf::Texture();
 
-	if (!tex->loadFromFile(path)) {
+	if (!tex->loadFromFile(caminho)) 
+	{
 		std::cout << "ERRO! houve falha ao carregar arquivo!" << std::endl;
-		exit(1);
+		exit(-1);
 	}
 	
-	mapaTextura.insert(std::pair<const char*, sf::Texture*>(path, tex));
+	mapaTextura.insert(std::pair<const char*, sf::Texture*>(caminho, tex));
 
 	return tex;
 }

@@ -29,7 +29,7 @@ void Jogo::executar()
     sf::Clock clock;
     sf::Time tempoDesdeUltimoUpdate;
 
-    while (gerenciadorGrafico->isWindowOpen())
+    while (gerenciadorGrafico->janelaEstaAberta())
     {
         // Processa eventos
         gerenciadorEventos->verificarEvents();
@@ -46,7 +46,7 @@ void Jogo::executar()
         }
 
         // Renderiza as coisas tudo
-        gerenciadorGrafico->clearWindow();
+        gerenciadorGrafico->limparJanela();
         faseTeste->renderizarEntidades();
         gerenciadorGrafico->display();
     }

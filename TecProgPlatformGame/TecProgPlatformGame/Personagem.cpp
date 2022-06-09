@@ -1,7 +1,7 @@
 #include "Personagem.h"
 
-Personagem::Personagem(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid):
-Entidade(ind, ger, pos, tam),
+Personagem::Personagem(Id ind, CoordF pos, CoordF tam, int vid):
+Entidade(ind, pos, tam),
 num_vidas(vid),
 estaNoAr(true),
 deslocamentoY(0.f)
@@ -49,7 +49,7 @@ void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, i
     // Colisão por cima
     else if (direcao_colisao == COLISAO_CIMA)
     {
-        proximaPosicao.setY(posEntidade2.getY() + tamanho.getY());
+        proximaPosicao.setY(posEntidade2.getY() + tamEntidade2.getY());
         if (deslocamentoY < 0)
         {
             deslocamentoY = 0.f;

@@ -1,14 +1,18 @@
 #include "Inimigo_B.h"
 #include "Jogo.h"
 
-Inimigo_B::Inimigo_B(Gerenciador_Grafico* ger, CoordF pos, CoordF tam, ListaEntidades* pLE, Obst_A* pPt):
-Inimigo(Id::INIMIGO_B, ger, pos, tam, 1),
+#define CAMINHO_INIMIGO_B "./recurssos/Inimigo_B/Inimigo_B.png"
+
+Inimigo_B::Inimigo_B(Gerenciador_Grafico* ger, CoordF pos, ListaEntidades* pLE, Obst_A* pPt):
+Inimigo(Id::INIMIGO_B, pos, CoordF(100.f, 100.f), 1),
 pJogador(NULL),
 cooldown(0),
 pListaEntidades(pLE),
 pPlataforma(pPt),
 velMov(100.f)
 {
+	corpo.inicializar(CAMINHO_INIMIGO_B, posicao, tamanho, ger);
+
 	if (rand() % 2)
 	{
 		direcao = 1;
@@ -38,25 +42,35 @@ void Inimigo_B::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicio
 	}
 	else  if (!cooldown)
 	{
-		cooldown = 2.f;
+		cooldown = 1.f;
 	}
 
-	if (reposicionar)
+	if (ind != Id::PROJETIL && reposicionar)
 	{
 		reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
 	}
 }
 
+int Inimigo_B::direcaoProjetil()
+{
+	if (pJogador->getCentroX() > getCentroX())
+	{
+		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
 void Inimigo_B::executar()
 {
-	proximaPosicao = posicao;
-
 	if (cooldown > 0)
 	{
 		cooldown -= Jogo::getDt();
-		if (cooldown > 2)
+		if (cooldown > 0.5f)
 		{
-			return;
+			//return;
 		}
 	}
 	else
@@ -64,24 +78,53 @@ void Inimigo_B::executar()
 		cooldown = 0;
 	}
 
+	mover();
+	
+	if (cooldown <= 0)
+	{
+		Projetil* pProjetil = new Projetil(corpo.getGerenciadorGrafico(), CoordF(getCentroX(), getCentroY()), direcaoProjetil());
+		pListaEntidades->adicionarEntidade(pProjetil);
+		cooldown = 1;
+	}
+}
+
+void Inimigo_B::mover()
+{
 	if (pJogador && pPlataforma)
 	{
-		if (pJogador->getDireita() < getEsquerda()
+		/*
+		if (pJogador->getDireita() + 150.f < pPlataforma->getEsquerda()
 			&& getEsquerda() >= pPlataforma->getEsquerda())
 		{
 			proximaPosicao.atualizarX(-velMov * Jogo::getDt());
 		}
-		else if (pJogador->getEsquerda() > getDireita()
+		else if (pJogador->getEsquerda() - 150.f > pPlataforma->getDireita()
 			&& getDireita() <= pPlataforma->getDireita())
 		{
 			proximaPosicao.atualizarX(velMov * Jogo::getDt());
 		}
-	}
-	
-	if (cooldown < 0)
-	{
-		Projetil* pProjetil = new Projetil();
-		pListaEntidades->adicionarEntidade(pProjetil);
-		cooldown = 4;
+		else if (pJogador->getDireita() < posicao.getX()
+			&& getDireita() <= pPlataforma->getDireita())
+		{
+			proximaPosicao.atualizarX(+velMov * Jogo::getDt());
+		}
+		else if (pJogador->getEsquerda() > getDireita()
+			&& getEsquerda() >= pPlataforma->getEsquerda())
+		{
+			proximaPosicao.atualizarX(velMov * Jogo::getDt());
+
+		}
+		*/
+		if (pJogador->getDireita() < getEsquerda()
+			&& getDireita() <= pPlataforma->getDireita())
+		{
+			proximaPosicao.atualizarX(velMov * Jogo::getDt());
+		}
+		else if (pJogador->getEsquerda() > getDireita()
+			&& getEsquerda() >= pPlataforma->getEsquerda())
+		{
+			proximaPosicao.atualizarX(-velMov * Jogo::getDt());
+		}
+
 	}
 }

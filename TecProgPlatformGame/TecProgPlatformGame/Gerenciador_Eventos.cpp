@@ -6,7 +6,7 @@ pGerenciadorGrafico(GerenciadorGrafico)
     pWindow = NULL;
     if (GerenciadorGrafico != NULL)
     {
-        pWindow = GerenciadorGrafico->getWindow();
+        pWindow = GerenciadorGrafico->getJanela();
     }
 }
 
@@ -25,7 +25,7 @@ void Gerenciador_Eventos::verificarEvents()
         while (pWindow->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
             {
-                pGerenciadorGrafico->closeWindow();
+                pGerenciadorGrafico->fecharJanela();
             }
             //if (event.type == sf::Event::KeyPressed)
                 //pInputM->handleKeyPressed(event.key.code);

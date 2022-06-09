@@ -57,11 +57,11 @@ void Gerenciador_Colisoes::checarColisoes()
 			{
 				pEntidade2 = pElEntidade2->getItem();
 				
-				sf::FloatRect ent1Bounds = (pEntidade1->getCorpo())->getGlobalBounds();
+				sf::FloatRect ent1Bounds = (pEntidade1->getForma())->getGlobalBounds();
 				ent1Bounds.left = (pEntidade1->getProximaPosicao()).getX();
 				ent1Bounds.top = (pEntidade1->getProximaPosicao()).getY();
 
-				sf::FloatRect ent2Bounds = (pEntidade2->getCorpo())->getGlobalBounds();
+				sf::FloatRect ent2Bounds = (pEntidade2->getForma())->getGlobalBounds();
 
 				if (ent2Bounds.intersects(ent1Bounds))
 				{

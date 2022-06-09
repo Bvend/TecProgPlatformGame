@@ -1,9 +1,11 @@
 #include "Obst_C.h"
 
-Obst_C::Obst_C(Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
-Obstaculo(Id::ESPINHO ,ger, pos, tam)
+#define CAMINHO_ ""
+
+Obst_C::Obst_C(Gerenciador_Grafico* ger, CoordF pos):
+Obstaculo(Id::ESPINHO, pos, CoordF())
 {
-	corpo.setFillColor(sf::Color::Green);
+	corpo.inicializar(CAMINHO_, posicao, tamanho, ger);
 }
 
 Obst_C::~Obst_C()

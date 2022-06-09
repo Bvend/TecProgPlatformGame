@@ -1,17 +1,19 @@
 #include "Inimigo_A.h"
 #include "Jogo.h"
 
-Inimigo_A::Inimigo_A(Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
-Inimigo(Id::INIMIGO_A, ger, pos, tam, 1),
+#define CAMINHO_GOOBER "./recurssos/Goober/Goober.png"
+
+Inimigo_A::Inimigo_A(Gerenciador_Grafico* ger, CoordF pos):
+Inimigo(Id::INIMIGO_A, pos, CoordF(80.f, 120.f), 1),
 pJogador(NULL),
 trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 distPercorrida(0),
 cooldown(0),
 velMov(100.f + rand() % 51)
 {
-	corpo.setFillColor(sf::Color::Magenta);
+	corpo.inicializar(CAMINHO_GOOBER, posicao, tamanho, ger);
 
-	// Atribui aleatoriamente direcao inciall de movimento
+	// Atribui aleatoriamente direcao incial de movimento
 	if (rand() % 2)
 	{
 		direcao = 1;
@@ -49,18 +51,17 @@ void Inimigo_A::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicio
 	{
 		direcao *= -1;
 		distPercorrida = 0;
-		cooldown = 4.f;
+		cooldown = 1.f;
 	}
 }
 
 void Inimigo_A::executar()
 {
-	proximaPosicao = posicao;
 
 	if (cooldown > 0)
 	{
 		cooldown -= Jogo::getDt();
-		if (cooldown > 2)
+		if (cooldown > 0.5f)
 		{
 			return;
 		}
@@ -70,23 +71,27 @@ void Inimigo_A::executar()
 		cooldown = 0;
 	}
 
+	mover();
+}
+
+void Inimigo_A::mover()
+{
+	proximaPosicao = posicao;
+
 	if (estaNoAr)
 	{
 		deslocamentoY += GRAVIDADE * Jogo::getDt();
 		proximaPosicao.atualizarY(deslocamentoY);
 	}
+	else if (distPercorrida < trajeto)
+	{
+		proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
+		distPercorrida += fabs(proximaPosicao.getX() - posicao.getX());
+	}
 	else
 	{
-		if (distPercorrida < trajeto)
-		{
-			proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
-			distPercorrida += fabs(proximaPosicao.getX() - posicao.getX());
-		}
-		else
-		{
-			distPercorrida = 0;
-			direcao *= -1;
-		}
+		distPercorrida = 0;
+		direcao *= -1;
 	}
 }
 
