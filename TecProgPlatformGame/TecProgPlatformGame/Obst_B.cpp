@@ -1,7 +1,7 @@
 #include "Obst_B.h"
 
-Obst_B::Obst_B(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
-Obstaculo(ind, ger, pos, tam)
+Obst_B::Obst_B(Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
+Obstaculo(Id::MOLA, ger, pos, tam)
 {
 	corpo.setFillColor(sf::Color::Red);
 }

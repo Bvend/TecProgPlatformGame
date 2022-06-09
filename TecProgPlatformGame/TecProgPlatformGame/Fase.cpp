@@ -24,14 +24,14 @@ void Fase::inicializarEntidades()
 {
     listaEntidades->adicionarEntidade(jogador1);
 
-    Obst_A*     parede0 = new Obst_A(Id::PAREDE, pGerenciadorGrafico, CoordF(40.f, 620.f), CoordF((1200.f), (100.f)));
-    Obst_A*     parede1 = new Obst_A(Id::PAREDE, pGerenciadorGrafico, CoordF(440.f, 220.f), CoordF((400.f), (100.f)));
-    Obst_A*     parede2 = new Obst_A(Id::PAREDE, pGerenciadorGrafico, CoordF(1280.f, 620.f), CoordF((1200.f), (100.f)));
-    Obst_B*        mola = new Obst_B(Id::MOLA, pGerenciadorGrafico, CoordF(1140.f, 570.f), CoordF((150.f), (50.f)));
-    Obst_C*     espinho = new Obst_C(Id::ESPINHO, pGerenciadorGrafico, CoordF(1400.f, 590.f), CoordF((200.f), (30.f)));
-    Inimigo_A* inimigo0 = new Inimigo_A(Id::INIMIGO_A, pGerenciadorGrafico, CoordF(610.f, 520.f), CoordF(100.f, 100.f), 1);
-    Inimigo_A* inimigo1 = new Inimigo_A(Id::INIMIGO_A, pGerenciadorGrafico, CoordF(720.f, 520.f), CoordF(100.f, 100.f), 1);
-    Inimigo_B* inimigo2 = new Inimigo_B(Id::INIMIGO_B, pGerenciadorGrafico, CoordF(640.f, 120.f), CoordF(100.f, 100.f), 1, listaEntidades, parede1);
+    Obst_A*     parede0 = new Obst_A(pGerenciadorGrafico, CoordF(40.f, 620.f), CoordF((1200.f), (100.f)));
+    Obst_A*     parede1 = new Obst_A(pGerenciadorGrafico, CoordF(440.f, 220.f), CoordF((400.f), (100.f)));
+    Obst_A*     parede2 = new Obst_A(pGerenciadorGrafico, CoordF(1280.f, 620.f), CoordF((1200.f), (100.f)));
+    Obst_B*        mola = new Obst_B(pGerenciadorGrafico, CoordF(1140.f, 570.f), CoordF((150.f), (50.f)));
+    Obst_C*     espinho = new Obst_C(pGerenciadorGrafico, CoordF(1400.f, 590.f), CoordF((200.f), (30.f)));
+    Inimigo_A* inimigo0 = new Inimigo_A(pGerenciadorGrafico, CoordF(610.f, 520.f), CoordF(100.f, 100.f));
+    Inimigo_A* inimigo1 = new Inimigo_A(pGerenciadorGrafico, CoordF(720.f, 520.f), CoordF(100.f, 100.f));
+    Inimigo_B* inimigo2 = new Inimigo_B(pGerenciadorGrafico, CoordF(640.f, 120.f), CoordF(100.f, 100.f), listaEntidades, parede1);
     inimigo2->setJogador(jogador1);
 
     // Inclui entidades na lista

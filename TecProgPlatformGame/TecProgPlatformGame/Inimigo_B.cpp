@@ -1,8 +1,8 @@
 #include "Inimigo_B.h"
 #include "Jogo.h"
 
-Inimigo_B::Inimigo_B(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid, ListaEntidades* pLE, Obst_A* pPt):
-Inimigo(ind, ger, pos, tam, vid),
+Inimigo_B::Inimigo_B(Gerenciador_Grafico* ger, CoordF pos, CoordF tam, ListaEntidades* pLE, Obst_A* pPt):
+Inimigo(Id::INIMIGO_B, ger, pos, tam, 1),
 pJogador(NULL),
 cooldown(0),
 pListaEntidades(pLE),
@@ -38,7 +38,7 @@ void Inimigo_B::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicio
 	}
 	else  if (!cooldown)
 	{
-		cooldown = 10.f;
+		cooldown = 2.f;
 	}
 
 	if (reposicionar)
@@ -54,10 +54,14 @@ void Inimigo_B::executar()
 	if (cooldown > 0)
 	{
 		cooldown -= Jogo::getDt();
-		if (cooldown > 5)
+		if (cooldown > 2)
 		{
 			return;
 		}
+	}
+	else
+	{
+		cooldown = 0;
 	}
 
 	if (pJogador && pPlataforma)
@@ -78,6 +82,6 @@ void Inimigo_B::executar()
 	{
 		Projetil* pProjetil = new Projetil();
 		pListaEntidades->adicionarEntidade(pProjetil);
-		cooldown = 10;
+		cooldown = 4;
 	}
 }

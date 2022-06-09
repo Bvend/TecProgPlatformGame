@@ -1,7 +1,7 @@
 #include "Obst_A.h"
 
-Obst_A::Obst_A(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
-Obstaculo(ind, ger, pos, tam)
+Obst_A::Obst_A(Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
+Obstaculo(Id::PAREDE, ger, pos, tam)
 {
 }
 
