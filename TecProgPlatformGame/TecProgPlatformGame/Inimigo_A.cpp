@@ -74,7 +74,8 @@ void Inimigo_A::colisao(Entidade* Entidade2)
 	reposicionarColisao(Entidade2->getPosicao(), Entidade2->getTamanho());
 }
 
-void Inimigo_A::setTexture(Vector2u* size, int posX, int posY)
+void Inimigo_A::setTexture(Texture* texture)
 {
-	body.setTextureRect(IntRect(size->x * posX, size->y * posY, size->x, size->y));
+	body.setTexture(texture);
 }
+

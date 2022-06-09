@@ -13,11 +13,12 @@ BackGroundShape(Vector2f(1280.f, 720.f))
 
     /*Textura de Enemy*/
     Texture enemyTexture;
-    enemyTexture.loadFromFile("Enemy2Teste.png");
-
+    enemyTexture.loadFromFile("Alien1.png");
+    /*
     Vector2u enemyTextureSize = enemyTexture.getSize();
     enemyTextureSize.x /= 3;
     enemyTextureSize.y /= 4;
+    */
     
     /*Textura de BackGround*/
     Texture* BackGroundTexture;
@@ -34,7 +35,7 @@ BackGroundShape(Vector2f(1280.f, 720.f))
 
     BackGroundShape.setTexture(BackGroundTexture);
     player1->setTexture(&playerTexture);
-    inimigo->setTexture(&enemyTextureSize, 1, 1);
+    inimigo->setTexture(&enemyTexture);
 
     // Inclui entidades na lista
     LES->adicionarEntidade(player1);
