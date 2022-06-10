@@ -38,9 +38,9 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
-    <ClCompile Include="Obst_A.cpp" />
-    <ClCompile Include="Obst_B.cpp" />
-    <ClCompile Include="Obst_C.cpp" />
+    <ClCompile Include="Plataforma.cpp" />
+    <ClCompile Include="Mola.cpp" />
+    <ClCompile Include="Espinho.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Projetil.cpp" />
   </ItemGroup>
@@ -66,9 +66,9 @@
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Obstaculo.h" />
-    <ClInclude Include="Obst_A.h" />
-    <ClInclude Include="Obst_B.h" />
-    <ClInclude Include="Obst_C.h" />
+    <ClInclude Include="Plataforma.h" />
+    <ClInclude Include="Mola.h" />
+    <ClInclude Include="Espinho.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Projetil.h" />
   </ItemGroup>

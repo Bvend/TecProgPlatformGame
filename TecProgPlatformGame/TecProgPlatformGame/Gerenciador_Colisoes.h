@@ -2,20 +2,23 @@
 #include "ListaEntidades.h"
 #include "Personagem.h"
 
-class Gerenciador_Colisoes
+namespace Gerenciadores
 {
-private:
-	//Lista<Personagem>* ListaObstaculos;
-	//Lista<Obstaculo>* ListaPersonagens;
-	ListaEntidades* pListaEntidades;
+	class Gerenciador_Colisoes
+	{
+	private:
+		//Lista<Personagem>* ListaObstaculos;
+		//Lista<Obstaculo>* ListaPersonagens;
+		Listas::ListaEntidades* pListaEntidades;
 
-public:
-	Gerenciador_Colisoes(ListaEntidades* LE = NULL);
-	//Gerenciador_Colisoes(Lista<Personagem>* ListaObst, Lista<Obstaculo>* ListaPers);
-	~Gerenciador_Colisoes();
+	public:
+		Gerenciador_Colisoes(Listas::ListaEntidades* LE = NULL);
+		//Gerenciador_Colisoes(Lista<Personagem>* ListaObst, Lista<Obstaculo>* ListaPers);
+		~Gerenciador_Colisoes();
 
-	void setListaEntidades(ListaEntidades* LE);
+		void setListaEntidades(Listas::ListaEntidades* LE);
 
-	void checarColisoes();
-};
+		void checarColisoes();
+	};
+}
 

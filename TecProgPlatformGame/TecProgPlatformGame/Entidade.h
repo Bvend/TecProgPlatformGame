@@ -6,52 +6,60 @@
 #define COLISAO_BAIXO -2
 #define COLISAO_CIMA 2
 
-class Entidade : public Ente
+namespace Entidades
 {
-protected:
-	CoordF posicao;
-	CoordF proximaPosicao;
-	CoordF tamanho;
+	class Entidade : public Ente
+	{
+	protected:
+		CoordF posicao;
+		CoordF proximaPosicao;
+		CoordF tamanho;
+		bool estaVivo;
 
-public:
-	// Construtora e destrutora
-	Entidade(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
-	~Entidade();
+	public:
+		// Construtora e destrutora
+		Entidade(Id ind = Id::VAZIO, Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
+		~Entidade();
 
-	// Posicao
-	void setPosicao(CoordF pos);
-	CoordF getPosicao() const;
+		// Posicao
+		void setPosicao(CoordF pos);
+		CoordF getPosicao() const;
 
-	float getEsquerda();
+		float getEsquerda();
 
-	float getDireita();
+		float getDireita();
 
-	float getCima();
+		float getCima();
 
-	float getBaixo();
+		float getBaixo();
 
-	float getCentroX();
+		float getCentroX();
 
-	float getCentroY();
+		float getCentroY();
 
-	CoordF getProximaPosicao();
+		CoordF getProximaPosicao();
 
-	virtual void atualizarPos();
+		virtual void atualizarPos();
 
-	// Tamanho
-	void setTamanho(CoordF tam);
-	CoordF getTamanho() const;
+		// Tamanho
+		void setTamanho(CoordF tam);
+		CoordF getTamanho() const;
 
-	float getLargura();
+		float getLargura();
 
-	float getAltura();
+		float getAltura();
 
-	// Corpo e colisão
-	int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
+		// Vida
+		void setEstaVivo(bool vivo);
+		bool getEstaVivo();
 
-	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
+		// Corpo e colisão
+		int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
 
-	// Executar
-	virtual void executar() = 0;
-};
+		virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
+
+		// Executar
+		virtual void executar() = 0;
+	};
+}
 

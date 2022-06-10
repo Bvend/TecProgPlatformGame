@@ -3,58 +3,60 @@
 
 #define CAMINHO_PROJETIL "./recurssos/Projetil/Projetil.png"
 
-Projetil::Projetil(Gerenciador_Grafico* ger, CoordF pos, int dir):
-Personagem(Id::PROJETIL, ger, pos, CoordF(20.f, 20.f), 2),
-velMov(400.f),
-direcao(dir)
+namespace Entidades
 {
-	inicializarCorpo(CAMINHO_PROJETIL, posicao, tamanho);
-	deslocamentoY = -velMov * Jogo::getDt();
-}
-
-Projetil::~Projetil()
-{
-}
-
-void Projetil::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
-{
-	Id ind = pEntidade->getId();
-	if (ind == Id::INIMIGO_B)
+	Projetil::Projetil(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, int dir):
+		Entidade(Id::PROJETIL, ger, pos, CoordF(45.f, 45.f)),
+		velMov(400.f),
+		direcao(dir)
 	{
-		return;
+		inicializarCorpo(CAMINHO_PROJETIL, posicao, tamanho);
+		deslocamentoY = -velMov * Jogo::getDt();
 	}
-	else
+
+	Projetil::~Projetil()
 	{
-		num_vidas = 0;
 	}
-}
 
-void Projetil::executar()
-{
-	mover();
-}
+	void Projetil::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
+	{
+		Id ind = pEntidade->getId();
+		if (ind == Id::INIMIGO_B)
+		{
+			return;
+		}
+		else
+		{
+			estaVivo = false;
+		}
+	}
 
-void Projetil::mover()
-{
-	if (estaNoAr)
+	void Projetil::executar()
+	{
+		mover();
+	}
+
+	void Projetil::mover()
 	{
 		if (deslocamentoY < 2 * velMov)
 		{
 			deslocamentoY += GRAVIDADE * Jogo::getDt();;
 		}
 		proximaPosicao.atualizarY(deslocamentoY);
+
+		proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
 	}
 
-	proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
-}
-
-void Projetil::atualizarPos()
-{
-	if (proximaPosicao.getX() < 0)
+	void Projetil::atualizarPos()
 	{
-		num_vidas = 0;
-		return;
-	}
+		if (proximaPosicao.getX() < 0)
+		{
+			estaVivo = false;
+			return;
+		}
 
-	setPosicao(proximaPosicao);
+		setPosicao(proximaPosicao);
+	}
 }
+
+

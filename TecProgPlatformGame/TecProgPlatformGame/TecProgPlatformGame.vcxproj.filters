@@ -25,6 +25,30 @@
     <Filter Include="Source Files\Gerenciadores">
       <UniqueIdentifier>{7bd6f30f-c4da-4cb6-8e70-8ba08dbf42b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entidades\Obstaculos">
+      <UniqueIdentifier>{a922e896-640e-42db-ba84-87bf65f13a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Fase">
+      <UniqueIdentifier>{3ad79a5e-f836-4c97-aef6-5e3cd2081265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Listas">
+      <UniqueIdentifier>{840f437c-ecb7-460b-969e-83bf243253d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entidades\Personagens">
+      <UniqueIdentifier>{26819c15-faff-49da-baaa-4c3406dc986a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entidades\Obstaculos">
+      <UniqueIdentifier>{38099301-64cd-40a7-abc9-ec604e6244ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fase">
+      <UniqueIdentifier>{391f0b95-101b-4bd0-9a49-a19f3c035910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Listas">
+      <UniqueIdentifier>{110fb33b-6b14-40e0-80bb-6874e027dc9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entidades\Personagens">
+      <UniqueIdentifier>{7f13cc0f-76e7-48b7-8d18-9b2e75dcbebc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -33,55 +57,13 @@
     <ClCompile Include="Ente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Fase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fase1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fase2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Jogo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaEntidades.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entidade.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo_B.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo_A.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Inimigo_C.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Jogador.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obst_A.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obst_B.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obst_C.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obstaculo.cpp">
-      <Filter>Source Files\Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Personagem.cpp">
       <Filter>Source Files\Entidades</Filter>
     </ClCompile>
     <ClCompile Include="Projetil.cpp">
@@ -99,69 +81,63 @@
     <ClCompile Include="Gerenciador_Input.cpp">
       <Filter>Source Files\Gerenciadores</Filter>
     </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Source Files\Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Mola.cpp">
+      <Filter>Source Files\Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Espinho.cpp">
+      <Filter>Source Files\Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstaculo.cpp">
+      <Filter>Source Files\Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase.cpp">
+      <Filter>Source Files\Fase</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase1.cpp">
+      <Filter>Source Files\Fase</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase2.cpp">
+      <Filter>Source Files\Fase</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEntidades.cpp">
+      <Filter>Source Files\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Source Files\Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Personagem.cpp">
+      <Filter>Source Files\Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo.cpp">
+      <Filter>Source Files\Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo_A.cpp">
+      <Filter>Source Files\Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo_B.cpp">
+      <Filter>Source Files\Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo_C.cpp">
+      <Filter>Source Files\Entidades\Personagens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoordenadaTL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Elemento.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Ente.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Fase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fase1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fase2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Jogo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Lista.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaEntidades.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Entidade.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo_A.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo_B.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Inimigo_C.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Jogador.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Obst_A.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Obst_B.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Obst_C.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Obstaculo.h">
-      <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Personagem.h">
       <Filter>Header Files\Entidades</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
@@ -178,6 +154,54 @@
     </ClInclude>
     <ClInclude Include="Gerenciador_Input.h">
       <Filter>Header Files\Gerenciadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Jogador.h">
+      <Filter>Header Files\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Mola.h">
+      <Filter>Header Files\Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
+      <Filter>Header Files\Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Espinho.h">
+      <Filter>Header Files\Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstaculo.h">
+      <Filter>Header Files\Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase.h">
+      <Filter>Header Files\Fase</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase1.h">
+      <Filter>Header Files\Fase</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase2.h">
+      <Filter>Header Files\Fase</Filter>
+    </ClInclude>
+    <ClInclude Include="Elemento.h">
+      <Filter>Header Files\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEntidades.h">
+      <Filter>Header Files\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista.h">
+      <Filter>Header Files\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="Personagem.h">
+      <Filter>Header Files\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo.h">
+      <Filter>Header Files\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo_A.h">
+      <Filter>Header Files\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo_B.h">
+      <Filter>Header Files\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo_C.h">
+      <Filter>Header Files\Entidades\Personagens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,10 +6,10 @@
 class Jogo
 {
 private:
-	Gerenciador_Grafico* gerenciadorGrafico;
-	Gerenciador_Eventos* gerenciadorEventos;
-	Gerenciador_Colisoes* gerenciadorColisoes;
-	Fase* faseTeste;
+	Gerenciadores::Gerenciador_Grafico* gerenciadorGrafico;
+	Gerenciadores::Gerenciador_Eventos* gerenciadorEventos;
+	Gerenciadores::Gerenciador_Colisoes* gerenciadorColisoes;
+	Fases::Fase* faseTeste;
 	static const float dt;
 
 public:

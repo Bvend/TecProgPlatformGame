@@ -5,38 +5,44 @@
 
 class Jogo;
 
-class Personagem : public Entidade
+namespace Entidades
 {
-protected:
-	int num_vidas;
-	bool estaNoAr;
-	float deslocamentoY;
-	float intervaloRecarga;
-	float tempoRecarregando;
+	namespace Personagens
+	{
+		class Personagem : public Entidade
+		{
+		protected:
+			int num_vidas;
+			bool estaNoAr;
+			float deslocamentoY;
+			float intervaloRecarga;
+			float tempoRecarregando;
 
-public:
-	Personagem(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
-	~Personagem();
+		public:
+			Personagem(Id ind = Id::VAZIO, Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
+			~Personagem();
 
-	int getNumVidas();
+			int getNumVidas();
 
-	void setEstaNoAr(bool NoAr);
+			void setEstaNoAr(bool NoAr);
 
-	void setDeslocamentoY(float deslY);
+			void setDeslocamentoY(float deslY);
 
-	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao);
+			void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao);
 
-	void atualizarTempoRecarregando();
+			void atualizarTempoRecarregando();
 
-	void reiniciarTempoRecarregando();
+			void reiniciarTempoRecarregando();
 
-	bool antingiuTodaRecarga();
+			bool antingiuTodaRecarga();
 
-	bool atingiuMetadeRecarga();
+			bool atingiuMetadeRecarga();
 
-	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
+			virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
 
-	virtual void executar() = 0;
+			virtual void executar() = 0;
 
-	virtual void mover() = 0;
-};
+			virtual void mover() = 0;
+		};
+	}
+}

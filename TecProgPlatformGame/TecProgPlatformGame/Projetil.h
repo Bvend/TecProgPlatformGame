@@ -1,22 +1,26 @@
 #pragma once
 #include "Personagem.h"
 
-class Projetil : public Personagem
+namespace Entidades
 {
-private:
-	float velMov;
-	int direcao;
+	class Projetil : public Entidade
+	{
+	private:
+		float deslocamentoY;
+		float velMov;
+		int direcao;
 
-public:
-	Projetil(Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), int dir = 1);
-	~Projetil();
+	public:
+		Projetil(Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), int dir = 1);
+		~Projetil();
 
-	void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar);
+		void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar);
 
-	void executar();
+		void executar();
 
-	void mover();
+		void mover();
 
-	void atualizarPos();
-};
+		void atualizarPos();
+	};
+}
 

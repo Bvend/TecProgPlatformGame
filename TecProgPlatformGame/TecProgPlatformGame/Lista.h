@@ -2,157 +2,160 @@
 #include "Elemento.h"
 #include <stdlib.h>
 
-template <class TL> class Lista
+namespace Listas
 {
-private:
-	Elemento<TL>* pPrimeiro;
-	Elemento<TL>* pUltimo;
-	int tam;
-
-public:
-	Lista();
-	~Lista();
-
-	int getTam() 
+	template <class TL> class Lista
 	{
-		return this->tam; 
-	}
+	private:
+		Elemento<TL>* pPrimeiro;
+		Elemento<TL>* pUltimo;
+		int tam;
 
-	TL* getItem(int posicao) 
-	{
-		Elemento<TL>* temp = pPrimeiro;
-		if (posicao == 0)
+	public:
+		Lista();
+		~Lista();
+
+		int getTam()
+		{
+			return this->tam;
+		}
+
+		TL* getItem(int posicao)
+		{
+			Elemento<TL>* temp = pPrimeiro;
+			if (posicao == 0)
+				return temp->getItem();
+			for (int i = 0; i < posicao; i++) {
+				temp = temp->getPprox();
+			}
 			return temp->getItem();
-		for (int i = 0; i < posicao; i++) {
-			temp = temp->getPprox();
 		}
-		return temp->getItem();
-	}
 
-	Elemento<TL>* getElemento(int posicao)
-	{
-		Elemento<TL>* temp = pPrimeiro;
-		if (posicao == 0)
+		Elemento<TL>* getElemento(int posicao)
+		{
+			Elemento<TL>* temp = pPrimeiro;
+			if (posicao == 0)
+				return temp;
+			for (int i = 0; i < posicao; i++) {
+				temp = temp->getPprox();
+			}
 			return temp;
-		for (int i = 0; i < posicao; i++) {
-			temp = temp->getPprox();
 		}
-		return temp;
-	}
 
-	void push(TL* item) 
-	{
-		if (pPrimeiro == nullptr) {
-			pPrimeiro = new Elemento<TL>;
-			pPrimeiro->setItem(item);
-			pUltimo = pPrimeiro;
-		}
-		else {
-			Elemento<TL> *temp = new Elemento<TL>;
-			temp->setItem(item);
-			pUltimo->setPprox(temp);
-			pUltimo = temp;
-		}
-		tam++;
-	}
-	
-	TL* pop(TL* item)
-	{
-		Elemento<TL> *temp = pPrimeiro;
-		Elemento<TL> *tempAnt = nullptr;
-		
-		while (temp != nullptr) {
-			if (temp->getItem() == item)
-			{
-				if (temp == pPrimeiro) {
-					pPrimeiro = temp->getPprox();
-				}
-				else if (temp == pUltimo) {
-					tempAnt->setPprox(nullptr);
-					pUltimo = tempAnt;
-				}
-				else {
-					tempAnt->setPprox(temp->getPprox());
-				}
-				delete temp;
-				tam--;
-				return item;
+		void push(TL* item)
+		{
+			if (pPrimeiro == nullptr) {
+				pPrimeiro = new Elemento<TL>;
+				pPrimeiro->setItem(item);
+				pUltimo = pPrimeiro;
 			}
-			tempAnt = temp;
-			temp = temp->getPprox();
-		}
-		return nullptr;
-	}
-
-	TL* pop(int pos)
-	{
-		if (pos >= tam || pos < 0)
-		{
-			exit(1);
+			else {
+				Elemento<TL>* temp = new Elemento<TL>;
+				temp->setItem(item);
+				pUltimo->setPprox(temp);
+				pUltimo = temp;
+			}
+			tam++;
 		}
 
-		Elemento<TL>* tmp = pPrimeiro;
-		Elemento<TL>* tmpAnt = nullptr;
-
-		for (int i = 0; i < pos; i++)
+		TL* pop(TL* item)
 		{
-			tmpAnt = tmp;
-			tmp = tmp->getPprox();
+			Elemento<TL>* temp = pPrimeiro;
+			Elemento<TL>* tempAnt = nullptr;
+
+			while (temp != nullptr) {
+				if (temp->getItem() == item)
+				{
+					if (temp == pPrimeiro) {
+						pPrimeiro = temp->getPprox();
+					}
+					else if (temp == pUltimo) {
+						tempAnt->setPprox(nullptr);
+						pUltimo = tempAnt;
+					}
+					else {
+						tempAnt->setPprox(temp->getPprox());
+					}
+					delete temp;
+					tam--;
+					return item;
+				}
+				tempAnt = temp;
+				temp = temp->getPprox();
+			}
+			return nullptr;
 		}
 
-		if (tmp == pPrimeiro)
+		TL* pop(int pos)
 		{
-			pPrimeiro = tmp->getPprox();
-		}
-		else if (tmp == pUltimo) 
-		{
-			pUltimo = tmpAnt;
-			tmpAnt->setPprox(nullptr);
-		}
-		else 
-		{
-			tmpAnt->setPprox(tmp->getPprox());
-		}
+			if (pos >= tam || pos < 0)
+			{
+				exit(1);
+			}
 
-		TL* pItem = tmp->getItem();
-
-		delete (tmp);
-		tam--;
-
-		return pItem;
-	}
-
-	void esvaziar()
-	{
-		if (pPrimeiro)
-		{
 			Elemento<TL>* tmp = pPrimeiro;
-			int i = 0;
+			Elemento<TL>* tmpAnt = nullptr;
 
-			while (tmp != nullptr && i < tam)
+			for (int i = 0; i < pos; i++)
 			{
-				pPrimeiro = (tmp->getPprox());
-				delete tmp;
-				tmp = pPrimeiro;
-				i++;
+				tmpAnt = tmp;
+				tmp = tmp->getPprox();
 			}
+
+			if (tmp == pPrimeiro)
+			{
+				pPrimeiro = tmp->getPprox();
+			}
+			else if (tmp == pUltimo)
+			{
+				pUltimo = tmpAnt;
+				tmpAnt->setPprox(nullptr);
+			}
+			else
+			{
+				tmpAnt->setPprox(tmp->getPprox());
+			}
+
+			TL* pItem = tmp->getItem();
+
+			delete (tmp);
+			tam--;
+
+			return pItem;
 		}
 
+		void esvaziar()
+		{
+			if (pPrimeiro)
+			{
+				Elemento<TL>* tmp = pPrimeiro;
+				int i = 0;
+
+				while (tmp != nullptr && i < tam)
+				{
+					pPrimeiro = (tmp->getPprox());
+					delete tmp;
+					tmp = pPrimeiro;
+					i++;
+				}
+			}
+
+			pUltimo = nullptr;
+			tam = 0;
+		}
+	};
+
+	template<class TL>
+	Lista<TL>::Lista()
+	{
+		pPrimeiro = nullptr;
 		pUltimo = nullptr;
 		tam = 0;
 	}
-};
 
-template<class TL>
-Lista<TL>::Lista()
-{
-	pPrimeiro = nullptr;
-	pUltimo = nullptr;
-	tam = 0;
-}
-
-template<class TL>
-Lista<TL>::~Lista()
-{
-	esvaziar();
+	template<class TL>
+	Lista<TL>::~Lista()
+	{
+		esvaziar();
+	}
 }

@@ -1,10 +1,18 @@
 #include "Obstaculo.h"
 
-Obstaculo::Obstaculo(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
-Entidade(ind, ger, pos, tam)
+namespace Entidades
 {
+	namespace Obstaculos
+	{
+		Obstaculo::Obstaculo(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
+			Entidade(ind, ger, pos, tam)
+		{
+		}
+
+		Obstaculo::~Obstaculo()
+		{
+		}
+	}
 }
 
-Obstaculo::~Obstaculo()
-{
-}
+

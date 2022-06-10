@@ -2,21 +2,24 @@
 #include "Lista.h"
 #include "Entidade.h"
 
-class ListaEntidades
+namespace Listas
 {
-private:
-	Lista<Entidade>* LE;
+	class ListaEntidades
+	{
+	private:
+		Lista<Entidades::Entidade>* LE;
 
-public:
-	ListaEntidades();
-	~ListaEntidades();
+	public:
+		ListaEntidades();
+		~ListaEntidades();
 
-	int getLength();
-	void adicionarEntidade(Entidade* E);
-	Entidade* operator[](int i);
-	Elemento<Entidade>* getElemento(int posicao);
-	void deletarEntidades();
+		int getLength();
+		void adicionarEntidade(Entidades::Entidade* E);
+		Entidades::Entidade* operator[](int i);
+		Elemento<Entidades::Entidade>* getElemento(int posicao);
+		void deletarEntidades();
 
-	void deletarEntidade(Entidade* pEntidade);
-};
+		void deletarEntidade(Entidades::Entidade* pEntidade);
+	};
+}
 

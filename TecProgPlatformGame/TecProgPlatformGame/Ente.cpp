@@ -1,7 +1,7 @@
 #include "Ente.h"
 
 /* Construtora */
-Ente::Ente(Id ind, Gerenciador_Grafico* ger):
+Ente::Ente(Id ind, Gerenciadores::Gerenciador_Grafico* ger):
 id(ind),
 textura(NULL),
 pGerenciadorGrafico(ger)
@@ -36,7 +36,7 @@ sf::RectangleShape* Ente::getForma()
 }
 
 /* Atribui ponteiro para GerenciadorGrafico, caso variavel recebida não seja NULL */
-void Ente::setGerenciadorGrafico(Gerenciador_Grafico* ger)
+void Ente::setGerenciadorGrafico(Gerenciadores::Gerenciador_Grafico* ger)
 {
 	if (ger)
 	{
@@ -49,13 +49,13 @@ void Ente::setGerenciadorGrafico(Gerenciador_Grafico* ger)
 }
 
 /* Retorna ponteiro para Gerenciador Grafico */
-Gerenciador_Grafico* Ente::getGerenciadorGrafico()
+Gerenciadores::Gerenciador_Grafico* Ente::getGerenciadorGrafico()
 {
 	return pGerenciadorGrafico;;
 }
 
 /* Inicializa forma e textura de acordo com cada ente */
-void Ente::inicializarCorpo(const char* caminho, CoordF posicao, CoordF tamanho, Gerenciador_Grafico* GerenciadorGrafico)
+void Ente::inicializarCorpo(const char* caminho, CoordF posicao, CoordF tamanho, Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico)
 {
 	if (pGerenciadorGrafico)
 	{

@@ -8,10 +8,10 @@ const float Jogo::getDt()
 }
 
 Jogo::Jogo():
-gerenciadorGrafico(new Gerenciador_Grafico()),
-gerenciadorEventos(new Gerenciador_Eventos(gerenciadorGrafico)),
-gerenciadorColisoes(new Gerenciador_Colisoes()),
-faseTeste(new Fase(gerenciadorGrafico, gerenciadorColisoes))
+gerenciadorGrafico(new Gerenciadores::Gerenciador_Grafico()),
+gerenciadorEventos(new Gerenciadores::Gerenciador_Eventos(gerenciadorGrafico)),
+gerenciadorColisoes(new Gerenciadores::Gerenciador_Colisoes()),
+faseTeste(new Fases::Fase(gerenciadorGrafico, gerenciadorColisoes))
 {
 	executar();
 }
