@@ -24,20 +24,20 @@ void Fase::inicializarEntidades()
 {
     listaEntidades->adicionarEntidade(jogador1);
 
-    Obst_A*     parede0 = new Obst_A(pGerenciadorGrafico, CoordF(0.f, 620.f), CoordF((1000.f), (100.f)));
-    Obst_A*     parede1 = new Obst_A(pGerenciadorGrafico, CoordF(250.f, 270.f), CoordF((500.f), (50.f)));
-    //Obst_B*        mola = new Obst_B(pGerenciadorGrafico, CoordF(1140.f, 570.f), CoordF((150.f), (50.f)));
-    //Obst_C*     espinho = new Obst_C(pGerenciadorGrafico, CoordF(1400.f, 590.f), CoordF((200.f), (30.f)));
+    Obst_A*     parede0 = new Obst_A(pGerenciadorGrafico, CoordF(0.f, 670.f), CoordF((2000.f), (50.f)));
+    Obst_A*     parede1 = new Obst_A(pGerenciadorGrafico, CoordF(250.f, 420.f), CoordF((500.f), (50.f)));
+    //Obst_B*        mola = new Obst_B(pGerenciadorGrafico, CoordF(500.f, 570.f));
+    //Obst_C*     espinho = new Obst_C(pGerenciadorGrafico, CoordF(.f, 590.f));
     Inimigo_A* inimigo0 = new Inimigo_A(pGerenciadorGrafico, CoordF(610.f, 520.f));
     Inimigo_A* inimigo1 = new Inimigo_A(pGerenciadorGrafico, CoordF(720.f, 520.f));
-    Inimigo_B* inimigo2 = new Inimigo_B(pGerenciadorGrafico, CoordF(parede1->getEsquerda() + parede1->getLargura() / 2.f, parede1->getCima() - 100.f), listaEntidades, parede1);
+    Inimigo_B* inimigo2 = new Inimigo_B(pGerenciadorGrafico, CoordF(parede1->getEsquerda() + parede1->getLargura() / 2.f, parede1->getCima() - 50.f), listaEntidades, parede1);
     inimigo2->setJogador(jogador1);
 
     // Inclui entidades na lista
     listaEntidades->adicionarEntidade(parede0);
     listaEntidades->adicionarEntidade(parede1);
-    //listaEntidades->adicionarEntidade(mola);
-    //listaEntidades->adicionarEntidade(espinho);
+    listaEntidades->adicionarEntidade(mola);
+    listaEntidades->adicionarEntidade(espinho);
     listaEntidades->adicionarEntidade(inimigo0);
     listaEntidades->adicionarEntidade(inimigo1);
     listaEntidades->adicionarEntidade(inimigo2);
@@ -45,15 +45,15 @@ void Fase::inicializarEntidades()
 
 /* Função para mover, colidir e atualizar a posicao de 
 todas as entidades na fase */
-void Fase::updateFase()
+void Fase::executar()
 {
-    executaEntidades();
+    executarEntidades();
     colidirEntidades();
     atualizarPosicaoEntidades();
 }
 
 /* Função para mover todas as entidades moveis na fase */
-void Fase::executaEntidades()
+void Fase::executarEntidades()
 {
     Elemento<Entidade>* pElEntidade = NULL;
 
@@ -114,10 +114,10 @@ void Fase::atualizarPosicaoEntidades()
 void Fase::renderizarEntidades()
 {
     // renderizar entidades a partir da view do jogador
-    if (jogador1)
-    {
-        pGerenciadorGrafico->centralizarVista(jogador1->getPosicao(), jogador1->getTamanho());
-    }
+    //if (jogador1)
+    //{
+    //    pGerenciadorGrafico->centralizarVista(jogador1->getPosicao(), jogador1->getTamanho());
+    //}
 
     Elemento<Entidade>* pElEntidade = NULL;
 

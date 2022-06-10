@@ -3,13 +3,13 @@
 #include "Obst_A.h"
 #include "Projetil.h"
 #include "ListaEntidades.h"
+#include <time.h>
 
 class Inimigo_B : public Inimigo
 {
 private:
 	Jogador* pJogador;
 	int direcao;
-	float cooldown;
 	ListaEntidades* pListaEntidades;
 	Obst_A* pPlataforma;
 	float velMov;
@@ -27,5 +27,7 @@ public:
 	void executar();
 
 	void mover();
+
+	void atacar();
 };
 

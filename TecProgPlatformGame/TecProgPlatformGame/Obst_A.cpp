@@ -3,9 +3,9 @@
 #define CAMINHO_PLATAFORMA "./recurssos/Plataforma/Plataforma.png"
 
 Obst_A::Obst_A(Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
-Obstaculo(Id::PAREDE, pos, tam)
+Obstaculo(Id::PAREDE, ger, pos, tam)
 {
-	corpo.inicializar(CAMINHO_PLATAFORMA, posicao, tamanho, ger);
+	inicializarCorpo(CAMINHO_PLATAFORMA, posicao, tamanho);
 }
 
 Obst_A::~Obst_A()

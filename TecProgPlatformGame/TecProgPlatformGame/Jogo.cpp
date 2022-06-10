@@ -41,7 +41,7 @@ void Jogo::executar()
             tempoDesdeUltimoUpdate -= sf::seconds(dt);
 
             // Novamente processa eventos
-            faseTeste->updateFase();
+            faseTeste->executar();
 
         }
 

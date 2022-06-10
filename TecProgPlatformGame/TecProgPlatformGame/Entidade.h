@@ -1,6 +1,5 @@
 #pragma once
 #include "Ente.h"
-#include "Corpo.h"
 
 #define COLISAO_DIREITA -1
 #define COLISAO_ESQUERDA 1
@@ -13,11 +12,10 @@ protected:
 	CoordF posicao;
 	CoordF proximaPosicao;
 	CoordF tamanho;
-	Corpo corpo;
 
 public:
 	// Construtora e destrutora
-	Entidade(Id ind = Id::VAZIO, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
+	Entidade(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
 	~Entidade();
 
 	// Posicao
@@ -38,7 +36,7 @@ public:
 
 	CoordF getProximaPosicao();
 
-	void atualizarPos();
+	virtual void atualizarPos();
 
 	// Tamanho
 	void setTamanho(CoordF tam);
@@ -49,11 +47,6 @@ public:
 	float getAltura();
 
 	// Corpo e colisão
-
-	sf::RectangleShape* getForma();
-
-	void renderizar();
-
 	int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
 
 	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;

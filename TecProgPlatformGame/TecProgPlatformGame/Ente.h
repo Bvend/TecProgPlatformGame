@@ -1,8 +1,9 @@
 #pragma once
 #include "Gerenciador_Grafico.h"
-#include <time.h>
+#include "SFML/Graphics.hpp"
 
-enum class Id {
+enum class Id
+{
 	VAZIO,
 	JOGADOR,
 	PAREDE,
@@ -18,12 +19,27 @@ class Ente
 {
 protected:
 	Id id;
+	sf::RectangleShape forma;
+	sf::Texture* textura;
+	Gerenciador_Grafico* pGerenciadorGrafico;
 
 public:
-	Ente(Id ind = Id::VAZIO);
+	Ente(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL);
 	~Ente();
 
 	Id getId() const;
+
+	void setForma(CoordF tamanho, CoordF posicao = CoordF(0.f, 0.f));
+	sf::RectangleShape* getForma();
+
+	void setGerenciadorGrafico(Gerenciador_Grafico* GerenciadorGrafico);
+	Gerenciador_Grafico* getGerenciadorGrafico();
+
+	void inicializarCorpo(const char* caminho, CoordF posicao, CoordF tamanho, Gerenciador_Grafico* ger = NULL);
+
+	void renderizar();
+
+	virtual void setPosicao(CoordF posicao);
 
 	virtual void executar() = 0;
 };

@@ -87,9 +87,6 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Source Files\Entidades</Filter>
     </ClCompile>
-    <ClCompile Include="Corpo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Gerenciador_Colisoes.cpp">
       <Filter>Source Files\Gerenciadores</Filter>
     </ClCompile>
@@ -169,9 +166,6 @@
     </ClInclude>
     <ClInclude Include="Projetil.h">
       <Filter>Header Files\Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Corpo.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gerenciador_Colisoes.h">
       <Filter>Header Files\Gerenciadores</Filter>

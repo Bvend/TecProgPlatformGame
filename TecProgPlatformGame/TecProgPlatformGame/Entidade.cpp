@@ -2,12 +2,11 @@
 
 /*Construtora
 Inicializa a entidade na posição informada no canto superior esquerdo*/
-Entidade::Entidade(Id ind, CoordF pos, CoordF tam):
-Ente(ind),
+Entidade::Entidade(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam):
+Ente(ind, ger),
 posicao(pos),
 proximaPosicao(pos),
-tamanho(tam),
-corpo()
+tamanho(tam)
 {
 }
 
@@ -18,6 +17,7 @@ Entidade::~Entidade()
 void Entidade::setPosicao(CoordF pos)
 {
     posicao = pos;
+    forma.setPosition(sf::Vector2f(posicao.getX(), posicao.getY()));
 }
 
 CoordF Entidade::getPosicao() const
@@ -50,7 +50,7 @@ void Entidade::atualizarPos()
 
     posicao = proximaPosicao;
 
-    corpo.setPosicao(posicao);
+    setPosicao(posicao);
 }
 
 float Entidade::getCima()
@@ -133,14 +133,4 @@ int Entidade::detectarColisao(CoordF posEntidade2, CoordF tamEntidade2)
     }
 
     return 0;
-}
-
-sf::RectangleShape* Entidade::getForma()
-{
-    return corpo.getForma();
-}
-
-void Entidade::renderizar()
-{
-    corpo.renderizar();
 }

@@ -4,14 +4,13 @@
 #define CAMINHO_GOOBER "./recurssos/Goober/Goober.png"
 
 Inimigo_A::Inimigo_A(Gerenciador_Grafico* ger, CoordF pos):
-Inimigo(Id::INIMIGO_A, pos, CoordF(80.f, 120.f), 1),
+Inimigo(Id::INIMIGO_A, ger, pos, CoordF(40.f, 60.f), 1),
 pJogador(NULL),
 trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 distPercorrida(0),
-cooldown(0),
-velMov(100.f + rand() % 51)
+velMov(50.f + rand() % 26)
 {
-	corpo.inicializar(CAMINHO_GOOBER, posicao, tamanho, ger);
+	inicializarCorpo(CAMINHO_GOOBER, posicao, tamanho);
 
 	// Atribui aleatoriamente direcao incial de movimento
 	if (rand() % 2)
@@ -37,41 +36,33 @@ void Inimigo_A::setJogador(Jogador* pJogador)
 /* Essa função fica vazia por enquanto */
 void Inimigo_A::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 {
+	Id ind = pEntidade->getId();
+
 	if (reposicionar)
 	{
 		reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
 	}
 
-	Id ind = pEntidade->getId();
 	if (ind == Id::JOGADOR && direcao_colisao == COLISAO_CIMA)
 	{
 		num_vidas -= 1;
 	}
-	else  if (!cooldown)
+	else  if (antingiuTodaRecarga())
 	{
 		direcao *= -1;
 		distPercorrida = 0;
-		cooldown = 1.f;
+		reiniciarTempoRecarregando();
 	}
 }
 
 void Inimigo_A::executar()
 {
+	atualizarTempoRecarregando();
 
-	if (cooldown > 0)
+	if (atingiuMetadeRecarga())
 	{
-		cooldown -= Jogo::getDt();
-		if (cooldown > 0.5f)
-		{
-			return;
-		}
+		mover();
 	}
-	else
-	{
-		cooldown = 0;
-	}
-
-	mover();
 }
 
 void Inimigo_A::mover()

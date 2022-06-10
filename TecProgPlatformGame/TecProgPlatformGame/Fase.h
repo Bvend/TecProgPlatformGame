@@ -21,9 +21,9 @@ public:
 
 	void inicializarEntidades();
 
-	void updateFase();
+	void executar();
 
-	void executaEntidades();
+	void executarEntidades();
 
 	void colidirEntidades();
 

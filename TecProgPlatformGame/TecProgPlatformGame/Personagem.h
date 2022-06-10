@@ -11,9 +11,11 @@ protected:
 	int num_vidas;
 	bool estaNoAr;
 	float deslocamentoY;
+	float intervaloRecarga;
+	float tempoRecarregando;
 
 public:
-	Personagem(Id ind = Id::VAZIO, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
+	Personagem(Id ind = Id::VAZIO, Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
 	~Personagem();
 
 	int getNumVidas();
@@ -23,6 +25,14 @@ public:
 	void setDeslocamentoY(float deslY);
 
 	void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao);
+
+	void atualizarTempoRecarregando();
+
+	void reiniciarTempoRecarregando();
+
+	bool antingiuTodaRecarga();
+
+	bool atingiuMetadeRecarga();
 
 	virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
 

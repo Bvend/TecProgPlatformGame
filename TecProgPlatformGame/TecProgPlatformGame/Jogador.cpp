@@ -4,11 +4,11 @@
 #define CAMINHO_JOGADOR "./recurssos/Jogador/Jogador.png"
 
 Jogador::Jogador(Id ind, Gerenciador_Grafico* ger, CoordF pos, int vid):
-Personagem(ind, pos, CoordF(100.f, 100.f), vid),
-velMov(300.f),
-velPulo(700.f)
+Personagem(ind, ger, pos, CoordF(50.f, 50.f), vid),
+velMov(150.f),
+velPulo(600.f)
 {
-    corpo.inicializar(CAMINHO_JOGADOR, posicao, tamanho, ger);
+    inicializarCorpo(CAMINHO_JOGADOR, posicao, tamanho);
 }
 
 Jogador::~Jogador()
@@ -18,15 +18,16 @@ Jogador::~Jogador()
 void Jogador::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 {
     Id ind = pEntidade->getId();
-    if (ind == Id::INIMIGO_A && direcao_colisao != COLISAO_BAIXO)
-    {
-        num_vidas--;
-    }
-    else if ((ind == Id::INIMIGO_A || ind == Id::INIMIGO_B) && direcao_colisao == COLISAO_BAIXO)
+    if ((ind == Id::INIMIGO_A || ind == Id::INIMIGO_B) && direcao_colisao == COLISAO_BAIXO)
     {
         estaNoAr = true;
         deslocamentoY = -0.5f * velPulo / 60.f;
         proximaPosicao.atualizarY(deslocamentoY);
+        return;
+    }
+    else if (ind == Id::INIMIGO_A || ind == Id::PROJETIL && direcao_colisao != COLISAO_BAIXO)
+    {
+        num_vidas--;
     }
     else if  (ind == Id::MOLA && direcao_colisao == COLISAO_BAIXO)
     {

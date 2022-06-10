@@ -3,9 +3,9 @@
 #define CAMINHO_ ""
 
 Obst_B::Obst_B(Gerenciador_Grafico* ger, CoordF pos):
-Obstaculo(Id::MOLA, pos, CoordF(100.f, 100.f))
+Obstaculo(Id::MOLA, ger, pos, CoordF(30.f, 60.f))
 {
-	corpo.inicializar(CAMINHO_, posicao, tamanho, ger);
+	inicializarCorpo(CAMINHO_, posicao, tamanho);
 }
 
 Obst_B::~Obst_B()

@@ -4,14 +4,15 @@
 #define CAMINHO_INIMIGO_B "./recurssos/Inimigo_B/Inimigo_B.png"
 
 Inimigo_B::Inimigo_B(Gerenciador_Grafico* ger, CoordF pos, ListaEntidades* pLE, Obst_A* pPt):
-Inimigo(Id::INIMIGO_B, pos, CoordF(100.f, 100.f), 1),
+Inimigo(Id::INIMIGO_B, ger, pos, CoordF(50.f, 50.f), 1),
 pJogador(NULL),
-cooldown(0),
 pListaEntidades(pLE),
 pPlataforma(pPt),
-velMov(100.f)
+velMov(50.f)
 {
-	corpo.inicializar(CAMINHO_INIMIGO_B, posicao, tamanho, ger);
+	intervaloRecarga = 2.f;
+
+	inicializarCorpo(CAMINHO_INIMIGO_B, posicao, tamanho);
 
 	if (rand() % 2)
 	{
@@ -36,18 +37,19 @@ void Inimigo_B::setJogador(Jogador* pJ)
 void Inimigo_B::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 {
 	Id ind = pEntidade->getId();
-	if (ind == Id::JOGADOR && direcao_colisao == COLISAO_CIMA)
-	{
-		num_vidas -= 1;
-	}
-	else  if (!cooldown)
-	{
-		cooldown = 1.f;
-	}
 
 	if (ind != Id::PROJETIL && reposicionar)
 	{
 		reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
+	}
+
+	if (ind == Id::JOGADOR && direcao_colisao == COLISAO_CIMA)
+	{
+		num_vidas -= 1;
+	}
+	else  if (antingiuTodaRecarga())
+	{
+		reiniciarTempoRecarregando();
 	}
 }
 
@@ -65,26 +67,16 @@ int Inimigo_B::direcaoProjetil()
 
 void Inimigo_B::executar()
 {
-	if (cooldown > 0)
-	{
-		cooldown -= Jogo::getDt();
-		if (cooldown > 0.5f)
-		{
-			//return;
-		}
-	}
-	else
-	{
-		cooldown = 0;
-	}
+	atualizarTempoRecarregando();
 
-	mover();
-	
-	if (cooldown <= 0)
+	if (atingiuMetadeRecarga())
 	{
-		Projetil* pProjetil = new Projetil(corpo.getGerenciadorGrafico(), CoordF(getCentroX(), getCentroY()), direcaoProjetil());
-		pListaEntidades->adicionarEntidade(pProjetil);
-		cooldown = 1;
+		mover();
+
+		if (antingiuTodaRecarga())
+		{
+			atacar();
+		}
 	}
 }
 
@@ -92,29 +84,6 @@ void Inimigo_B::mover()
 {
 	if (pJogador && pPlataforma)
 	{
-		/*
-		if (pJogador->getDireita() + 150.f < pPlataforma->getEsquerda()
-			&& getEsquerda() >= pPlataforma->getEsquerda())
-		{
-			proximaPosicao.atualizarX(-velMov * Jogo::getDt());
-		}
-		else if (pJogador->getEsquerda() - 150.f > pPlataforma->getDireita()
-			&& getDireita() <= pPlataforma->getDireita())
-		{
-			proximaPosicao.atualizarX(velMov * Jogo::getDt());
-		}
-		else if (pJogador->getDireita() < posicao.getX()
-			&& getDireita() <= pPlataforma->getDireita())
-		{
-			proximaPosicao.atualizarX(+velMov * Jogo::getDt());
-		}
-		else if (pJogador->getEsquerda() > getDireita()
-			&& getEsquerda() >= pPlataforma->getEsquerda())
-		{
-			proximaPosicao.atualizarX(velMov * Jogo::getDt());
-
-		}
-		*/
 		if (pJogador->getDireita() < getEsquerda()
 			&& getDireita() <= pPlataforma->getDireita())
 		{
@@ -125,6 +94,12 @@ void Inimigo_B::mover()
 		{
 			proximaPosicao.atualizarX(-velMov * Jogo::getDt());
 		}
-
 	}
+}
+
+void Inimigo_B::atacar()
+{
+	Projetil* pProjetil = new Projetil(getGerenciadorGrafico(), CoordF(getCentroX(), getCentroY()), direcaoProjetil());
+	pListaEntidades->adicionarEntidade(pProjetil);
+	reiniciarTempoRecarregando();
 }

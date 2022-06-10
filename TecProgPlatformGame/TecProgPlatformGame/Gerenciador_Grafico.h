@@ -7,7 +7,7 @@ class Gerenciador_Grafico
 {
 private:
 	sf::RenderWindow* janela;
-	sf::View* vista;
+	//sf::View* vista;
 	std::map<const char*, sf::Texture*> mapaTextura;
 	
 public:

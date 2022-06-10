@@ -1,2 +1,9 @@
-﻿  Inimigo_B.cpp
-  TecProgPlatformGame.vcxproj -> C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\Debug\TecProgPlatformGame.exe
+﻿  Fase.cpp
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Fase.cpp(30,66): error C2143: syntax error: missing ')' before '.'
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Fase.cpp(30,67): error C2039: 'f': is not a member of 'Coordenada<float>'
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\CoordenadaTL.h(43): message : see declaration of 'Coordenada<float>'
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Fase.cpp(30,76): error C2664: 'Obst_C::Obst_C(Gerenciador_Grafico *,CoordF)': cannot convert argument 2 from 'float' to 'CoordF'
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Fase.cpp(30,76): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Obst_C.h(8,5): message : see declaration of 'Obst_C::Obst_C'
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Fase.cpp(30,76): error C2143: syntax error: missing ';' before ')'
+C:\Bernardo\Programs\tec_prog\TecProgPlatformGame\TecProgPlatformGame\TecProgPlatformGame\Fase.cpp(30,76): error C2059: syntax error: ')'

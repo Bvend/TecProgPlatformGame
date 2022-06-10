@@ -1,5 +1,6 @@
 #pragma once
 #include "Inimigo.h"
+#include <time.h>
 
 class Inimigo_A : public Inimigo
 {
@@ -8,7 +9,6 @@ private:
 	float trajeto;
 	float distPercorrida;
 	int direcao;
-	float cooldown;
 	float velMov;
 
 public:

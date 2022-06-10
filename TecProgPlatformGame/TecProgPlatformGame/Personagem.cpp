@@ -1,10 +1,13 @@
 #include "Personagem.h"
+#include "Jogo.h"
 
-Personagem::Personagem(Id ind, CoordF pos, CoordF tam, int vid):
-Entidade(ind, pos, tam),
+Personagem::Personagem(Id ind, Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid):
+Entidade(ind, ger, pos, tam),
 num_vidas(vid),
 estaNoAr(true),
-deslocamentoY(0.f)
+deslocamentoY(0.f),
+intervaloRecarga(0.5f),
+tempoRecarregando(0.f)
 {
 }
 
@@ -55,4 +58,34 @@ void Personagem::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, i
             deslocamentoY = 0.f;
         }
     }
+}
+
+void Personagem::atualizarTempoRecarregando()
+{
+    tempoRecarregando += Jogo::getDt();
+}
+
+void Personagem::reiniciarTempoRecarregando()
+{
+    tempoRecarregando = 0;
+}
+
+bool Personagem::antingiuTodaRecarga()
+{
+    if (tempoRecarregando >= intervaloRecarga)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+bool Personagem::atingiuMetadeRecarga()
+{
+    if (tempoRecarregando >= (intervaloRecarga / 2.f))
+    {
+        return true;
+    }
+
+    return false;
 }

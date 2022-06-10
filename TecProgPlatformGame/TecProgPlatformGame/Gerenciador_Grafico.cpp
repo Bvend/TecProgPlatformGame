@@ -4,11 +4,11 @@
 #define ALTURA 720
 
 Gerenciador_Grafico::Gerenciador_Grafico():
-janela(new sf::RenderWindow(sf::VideoMode(1280, 720), "Jogo", sf::Style::Titlebar | sf::Style::Close)),
-vista(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
+janela(new sf::RenderWindow(sf::VideoMode(1280, 720), "Jogo", sf::Style::Close)),
+//vista(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
 mapaTextura()
 {
-	janela->setView(*vista);
+	//janela->setView(*vista);
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico()
@@ -18,7 +18,7 @@ Gerenciador_Grafico::~Gerenciador_Grafico()
 	}
 	
 	janela = NULL;
-	delete vista;
+	//delete vista;
 }
 
 sf::RenderWindow* Gerenciador_Grafico::getJanela() const
@@ -66,21 +66,23 @@ void Gerenciador_Grafico::fecharJanela()
 /* Função para ajustar a view de acordo de com a posição de 
    determinado ente, geralmente o jogador
    ATENCAO - TAVA USANDO ENTE AGR USO PERSONAGEM */
+/*
 void Gerenciador_Grafico::centralizarVista(CoordF pos, CoordF tam)
 {
 	if (pos.getX() + tam.getX() > LARGURA / 2.f)
 	{
-		vista->setCenter(sf::Vector2f(pos.getX() + tam.getX(), pos.getY()));//ALTURA / 2 + (pEnte->getCima() - ALTURA / 2)/5));
+		vista->setCenter(sf::Vector2f(pos.getX() + tam.getX(), ALTURA / 2.f));
 	}
 	else
 	{
-		vista->setCenter(sf::Vector2f(LARGURA / 2.f, pos.getY()));
+		vista->setCenter(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f));
 	}
 	if (janelaEstaAberta())
 	{
 		janela->setView(*vista);
 	}
 }
+*/
 
 sf::Texture* Gerenciador_Grafico::carregarTextura(const char* caminho)
 {

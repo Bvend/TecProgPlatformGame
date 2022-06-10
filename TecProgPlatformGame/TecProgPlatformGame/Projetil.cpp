@@ -4,11 +4,11 @@
 #define CAMINHO_PROJETIL "./recurssos/Projetil/Projetil.png"
 
 Projetil::Projetil(Gerenciador_Grafico* ger, CoordF pos, int dir):
-Personagem(Id::PROJETIL, pos, CoordF(20.f, 20.f), 1),
+Personagem(Id::PROJETIL, ger, pos, CoordF(20.f, 20.f), 2),
 velMov(400.f),
 direcao(dir)
 {
-	corpo.inicializar(CAMINHO_PROJETIL, posicao, tamanho, ger);
+	inicializarCorpo(CAMINHO_PROJETIL, posicao, tamanho);
 	deslocamentoY = -velMov * Jogo::getDt();
 }
 
@@ -23,12 +23,9 @@ void Projetil::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicion
 	{
 		return;
 	}
-
-	num_vidas--;
-
-	if (ind == Id::MOLA || ind == Id::PAREDE || ind == Id::ESPINHO && reposicionar)
+	else
 	{
-		reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
+		num_vidas = 0;
 	}
 }
 
@@ -49,4 +46,15 @@ void Projetil::mover()
 	}
 
 	proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
+}
+
+void Projetil::atualizarPos()
+{
+	if (proximaPosicao.getX() < 0)
+	{
+		num_vidas = 0;
+		return;
+	}
+
+	setPosicao(proximaPosicao);
 }

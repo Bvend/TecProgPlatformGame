@@ -5,7 +5,7 @@ class Projetil : public Personagem
 {
 private:
 	float velMov;
-	float direcao;
+	int direcao;
 
 public:
 	Projetil(Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), int dir = 1);
@@ -16,5 +16,7 @@ public:
 	void executar();
 
 	void mover();
+
+	void atualizarPos();
 };
 
