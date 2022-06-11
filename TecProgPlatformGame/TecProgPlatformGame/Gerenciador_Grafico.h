@@ -9,7 +9,6 @@ namespace Gerenciadores
 	{
 	private:
 		sf::RenderWindow* janela;
-		//sf::View* vista;
 		std::map<const char*, sf::Texture*> mapaTextura;
 
 	public:

@@ -1,20 +1,20 @@
 #include "Inimigo_B.h"
 #include "Jogo.h"
 
-#define CAMINHO_INIMIGO_B "./recurssos/Inimigo_B/Inimigo_B.png"
+#define CAMINHO_INIMIGO_B "./recurssos/Inimigo_B/Flor.png"
 
 namespace Entidades
 {
 	namespace Personagens
 	{
 		Inimigo_B::Inimigo_B(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, Listas::ListaEntidades* pLE, Obstaculos::Plataforma* pPt) :
-			Inimigo(Id::INIMIGO_B, ger, pos, CoordF(100.f, 100.f), 1),
+			Inimigo(Id::INIMIGO_B, ger, pos, CoordF(60.f, 60.f), 1),
 			pJogador(NULL),
 			pListaEntidades(pLE),
 			pPlataforma(pPt),
 			velMov(50.f)
 		{
-			intervaloRecarga = 1.f;
+			intervaloRecarga = 0.5f;
 
 			inicializarCorpo(CAMINHO_INIMIGO_B, posicao, tamanho);
 
@@ -45,7 +45,6 @@ namespace Entidades
 			if (ind != Id::PROJETIL && reposicionar)
 			{
 				reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
-				std::cout << direcao_colisao << std::endl;
 			}
 
 			if (ind == Id::JOGADOR && direcao_colisao == COLISAO_CIMA)
@@ -77,7 +76,7 @@ namespace Entidades
 
 			mover();
 
-			if (antingiuTodaRecarga())
+			if ((antingiuTodaRecarga()) && (fabs(pJogador->getCentroX() - pPlataforma->getCentroX()) < 300.f))
 			{
 				atacar();
 			}
@@ -97,6 +96,12 @@ namespace Entidades
 				{
 					proximaPosicao.atualizarX(-velMov * Jogo::getDt());
 				}
+			}
+
+			if (estaNoAr)
+			{
+				deslocamentoY += GRAVIDADE * Jogo::getDt();
+				proximaPosicao.atualizarY(deslocamentoY);
 			}
 		}
 

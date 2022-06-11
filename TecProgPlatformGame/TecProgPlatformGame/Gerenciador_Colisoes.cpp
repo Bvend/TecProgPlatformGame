@@ -34,8 +34,8 @@ namespace Gerenciadores
 	{
 		int i, j;
 
-		Listas::Elemento<Entidades::Entidade>* pElEntidade1 = NULL;
-		Listas::Elemento<Entidades::Entidade>* pElEntidade2 = NULL;
+		Listas::Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* pElEntidade1 = NULL;
+		Listas::Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* pElEntidade2 = NULL;
 
 		Entidades::Entidade* pEntidade1 = NULL;
 		Entidades::Entidade* pEntidade2 = NULL;

@@ -6,7 +6,7 @@
 namespace Gerenciadores
 {
 	Gerenciador_Grafico::Gerenciador_Grafico() :
-		janela(new sf::RenderWindow(sf::VideoMode(1920, 1080), "Jogo", sf::Style::Close)),
+		janela(new sf::RenderWindow(sf::VideoMode(1280, 720), "Jogo", sf::Style::Default)),
 		//vista(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
 		mapaTextura()
 	{
@@ -37,7 +37,7 @@ namespace Gerenciadores
 	{
 		if (janelaEstaAberta())
 		{
-			janela->clear(sf::Color::Blue);
+			janela->clear(sf::Color::White);
 		}
 	}
 
@@ -99,13 +99,21 @@ namespace Gerenciadores
 
 		sf::Texture* tex = new sf::Texture();
 
-		if (!tex->loadFromFile(caminho))
+		try
 		{
-			std::cout << "ERRO! houve falha ao carregar arquivo!" << std::endl;
-			exit(-1);
-		}
+			if (!tex->loadFromFile(caminho))
+			{
+				throw "Falha ao carregar arquivo de Textura";
+			}
 
-		mapaTextura.insert(std::pair<const char*, sf::Texture*>(caminho, tex));
+			mapaTextura.insert(std::pair<const char*, sf::Texture*>(caminho, tex));
+		}
+		catch (const char* e)
+		{
+			delete tex;
+			std::cout << "ERRO - " << e << std::endl; 
+			exit(1);
+		}
 
 		return tex;
 	}

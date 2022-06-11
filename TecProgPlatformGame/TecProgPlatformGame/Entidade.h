@@ -14,12 +14,14 @@ namespace Entidades
 		CoordF posicao;
 		CoordF proximaPosicao;
 		CoordF tamanho;
+		bool estaNoAr;
+		float deslocamentoY;
 		bool estaVivo;
 
 	public:
 		// Construtora e destrutora
 		Entidade(Id ind = Id::VAZIO, Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
-		~Entidade();
+		virtual ~Entidade();
 
 		// Posicao
 		void setPosicao(CoordF pos);
@@ -55,6 +57,8 @@ namespace Entidades
 
 		// Corpo e colisão
 		int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);
+		
+		void reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao);
 
 		virtual void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar) = 0;
 

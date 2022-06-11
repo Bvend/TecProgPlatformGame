@@ -1,19 +1,19 @@
 #include "Inimigo_A.h"
 #include "Jogo.h"
 
-#define CAMINHO_GOOBER "./recurssos/Goober/Goober.png"
+#define CAMINHO_CACHORRO "./recurssos/Cachorro/Cachorro.png"
 
 namespace Entidades
 {
 	namespace Personagens
 	{
 		Inimigo_A::Inimigo_A(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos) :
-			Inimigo(Id::INIMIGO_A, ger, pos, CoordF(40.f, 60.f), 1),
+			Inimigo(Id::INIMIGO_A, ger, pos, CoordF(30.f, 30.f), 1),
 			trajeto(2 * tamanho.getX() + rand() % (int)tamanho.getX()),
 			distPercorrida(0),
 			velMov(50.f + rand() % 26)
 		{
-			inicializarCorpo(CAMINHO_GOOBER, posicao, tamanho);
+			inicializarCorpo(CAMINHO_CACHORRO, posicao, tamanho);
 
 			// Atribui aleatoriamente direcao incial de movimento
 			if (rand() % 2)

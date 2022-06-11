@@ -16,7 +16,7 @@ namespace Listas
 		int getLength();
 		void adicionarEntidade(Entidades::Entidade* E);
 		Entidades::Entidade* operator[](int i);
-		Elemento<Entidades::Entidade>* getElemento(int posicao);
+		Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* getElemento(int posicao);
 		void deletarEntidades();
 
 		void deletarEntidade(Entidades::Entidade* pEntidade);

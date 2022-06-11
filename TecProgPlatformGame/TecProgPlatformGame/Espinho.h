@@ -16,6 +16,8 @@ namespace Entidades
             void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar);
 
             void executar();
+
+            void mover();
         };
     }
 }

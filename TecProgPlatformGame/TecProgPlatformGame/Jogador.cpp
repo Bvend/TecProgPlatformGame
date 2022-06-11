@@ -1,16 +1,16 @@
 #include "Jogador.h"
 #include "Jogo.h"
 
-#define CAMINHO_JOGADOR "./recurssos/Jogador/Jogador.png"
+#define CAMINHO_JOGADOR "./recurssos/Jogador/Jogador2.png"
 
 namespace Entidades
 {
     namespace Personagens
     {
         Jogador::Jogador(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, int vid) :
-            Personagem(ind, ger, pos, CoordF(50.f, 50.f), vid),
-            velMov(150.f),
-            velPulo(600.f)
+            Personagem(ind, ger, pos, CoordF(30.f, 75.f), vid),
+            velMov(100.f),
+            velPulo(500.f)
         {
             inicializarCorpo(CAMINHO_JOGADOR, posicao, tamanho);
         }
@@ -49,9 +49,9 @@ namespace Entidades
             {
                 num_vidas--;
                 estaNoAr = true;
-                deslocamentoY = -0.3f * velPulo / 60.f;
+                deslocamentoY = 0;
+                deslocamentoY = -0.5f * velPulo / 60.f;
                 proximaPosicao.atualizarY(deslocamentoY);
-                std::cout << "yay" << std::endl;
                 return;
             }
 

@@ -12,7 +12,8 @@ enum class Id
 	INIMIGO_A,
 	INIMIGO_B,
 	INIMIGO_C,
-	PROJETIL
+	PROJETIL,
+	FASE
 };
 
 class Ente

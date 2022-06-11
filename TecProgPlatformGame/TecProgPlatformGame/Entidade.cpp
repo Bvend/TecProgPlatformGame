@@ -5,11 +5,13 @@ namespace Entidades
     /*Construtora
 Inicializa a entidade na posição informada no canto superior esquerdo*/
     Entidade::Entidade(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
-    Ente(ind, ger),
-    posicao(pos),
-    proximaPosicao(pos),
-    tamanho(tam),
-    estaVivo(true)
+        Ente(ind, ger),
+        posicao(pos),
+        proximaPosicao(pos),
+        tamanho(tam),
+        estaVivo(true),
+        estaNoAr(true),
+        deslocamentoY(0.f)
     {
     }
 
@@ -146,6 +148,36 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
         }
 
         return 0;
+    }
+
+    void Entidade::reposicionarColisao(CoordF posEntidade2, CoordF tamEntidade2, int direcao_colisao)
+    {
+        // Colisão pela direita
+        if (direcao_colisao == COLISAO_DIREITA)
+        {
+            proximaPosicao.setX(posEntidade2.getX() - tamanho.getX());
+        }
+        // Colisão pela esquerda
+        else if (direcao_colisao == COLISAO_ESQUERDA)
+        {
+            proximaPosicao.setX(posEntidade2.getX() + tamEntidade2.getX());
+        }
+        // Colisão por baixo
+        else if (direcao_colisao == COLISAO_BAIXO)
+        {
+            proximaPosicao.setY(posEntidade2.getY() - tamanho.getY());
+            deslocamentoY = 0;
+            estaNoAr = false;
+        }
+        // Colisão por cima
+        else if (direcao_colisao == COLISAO_CIMA)
+        {
+            proximaPosicao.setY(posEntidade2.getY() + tamEntidade2.getY());
+            if (deslocamentoY < 0)
+            {
+                deslocamentoY = 0.f;
+            }
+        }
     }
 }
 

@@ -34,7 +34,7 @@ namespace Listas
 		return (LE->getItem(i));
 	}
 
-	Elemento<Entidades::Entidade>* ListaEntidades::getElemento(int posicao)
+	Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* ListaEntidades::getElemento(int posicao)
 	{
 		return (LE->getElemento(posicao));
 	}

@@ -1,17 +1,17 @@
 #include "Projetil.h"
 #include "Jogo.h"
 
-#define CAMINHO_PROJETIL "./recurssos/Projetil/Projetil.png"
+#define CAMINHO_PROJETIL "./recurssos/Projetil/Polen.png"
 
 namespace Entidades
 {
 	Projetil::Projetil(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, int dir):
-		Entidade(Id::PROJETIL, ger, pos, CoordF(45.f, 45.f)),
-		velMov(400.f),
+		Entidade(Id::PROJETIL, ger, pos, CoordF(15.f, 15.f)),
+		velMov(190.f),
 		direcao(dir)
 	{
 		inicializarCorpo(CAMINHO_PROJETIL, posicao, tamanho);
-		deslocamentoY = -velMov * Jogo::getDt();
+		deslocamentoY = -2.f * velMov * Jogo::getDt();
 	}
 
 	Projetil::~Projetil()

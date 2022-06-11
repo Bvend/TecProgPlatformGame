@@ -11,7 +11,7 @@ Jogo::Jogo():
 gerenciadorGrafico(new Gerenciadores::Gerenciador_Grafico()),
 gerenciadorEventos(new Gerenciadores::Gerenciador_Eventos(gerenciadorGrafico)),
 gerenciadorColisoes(new Gerenciadores::Gerenciador_Colisoes()),
-faseTeste(new Fases::Fase(gerenciadorGrafico, gerenciadorColisoes))
+faseTeste(new Fases::Fase1(gerenciadorGrafico, gerenciadorColisoes))
 {
 	executar();
 }

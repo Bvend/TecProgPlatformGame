@@ -1,11 +1,37 @@
 #pragma once
-#include "Elemento.h"
 #include <stdlib.h>
 
 namespace Listas
 {
 	template <class TL> class Lista
 	{
+	public:
+		template <class TE> class Elemento
+		{
+		private:
+			Elemento<TE>* pProx;
+			TE* pitem;
+
+		public:
+
+			void setPprox(Elemento<TE>* p) { this->pProx = p; }
+			void setItem(TE* i) { this->pitem = i; }
+			Elemento<TE>* getPprox() { return pProx; }
+			TE* getItem() { return pitem; }
+
+			Elemento()
+			{
+				pProx = nullptr;
+				pitem = nullptr;
+			}
+
+			~Elemento()
+			{
+				pProx = nullptr;
+				pitem = nullptr;
+			}
+		};
+
 	private:
 		Elemento<TL>* pPrimeiro;
 		Elemento<TL>* pUltimo;

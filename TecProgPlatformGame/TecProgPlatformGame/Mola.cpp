@@ -1,4 +1,5 @@
 #include "Mola.h"
+#include "Jogo.h"
 
 #define CAMINHO_MOLA "./recurssos/Mola/Mola.png"
 
@@ -18,10 +19,24 @@ namespace Entidades
 
 		void Mola::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 		{
+			if (reposicionar)
+			{
+				reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
+			}
 		}
 
 		void Mola::executar()
 		{
+			mover();
+		}
+
+		void Mola::mover()
+		{
+			if (estaNoAr)
+			{
+				deslocamentoY += GRAVIDADE * Jogo::getDt();
+				proximaPosicao.atualizarY(deslocamentoY);
+			}
 		}
 	}
 }

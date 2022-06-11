@@ -10,17 +10,19 @@
 
 namespace Fases
 {
-	class Fase
+	class Fase : public Ente
 	{
 	protected:
-		Gerenciadores::Gerenciador_Grafico* pGerenciadorGrafico;
 		Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes;
 		Listas::ListaEntidades* listaEntidades;
+		//vector<>
 		Entidades::Personagens::Jogador* jogador1;
+		sf::Texture texturaFundo;
+		sf::Sprite SpriteFundo;
 
 	public:
-		Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, float deltaTime = (1.f / 60.f));
-		~Fase();
+		Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL);
+		virtual ~Fase();
 
 		void inicializarEntidades();
 
