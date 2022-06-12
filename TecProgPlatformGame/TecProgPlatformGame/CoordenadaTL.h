@@ -5,7 +5,7 @@
 template <typename TL>
 class Coordenada
 {
-private: //Nessa versão x e y são privados, por isso use getX() e getY() 
+private:
 	TL x;
 	TL y;
 

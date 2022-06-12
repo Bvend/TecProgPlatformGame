@@ -1,51 +1,49 @@
-#include "Fase2.h"
+#include "JardimFlores.h"
 #include "Jogo.h"
 
-#define CAMINHO_FASE2 "./recurssos/Fase2/Fase2.png"
+#define CAMINHO_JARDIMFLORES "./recurssos/JardimFlores/JardimFlores.png"
 
 namespace Fases
 {
-	Fase2::Fase2(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo):
+	JardimFlores::JardimFlores(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo):
 		Fase(GerenciadorGrafico, pGerenciadorColisoes, jogo)
 	{
 		pontoFinal = CoordF(1240.f, 190.f);
 		//gerarEntidades();
 		//pGrenciadorColisoes->setListaEntidades(listaEntidades);
-		inicializarCorpo(CAMINHO_FASE2, CoordF(0.f, 0.f), CoordF(1280.f, 720.f));
+		inicializarCorpo(CAMINHO_JARDIMFLORES, CoordF(0.f, 0.f), CoordF(1280.f, 720.f));
 	}
 
-	Fase2::~Fase2()
+	JardimFlores::~JardimFlores()
 	{
 	}
 
-	void Fase2::inicializarEntidades()
+	void JardimFlores::inicializarEntidades()
 	{
-		posicionarJogadores();
-		gerarChao();
 		gerarPlataformas();
+		encontrarPosicoesDisponiveisPlataformas();
+		gerarChao();
 		gerarFlorChefe();
-		//gerarSois();
-		//gerarMolas();
-		//gerarEspinhos();
-		//gerarCachorros();
+		gerarSois();
+		gerarMolas();
+		gerarEspinhos();
+		gerarCachorros();
+		posicionarJogadores();
 
 		pGerenciadorColisoes->setListaEntidades(listaEntidades);
 	}
 
-	void Fase2::gerarPlataformas()
+	void JardimFlores::gerarPlataformas()
 	{
 		Entidades::Obstaculos::Plataforma* plataforma1 = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(0.F, 400.f), CoordF(2 * LARGURA_PLATAFORMA, ALTURA_PLATAFORMA));
 		listaEntidades->adicionarEntidade(plataforma1);
 		Entidades::Obstaculos::Plataforma* plataforma2 = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(1040.f, 400.f), CoordF(2 * LARGURA_PLATAFORMA, ALTURA_PLATAFORMA));
 		listaEntidades->adicionarEntidade(plataforma2);
-
 		Entidades::Obstaculos::Plataforma* plataforma3 = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(160.f, 200.f), CoordF(4 * LARGURA_PLATAFORMA, ALTURA_PLATAFORMA));
 		listaEntidades->adicionarEntidade(plataforma3);
-
-
 	}
 
-	void Fase2::gerarFlorChefe()
+	void JardimFlores::gerarFlorChefe()
 	{
 		Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(520.f, 500 - 7.5), CoordF(LARGURA_PLATAFORMA, ALTURA_PLATAFORMA));
 		listaEntidades->adicionarEntidade(plataforma);

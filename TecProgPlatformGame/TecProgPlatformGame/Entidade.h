@@ -41,7 +41,7 @@ namespace Entidades
 
 		CoordF getCentro();
 
-		CoordF getProximaPosicao();
+		CoordF getProximaPosicao() const;
 
 		virtual void atualizarPos();
 
@@ -55,7 +55,7 @@ namespace Entidades
 
 		// Vida
 		void setEstaVivo(bool vivo);
-		bool getEstaVivo();
+		bool getEstaVivo() const;
 
 		// Corpo e colisão
 		int detectarColisao(CoordF posEntidade2, CoordF tamEntidade2);

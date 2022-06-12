@@ -22,16 +22,16 @@
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Fase.cpp" />
-    <ClCompile Include="Fase1.cpp" />
-    <ClCompile Include="Fase2.cpp" />
+    <ClCompile Include="JardimVerde.cpp" />
+    <ClCompile Include="JardimFlores.cpp" />
     <ClCompile Include="Gerenciador_Colisoes.cpp" />
     <ClCompile Include="Gerenciador_Eventos.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
     <ClCompile Include="Gerenciador_Input.cpp" />
     <ClCompile Include="Inimigo.cpp" />
-    <ClCompile Include="Inimigo_A.cpp" />
-    <ClCompile Include="Inimigo_B.cpp" />
-    <ClCompile Include="Inimigo_C.cpp" />
+    <ClCompile Include="Cachorro.cpp" />
+    <ClCompile Include="FlorChefe.cpp" />
+    <ClCompile Include="Sol.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
@@ -42,7 +42,7 @@
     <ClCompile Include="Mola.cpp" />
     <ClCompile Include="Espinho.cpp" />
     <ClCompile Include="Personagem.cpp" />
-    <ClCompile Include="Projetil.cpp" />
+    <ClCompile Include="Polen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoordenadaTL.h" />
@@ -50,16 +50,16 @@
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Fase.h" />
-    <ClInclude Include="Fase1.h" />
-    <ClInclude Include="Fase2.h" />
+    <ClInclude Include="JardimVerde.h" />
+    <ClInclude Include="JardimFlores.h" />
     <ClInclude Include="Gerenciador_Colisoes.h" />
     <ClInclude Include="Gerenciador_Eventos.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
     <ClInclude Include="Gerenciador_Input.h" />
     <ClInclude Include="Inimigo.h" />
-    <ClInclude Include="Inimigo_A.h" />
-    <ClInclude Include="Inimigo_B.h" />
-    <ClInclude Include="Inimigo_C.h" />
+    <ClInclude Include="Cachorro.h" />
+    <ClInclude Include="FlorChefe.h" />
+    <ClInclude Include="Sol.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Lista.h" />

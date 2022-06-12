@@ -1,7 +1,7 @@
 #include "Projetil.h"
 #include "Jogo.h"
 
-#define CAMINHO_PROJETIL "./recurssos/Polen/Polen.png"
+#define CAMINHO_POLEN "./recurssos/Polen/Polen.png"
 
 namespace Entidades
 {
@@ -10,7 +10,7 @@ namespace Entidades
 		velMov(190.f),
 		direcao(dir)
 	{
-		inicializarCorpo(CAMINHO_PROJETIL, posicao, tamanho);
+		inicializarCorpo(CAMINHO_POLEN, posicao, tamanho);
 		deslocamentoY = -2.f * velMov * Jogo::getDt();
 	}
 

@@ -1,39 +1,40 @@
-#include "Fase1.h"
+#include "JardimVerde.h"
 #include "Jogo.h"
 
-#define CAMINHO_FASE1 "./recurssos/Fase1/Fase1.png"
+#define CAMINHO_JARDIMVERDE "./recurssos/JardimVerde/JardimVerde.png"
 
 namespace Fases
 {
-	Fase1::Fase1(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo):
+	JardimVerde::JardimVerde(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo):
 		Fase(GerenciadorGrafico, pGerenciadorColisoes, jogo)
 	{
 		pontoFinal = CoordF(1240.f, 190.f);
 		//inicializarEntidades();
 		//pGerenciadorColisoes->setListaEntidades(listaEntidades);
-		inicializarCorpo(CAMINHO_FASE1, CoordF(0.f, 0.f), CoordF(1280.f, 720.f));
+		inicializarCorpo(CAMINHO_JARDIMVERDE, CoordF(0.f, 0.f), CoordF(1280.f, 720.f));
 	}
 	
-	Fase1::~Fase1()
+	JardimVerde::~JardimVerde()
 	{
 	}
 
 	/* Função para alocar dinamicamente as entidades na fase
 	e incluir elas na lista de entidades */
-	void Fase1::inicializarEntidades()
+	void JardimVerde::inicializarEntidades()
 	{
-		posicionarJogadores();
 		gerarChao();
 		gerarPlataformas();
+		encontrarPosicoesDisponiveisPlataformas();
 		gerarSois();
 		gerarMolas();
 		gerarEspinhos();
 		gerarCachorros();
+		posicionarJogadores();
 
 		pGerenciadorColisoes->setListaEntidades(listaEntidades);
 	}
 
-	void Fase1::gerarPlataformas()
+	void JardimVerde::gerarPlataformas()
 	{
 		CoordF posicao(0.f, 0.f);
 
@@ -48,7 +49,7 @@ namespace Fases
 				posicao.setX(1280 - (160.f * (j + 1 - i) + LARGURA_PLATAFORMA * (j + 1)));
 				Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, posicao, CoordF(LARGURA_PLATAFORMA, ALTURA_PLATAFORMA));
 				listaEntidades->adicionarEntidade(plataforma);
-				posicoesDisponiveis.push_back(CoordF(plataforma->getCentroX(), plataforma->getCima()));
+				//posicoesDisponiveis.push_back(CoordF(plataforma->getCentroX(), plataforma->getCima()));
 			}
 		}	
 	}

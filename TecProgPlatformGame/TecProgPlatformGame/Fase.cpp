@@ -19,7 +19,7 @@ namespace Fases
     {
         pGerenciadorColisoes = NULL;
 
-        delete listaEntidades; // OBS: a destrutora de listaEntidades desaloca cada entidade
+        delete listaEntidades;
     }
 
     void Fase::setJogador1(Entidades::Personagens::Jogador* pJogador)
@@ -54,6 +54,31 @@ namespace Fases
         for (int i = 0; i < 7; i++)
         {
             posicoesDisponiveis.push_back(CoordF(i * 150.f + 190.f, chao->getCima()));
+        }
+    }
+
+    void Fase::encontrarPosicoesDisponiveisPlataformas()
+    {
+        Listas::Lista<Entidades::Entidade>::Lista::Elemento<Entidades::Entidade>* pElEntidade = NULL;
+
+        Entidades::Obstaculos::Plataforma* pPlataforma = NULL;
+
+        int qtdEntidades = listaEntidades->getLength();
+
+        pElEntidade = listaEntidades->getElemento(0);
+
+        for (int i = 0; i < qtdEntidades; i++)
+        {
+            if ((pPlataforma = dynamic_cast<Entidades::Obstaculos::Plataforma*>(pElEntidade->getItem())) && (pPlataforma->getCima() != POSICAO_Y_CHAO))
+            {
+                float j = pPlataforma->getEsquerda() + 60.f;
+                while (j < pPlataforma->getDireita() - 60.f)
+                {
+                    posicoesDisponiveis.push_back(CoordF(j, pPlataforma->getCima()));
+                    j += 100.f;
+                }
+            }
+            pElEntidade = pElEntidade->getPprox();
         }
     }
 
@@ -151,7 +176,7 @@ namespace Fases
         {
             for (it = copiaPosicoes.begin(); it != copiaPosicoes.end();)
             {
-                if (rand() % 4 == 0)
+                if (rand() % 4 == 0 && it->getY() != POSICAO_Y_CHAO)
                 {
                     Entidades::Personagens::Sol* sol = new Entidades::Personagens::Sol(pGerenciadorGrafico, *it + CoordF(0.f, -100.f));
                     listaEntidades->adicionarEntidade(sol);
@@ -207,8 +232,6 @@ namespace Fases
     de acordo com o movimento e as colisões previamente verificadas */
     void Fase::atualizarPosicaoEntidades()
     {
-        Entidades::Personagens::Personagem* pPersonagem = NULL;
-
         Listas::Lista<Entidades::Entidade>::Lista::Elemento<Entidades::Entidade>* pElEntidade = NULL;
 
         Entidades::Entidade* pEntidade = NULL;

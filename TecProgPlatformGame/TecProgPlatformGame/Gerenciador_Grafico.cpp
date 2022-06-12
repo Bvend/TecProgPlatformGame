@@ -73,27 +73,7 @@ namespace Gerenciadores
 		}
 	}
 
-	/* Função para ajustar a view de acordo de com a posição de
-	   determinado ente, geralmente o jogador
-	   ATENCAO - TAVA USANDO ENTE AGR USO PERSONAGEM */
-	   /*
-	   void Gerenciador_Grafico::centralizarVista(CoordF pos, CoordF tam)
-	   {
-		   if (pos.getX() + tam.getX() > LARGURA / 2.f)
-		   {
-			   vista->setCenter(sf::Vector2f(pos.getX() + tam.getX(), ALTURA / 2.f));
-		   }
-		   else
-		   {
-			   vista->setCenter(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f));
-		   }
-		   if (janelaEstaAberta())
-		   {
-			   janela->setView(*vista);
-		   }
-	   }
-	   */
-
+	/* O uso de mapaTextura nessa classe foi inspirado nos vídeos do então monitor Matheus Burda */
 	sf::Texture* Gerenciador_Grafico::carregarTextura(const char* caminho)
 	{
 		std::map<const char*, sf::Texture*>::iterator it;

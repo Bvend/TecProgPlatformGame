@@ -18,7 +18,6 @@ namespace Entidades
 		{
 		}
 
-		/* Parede é fixa, portanto em colisao se mantém no mesmo local*/
 		void Plataforma::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 		{
 			if (reposicionar)

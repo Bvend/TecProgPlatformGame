@@ -41,6 +41,8 @@ namespace Fases
 
 		virtual void gerarPlataformas() = 0;
 
+		void encontrarPosicoesDisponiveisPlataformas();
+
 		void gerarMolas();
 
 		void gerarEspinhos();

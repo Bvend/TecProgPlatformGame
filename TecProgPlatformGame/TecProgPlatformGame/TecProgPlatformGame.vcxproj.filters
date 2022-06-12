@@ -66,7 +66,7 @@
     <ClCompile Include="Entidade.cpp">
       <Filter>Source Files\Entidades</Filter>
     </ClCompile>
-    <ClCompile Include="Projetil.cpp">
+    <ClCompile Include="Polen.cpp">
       <Filter>Source Files\Entidades</Filter>
     </ClCompile>
     <ClCompile Include="Gerenciador_Colisoes.cpp">
@@ -96,10 +96,10 @@
     <ClCompile Include="Fase.cpp">
       <Filter>Source Files\Fase</Filter>
     </ClCompile>
-    <ClCompile Include="Fase1.cpp">
+    <ClCompile Include="JardimVerde.cpp">
       <Filter>Source Files\Fase</Filter>
     </ClCompile>
-    <ClCompile Include="Fase2.cpp">
+    <ClCompile Include="JardimFlores.cpp">
       <Filter>Source Files\Fase</Filter>
     </ClCompile>
     <ClCompile Include="ListaEntidades.cpp">
@@ -114,13 +114,13 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Source Files\Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="Inimigo_A.cpp">
+    <ClCompile Include="Cachorro.cpp">
       <Filter>Source Files\Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="Inimigo_B.cpp">
+    <ClCompile Include="FlorChefe.cpp">
       <Filter>Source Files\Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="Inimigo_C.cpp">
+    <ClCompile Include="Sol.cpp">
       <Filter>Source Files\Entidades\Personagens</Filter>
     </ClCompile>
   </ItemGroup>
@@ -173,10 +173,10 @@
     <ClInclude Include="Fase.h">
       <Filter>Header Files\Fase</Filter>
     </ClInclude>
-    <ClInclude Include="Fase1.h">
+    <ClInclude Include="JardimVerde.h">
       <Filter>Header Files\Fase</Filter>
     </ClInclude>
-    <ClInclude Include="Fase2.h">
+    <ClInclude Include="JardimFlores.h">
       <Filter>Header Files\Fase</Filter>
     </ClInclude>
     <ClInclude Include="Elemento.h">
@@ -194,13 +194,13 @@
     <ClInclude Include="Inimigo.h">
       <Filter>Header Files\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Inimigo_A.h">
+    <ClInclude Include="Cachorro.h">
       <Filter>Header Files\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Inimigo_B.h">
+    <ClInclude Include="FlorChefe.h">
       <Filter>Header Files\Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Inimigo_C.h">
+    <ClInclude Include="Sol.h">
       <Filter>Header Files\Entidades\Personagens</Filter>
     </ClInclude>
   </ItemGroup>

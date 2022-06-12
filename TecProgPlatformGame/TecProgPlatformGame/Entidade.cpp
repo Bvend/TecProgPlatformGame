@@ -2,8 +2,8 @@
 
 namespace Entidades
 {
-    /*Construtora
-Inicializa a entidade na posição informada no canto superior esquerdo*/
+    /* Construtora
+    Inicializa a entidade na posição informada no canto superior esquerdo */
     Entidade::Entidade(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
         Ente(ind, ger),
         posicao(pos),
@@ -40,7 +40,7 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
         return posicao.getX() + tamanho.getX();
     }
 
-    CoordF Entidade::getProximaPosicao()
+    CoordF Entidade::getProximaPosicao() const
     {
         return proximaPosicao;
     }
@@ -117,7 +117,7 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
         estaVivo = vivo;
     }
 
-    bool Entidade::getEstaVivo()
+    bool Entidade::getEstaVivo() const
     {
         return estaVivo;
     }

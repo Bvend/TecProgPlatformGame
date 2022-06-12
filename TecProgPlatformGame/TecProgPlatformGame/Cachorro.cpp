@@ -31,7 +31,6 @@ namespace Entidades
 		{
 		}
 
-		/* Essa função fica vazia por enquanto */
 		void Cachorro::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 		{
 			Id ind = pEntidade->getId();

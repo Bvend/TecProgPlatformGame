@@ -1,7 +1,7 @@
 #pragma once
 #include <time.h>
-#include "Fase1.h"
-#include "Fase2.h"
+#include "JardimVerde.h"
+#include "JardimFlores.h"
 #include "Gerenciador_Eventos.h"
 
 class Fase;
@@ -13,7 +13,7 @@ private:
 	Gerenciadores::Gerenciador_Grafico* gerenciadorGrafico;
 	Gerenciadores::Gerenciador_Eventos* gerenciadorEventos;
 	Gerenciadores::Gerenciador_Colisoes* gerenciadorColisoes;
-	Fases::Fase2 faseTeste;
+	Fases::JardimFlores faseTeste;
 	static const float dt;
 	Entidades::Personagens::Jogador* jogador1;
 	Entidades::Personagens::Jogador* jogador2;

@@ -9,7 +9,6 @@ namespace Gerenciadores
 	{
 	private:
 		CoordF tamanhoJanela;
-
 		sf::RenderWindow* janela;
 		std::map<const char*, sf::Texture*> mapaTextura;
 
@@ -21,12 +20,17 @@ namespace Gerenciadores
 		float getLarguraJanela();
 
 		sf::RenderWindow* getJanela() const;
+
 		bool janelaEstaAberta();
+
 		void limparJanela();
+
 		void renderizar(sf::RectangleShape* body);
+
 		void display();
+
 		void fecharJanela();
-		void centralizarVista(CoordF pos, CoordF tam);
+
 		sf::Texture* carregarTextura(const char* caminho);
 	};
 }
