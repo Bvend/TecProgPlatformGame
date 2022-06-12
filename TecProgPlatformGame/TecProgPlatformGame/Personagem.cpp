@@ -5,9 +5,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, CoordF tam, int vid) :
+        Personagem::Personagem(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
             Entidade(ind, ger, pos, tam),
-            num_vidas(vid),
             intervaloRecarga(0.5f),
             tempoRecarregando(0.f)
         {
@@ -16,12 +15,7 @@ namespace Entidades
         Personagem::~Personagem()
         {
         }
-
-        int Personagem::getNumVidas()
-        {
-            return num_vidas;
-        }
-
+        
         void Personagem::setEstaNoAr(bool NoAr)
         {
             this->estaNoAr = NoAr;
@@ -29,7 +23,7 @@ namespace Entidades
 
         void Personagem::setDeslocamentoY(float desY)
         {
-            this->deslocamentoY = desY;
+            this->velocidade.setY(desY);
         }
 
         void Personagem::atualizarTempoRecarregando()

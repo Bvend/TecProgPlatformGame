@@ -1,6 +1,9 @@
 #pragma once
 #include "Obstaculo.h"
 
+#define LARGURA_PLATAFORMA 240.f
+#define ALTURA_PLATAFORMA 15.f
+
 namespace Entidades
 {
     namespace Obstaculos

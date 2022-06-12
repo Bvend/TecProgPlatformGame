@@ -8,7 +8,7 @@ namespace Entidades
 	namespace Obstaculos
 	{
 		Espinho::Espinho(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos):
-			Obstaculo(Id::ESPINHO, ger, pos, CoordF(60, 30))
+			Obstaculo(Id::ESPINHO, ger, pos, CoordF(10, 30))
 		{
 			inicializarCorpo(CAMINHO_ESPINHO, posicao, tamanho);
 		}
@@ -34,8 +34,8 @@ namespace Entidades
 		{
 			if (estaNoAr)
 			{
-				deslocamentoY += GRAVIDADE * Jogo::getDt();
-				proximaPosicao.atualizarY(deslocamentoY);
+				velocidade.atualizarY(GRAVIDADE);
+				proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
 			}
 		}
 	}

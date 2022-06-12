@@ -1,15 +1,18 @@
 #include "Fase.h"
+#include "Jogo.h"
 
 namespace Fases
 {
-    Fase::Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* GerenciadorColisoes):
+    Fase::Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* GerenciadorColisoes, Jogo* jogo):
         Ente(Id::FASE, GerenciadorGrafico),
+        listaEntidades(new Listas::ListaEntidades()),
         pGerenciadorColisoes(GerenciadorColisoes),
-        jogador1(new Entidades::Personagens::Jogador(Id::JOGADOR, pGerenciadorGrafico, CoordF((0.f), (660.f - 62.5f)), 10)),
-        listaEntidades(new Listas::ListaEntidades())
+        pJogo(jogo),
+        pJogador1(NULL),
+        pJogador2(NULL),
+        posicaoInicialJogador(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR)),
+        pontoFinal(0.f, 0.f)
     {
-        inicializarEntidades();
-        pGerenciadorColisoes->setListaEntidades(listaEntidades);
     }
 
     Fase::~Fase()
@@ -19,32 +22,149 @@ namespace Fases
         delete listaEntidades; // OBS: a destrutora de listaEntidades desaloca cada entidade
     }
 
-    /* Função para alocar dinamicamente as entidades na fase
-    e incluir elas na lista de entidades */
-    void Fase::inicializarEntidades()
+    void Fase::setJogador1(Entidades::Personagens::Jogador* pJogador)
     {
-        listaEntidades->adicionarEntidade(jogador1);
+        pJogador1 = pJogador;
+        listaEntidades->adicionarEntidade(pJogador1);
+    }
 
-        Entidades::Obstaculos::Plataforma* parede0 = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(0.f, 640.f), CoordF((1280.f), (80.f)));
-        Entidades::Obstaculos::Plataforma* parede1 = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(80.f, 520.f), CoordF((240.f), (15.f)));
-        //Entidades::Obstaculos::Mola*          mola = new Entidades::Obstaculos::Mola(pGerenciadorGrafico, CoordF(1050.f, 570.f));
-        //Entidades::Obstaculos::Espinho*     espinho = new Entidades::Obstaculos::Espinho(pGerenciadorGrafico, CoordF(850.f, 470.f));
-        //Entidades::Personagens::Inimigo_A* inimigo0 = new Entidades::Personagens::Inimigo_A(pGerenciadorGrafico, CoordF(610.f, 520.f));
-        //Entidades::Personagens::Inimigo_A* inimigo1 = new Entidades::Personagens::Inimigo_A(pGerenciadorGrafico, CoordF(720.f, 520.f));
+    void Fase::setJogador2(Entidades::Personagens::Jogador* pJogador)
+    {
+        pJogador2 = pJogador;
+        listaEntidades->adicionarEntidade(pJogador2);
+    }
 
-        Entidades::Personagens::Inimigo_B* inimigo2 = new Entidades::Personagens::Inimigo_B(pGerenciadorGrafico, CoordF(parede1->getEsquerda() + parede1->getLargura() / 2.f, parede1->getCima() - 51.f), listaEntidades, parede1);
-        inimigo2->setJogador(jogador1);
-        Entidades::Personagens::Inimigo_C* inimigo3 = new Entidades::Personagens::Inimigo_C(pGerenciadorGrafico, CoordF(320.f, 540.f));
+    void Fase::posicionarJogadores()
+    {
+        if (pJogador1)
+        {
+            pJogador1->setPosicao(posicaoInicialJogador);
+        }
+        if (pJogador2)
+        {
+            pJogador2->setPosicao(posicaoInicialJogador + CoordF(LARGURA_JOGADOR, 0.f));
+        }
+    }
 
-        // Inclui entidades na lista
-        listaEntidades->adicionarEntidade(parede0);
-        listaEntidades->adicionarEntidade(parede1);
-        //listaEntidades->adicionarEntidade(mola);
-        //listaEntidades->adicionarEntidade(espinho);
-        //listaEntidades->adicionarEntidade(inimigo0);
-        //listaEntidades->adicionarEntidade(inimigo1);
-        listaEntidades->adicionarEntidade(inimigo2);
-        listaEntidades->adicionarEntidade(inimigo3);
+    void Fase::gerarChao()
+    {
+        Entidades::Obstaculos::Plataforma* chao = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, CoordF(0.f, POSICAO_Y_CHAO), CoordF((1280.f), (80.f)));
+        listaEntidades->adicionarEntidade(chao);
+
+        for (int i = 0; i < 7; i++)
+        {
+            posicoesDisponiveis.push_back(CoordF(i * 150.f + 190.f, chao->getCima()));
+        }
+    }
+
+    void Fase::gerarMolas()
+    {
+        std::vector<CoordF>::iterator it;
+
+        int num_molas = 0;
+
+        while (num_molas < 3)
+        {
+            for (it = posicoesDisponiveis.begin(); it != posicoesDisponiveis.end();)
+            {
+                if (rand() % 2 == 0)
+                {
+                    Entidades::Obstaculos::Mola* mola = new Entidades::Obstaculos::Mola(pGerenciadorGrafico, *it + CoordF(0.f, -30.f));
+                    listaEntidades->adicionarEntidade(mola);
+                    it = posicoesDisponiveis.erase(it);
+                    if (++num_molas == 4)
+                    {
+                        break;
+                    }
+                }
+                else
+                    it++;
+            }
+        }
+    }
+
+    void Fase::gerarEspinhos()
+    {
+        std::vector<CoordF>::iterator it;
+
+        int num_espinhos = 0;
+
+        while (num_espinhos < 3)
+        {
+            for (it = posicoesDisponiveis.begin(); it != posicoesDisponiveis.end();)
+            {
+                if (rand() % 2 == 0)
+                {
+                    Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pGerenciadorGrafico, *it + CoordF(0.f, -30.f));
+                    listaEntidades->adicionarEntidade(espinho);
+                    it = posicoesDisponiveis.erase(it);
+                    if (++num_espinhos == 4)
+                    {
+                        break;
+                    }
+                }
+                else
+                    it++;
+            }
+        }
+    }
+
+    void Fase::gerarCachorros()
+    {
+        std::vector<CoordF>::iterator it;
+
+        int num_cachorros = 0;
+
+        while (num_cachorros < 3)
+        {
+            for (it = posicoesDisponiveis.begin(); it != posicoesDisponiveis.end();)
+            {
+                if (rand() % 5 == 0)
+                {
+                    Entidades::Personagens::Cachorro* cachorro = new Entidades::Personagens::Cachorro(pGerenciadorGrafico, *it + CoordF(0.f, -30.f));
+                    listaEntidades->adicionarEntidade(cachorro);
+                    it = posicoesDisponiveis.erase(it);
+                    if (++num_cachorros == 5)
+                    {
+                        break;
+                    }
+                }
+                else
+                    it++;
+            }
+        }
+
+    }
+
+    void Fase::gerarSois()
+    {
+        int num_sois = 0;
+
+        std::vector<CoordF> copiaPosicoes;
+
+        for (unsigned int i = 0; i < posicoesDisponiveis.size(); i++)
+            copiaPosicoes.push_back(posicoesDisponiveis[i]);
+
+        std::vector<CoordF>::iterator it;
+
+        while (num_sois < 3)
+        {
+            for (it = copiaPosicoes.begin(); it != copiaPosicoes.end();)
+            {
+                if (rand() % 4 == 0)
+                {
+                    Entidades::Personagens::Sol* sol = new Entidades::Personagens::Sol(pGerenciadorGrafico, *it + CoordF(0.f, -100.f));
+                    listaEntidades->adicionarEntidade(sol);
+                    it = copiaPosicoes.erase(it);
+                    if (++num_sois == 6)
+                    {
+                        break;
+                    }
+                }
+                else
+                    it++;
+            }
+        }
     }
 
     /* Função para mover, colidir e atualizar a posicao de
@@ -54,6 +174,7 @@ namespace Fases
         executarEntidades();
         colidirEntidades();
         atualizarPosicaoEntidades();
+        checarVitoria();
     }
 
     /* Função para mover todas as entidades moveis na fase */
@@ -111,14 +232,13 @@ namespace Fases
         }
     }
 
+    void Fase::checarVitoria()
+    {
+    }
+
     /* Função para renderizar o corpo de todas as entidades na fase */
     void Fase::renderizarEntidades()
     {
-        // renderizar entidades a partir da view do jogador
-        //if (jogador1)
-        //{
-        //    pGerenciadorGrafico->centralizarVista(jogador1->getPosicao(), jogador1->getTamanho());
-        //}
         renderizar();
 
         Listas::Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* pElEntidade = NULL;

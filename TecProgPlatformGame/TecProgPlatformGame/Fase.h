@@ -1,12 +1,16 @@
 #pragma once
 #include "Gerenciador_Colisoes.h"
-#include "Inimigo_A.h"
-#include "Inimigo_B.h"
-#include "Inimigo_C.h"
+#include "Cachorro.h"
+#include "Sol.h"
+#include "FlorChefe.h"
 #include "Jogador.h"
 #include "Plataforma.h"
 #include "Mola.h"
 #include "Espinho.h"
+
+#define POSICAO_Y_CHAO 640.f
+
+class Jogo;
 
 namespace Fases
 {
@@ -15,16 +19,35 @@ namespace Fases
 	protected:
 		Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes;
 		Listas::ListaEntidades* listaEntidades;
-		//vector<>
-		Entidades::Personagens::Jogador* jogador1;
-		sf::Texture texturaFundo;
-		sf::Sprite SpriteFundo;
+		std::vector<CoordF> posicoesDisponiveis;
+		Entidades::Personagens::Jogador* pJogador1;
+		Entidades::Personagens::Jogador* pJogador2;
+		Jogo* pJogo;
+		CoordF posicaoInicialJogador;
+		CoordF pontoFinal;
 
 	public:
-		Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL);
+		Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL);
 		virtual ~Fase();
 
-		void inicializarEntidades();
+		void setJogador1(Entidades::Personagens::Jogador* pJogador);
+		void setJogador2(Entidades::Personagens::Jogador* pJogador);
+
+		virtual void inicializarEntidades() = 0;
+
+		void posicionarJogadores();
+
+		virtual void gerarChao();
+
+		virtual void gerarPlataformas() = 0;
+
+		void gerarMolas();
+
+		void gerarEspinhos();
+
+		void gerarCachorros();
+
+		void gerarSois();
 
 		void executar();
 
@@ -33,6 +56,8 @@ namespace Fases
 		void colidirEntidades();
 
 		void atualizarPosicaoEntidades();
+
+		void checarVitoria();
 
 		void renderizarEntidades();
 	};

@@ -1,7 +1,7 @@
 #pragma once
 #include "Entidade.h"
 
-#define GRAVIDADE 9.81f
+#define GRAVIDADE 10.f
 
 namespace Entidades
 {

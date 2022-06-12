@@ -8,8 +8,8 @@ namespace Entidades
 	namespace Obstaculos
 	{
 		Plataforma::Plataforma(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, CoordF tam) :
-			Obstaculo(Id::PAREDE, ger, pos, tam),
-			aceleracaoSustentacao(- GRAVIDADE)
+			Obstaculo(Id::PLATAFORMA, ger, pos, tam),
+			aceleracaoSustentacao(-GRAVIDADE)
 		{
 			inicializarCorpo(CAMINHO_PLATAFORMA, posicao, tamanho);
 		}
@@ -34,8 +34,9 @@ namespace Entidades
 
 		void Plataforma::mover()
 		{
-			deslocamentoY += GRAVIDADE * Jogo::getDt() + aceleracaoSustentacao * Jogo::getDt();
-			proximaPosicao.atualizarY(deslocamentoY);
+			velocidade.atualizarY(GRAVIDADE);
+			velocidade.atualizarY(aceleracaoSustentacao);
+			proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
 		}
 	}
 }

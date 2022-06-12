@@ -9,9 +9,9 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
         posicao(pos),
         proximaPosicao(pos),
         tamanho(tam),
+        velocidade(0.f, 0.f),
         estaVivo(true),
-        estaNoAr(true),
-        deslocamentoY(0.f)
+        estaNoAr(true)
     {
     }
 
@@ -48,9 +48,18 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
     /* Atualiza posicao do personagem de acordo com deslocamento */
     void Entidade::atualizarPos()
     {
-        if (proximaPosicao.getX() < 0)
+        if (proximaPosicao.getX() < 0.f)
         {
-            proximaPosicao.setX(0);
+            proximaPosicao.setX(0.f);
+        }
+        else if (proximaPosicao.getX() + tamanho.getX() > pGerenciadorGrafico->getLarguraJanela())
+        {
+            proximaPosicao.setX(pGerenciadorGrafico->getLarguraJanela() - tamanho.getX());
+        }
+        if (proximaPosicao.getY() < 0.f)
+        {
+            proximaPosicao.setY(0.f);
+            velocidade.setY(0.f);
         }
 
         posicao = proximaPosicao;
@@ -76,6 +85,11 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
     float Entidade::getCentroY()
     {
         return posicao.getY() + tamanho.getY() / 2.f;
+    }
+
+    CoordF Entidade::getCentro()
+    {
+        return CoordF(getCentroX(), getCentroY());
     }
 
     void Entidade::setTamanho(CoordF tam)
@@ -166,16 +180,16 @@ Inicializa a entidade na posição informada no canto superior esquerdo*/
         else if (direcao_colisao == COLISAO_BAIXO)
         {
             proximaPosicao.setY(posEntidade2.getY() - tamanho.getY());
-            deslocamentoY = 0;
+            velocidade.setY(0.f);
             estaNoAr = false;
         }
         // Colisão por cima
         else if (direcao_colisao == COLISAO_CIMA)
         {
             proximaPosicao.setY(posEntidade2.getY() + tamEntidade2.getY());
-            if (deslocamentoY < 0)
+            if (velocidade.getY() < 0.f)
             {
-                deslocamentoY = 0.f;
+                velocidade.setY(0.f);
             }
         }
     }

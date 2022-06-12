@@ -1,61 +1,79 @@
 #include "Jogador.h"
 #include "Jogo.h"
 
-#define CAMINHO_JOGADOR "./recurssos/Jogador/Jogador2.png"
+#define CAMINHO_JOGADOR1 "./recurssos/Jogador/Jogador1.png"
+#define CAMINHO_JOGADOR2 "./recurssos/Jogador/Jogador2.png"
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, int vid) :
-            Personagem(ind, ger, pos, CoordF(30.f, 75.f), vid),
-            velMov(100.f),
+        Jogador::Jogador(Id ind, Gerenciadores::Gerenciador_Grafico* ger, CoordF pos) :
+            Personagem(ind, ger, pos, CoordF(LARGURA_JOGADOR, ALTURA_JOGADOR)),
             velPulo(500.f)
         {
-            inicializarCorpo(CAMINHO_JOGADOR, posicao, tamanho);
+            velocidade.setX(100.f);
+            configurarJogador();
         }
 
         Jogador::~Jogador()
         {
         }
 
+        /* Atribui textura e teclas para movimento de acordo com id do jogador */
+        void Jogador::configurarJogador()
+        {
+            if (id == Id::JOGADOR1)
+            {
+                teclaEsquerda = sf::Keyboard::A;
+                teclaDireita = sf::Keyboard::D;
+                teclaPulo = sf::Keyboard::W;
+                inicializarCorpo(CAMINHO_JOGADOR1, posicao, tamanho);
+            }
+            else if (id == Id::JOGADOR2)
+            {
+                teclaEsquerda = sf::Keyboard::Left;
+                teclaDireita = sf::Keyboard::Right;
+                teclaPulo = sf::Keyboard::Up;
+                inicializarCorpo(CAMINHO_JOGADOR2, posicao, tamanho);
+            }
+        }
+
         void Jogador::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
         {
             Id ind = pEntidade->getId();
-            if ((ind == Id::INIMIGO_A || ind == Id::INIMIGO_B || ind == Id::INIMIGO_C || ind == Id::PROJETIL) && direcao_colisao == COLISAO_BAIXO)
+            if ((ind == Id::CACHORRO || ind == Id::FLORCHEFE || ind == Id::SOL || ind == Id::POLEN))
             {
-                estaNoAr = true;
-                deslocamentoY = -0.5f * velPulo / 60.f;
-                proximaPosicao.atualizarY(deslocamentoY);
-                return;
-            }
-            else if (ind == Id::INIMIGO_A || ind == Id::INIMIGO_B || ind == Id::INIMIGO_C || ind == Id::PROJETIL && direcao_colisao != COLISAO_BAIXO)
-            {
-                num_vidas--;
-                if (num_vidas <= 0)
+                if (direcao_colisao == COLISAO_BAIXO)
                 {
-                    //estaVivo = false;
+                    estaNoAr = true;
+                    velocidade.setY(-0.5f * velPulo);
+                    proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
+                    return;
+                }
+                else
+                {
+                    estaVivo = false;
                 }
             }
             else if (ind == Id::MOLA && direcao_colisao == COLISAO_BAIXO)
             {
                 estaNoAr = true;
-                deslocamentoY = 0;
-                deslocamentoY = -1.3f * velPulo / 60.f;
-                proximaPosicao.atualizarY(deslocamentoY);
+                velocidade.setY(-1.3f * velPulo);
+                proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
                 return;
             }
             else if (ind == Id::ESPINHO && direcao_colisao == COLISAO_BAIXO)
             {
-                num_vidas--;
-                estaNoAr = true;
-                deslocamentoY = 0;
-                deslocamentoY = -0.5f * velPulo / 60.f;
-                proximaPosicao.atualizarY(deslocamentoY);
-                return;
+                //num_vidas--;
+                estaVivo = false;
+                //estaNoAr = true;
+                //velocidade.setY(-0.5f * velPulo);
+                //proximaPosicao.atualizarY(velocidade.getY()* Jogo::getDt());
+                //return;
             }
 
-            if (ind != Id::PROJETIL && reposicionar)
+            if ((ind != Id::POLEN && ind != Id::JOGADOR1 && ind != Id::JOGADOR2) && reposicionar)
             {
                 reposicionarColisao(pEntidade->getPosicao(), pEntidade->getTamanho(), direcao_colisao);
             }
@@ -70,31 +88,27 @@ namespace Entidades
         /* Função para mover o Jogador, tanto em Y quanto em X */
         void Jogador::mover()
         {
-            //proximaPosicao = posicao;
-
+            proximaPosicao = posicao;
             // Caso entidade estiver no ar, aplica ação da gravidade
             if (estaNoAr)
             {
-                if (deslocamentoY < 2 * velMov)
-                {
-                    deslocamentoY += GRAVIDADE * Jogo::getDt();;
-                }
-                proximaPosicao.atualizarY(deslocamentoY);
+                velocidade.atualizarY(GRAVIDADE);
+                proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
             }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            if (sf::Keyboard::isKeyPressed(teclaEsquerda))
             {
-                proximaPosicao.atualizarX(velMov * Jogo::getDt());
+                proximaPosicao.atualizarX(-velocidade.getX() * Jogo::getDt());
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            if (sf::Keyboard::isKeyPressed(teclaDireita))
             {
-                proximaPosicao.atualizarX(-velMov * Jogo::getDt());
+                proximaPosicao.atualizarX(velocidade.getX() * Jogo::getDt());
             }
-            if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W)) && (!estaNoAr))
+            if ((sf::Keyboard::isKeyPressed(teclaPulo)) && (!estaNoAr))
             {
                 estaNoAr = true;
-                deslocamentoY = -velPulo * Jogo::getDt();
-                proximaPosicao.atualizarY(deslocamentoY);
+                velocidade.setY(-velPulo);
+                proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
             }
         }
     }

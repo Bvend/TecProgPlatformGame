@@ -10,15 +10,12 @@ namespace Entidades
 		class Personagem : public Entidade
 		{
 		protected:
-			int num_vidas;
 			float intervaloRecarga;
 			float tempoRecarregando;
 
 		public:
-			Personagem(Id ind = Id::VAZIO, Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f), int vid = 0);
+			Personagem(Id ind = Id::VAZIO, Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), CoordF tam = CoordF(0.0f, 0.0f));
 			virtual ~Personagem();
-
-			int getNumVidas();
 
 			void setEstaNoAr(bool NoAr);
 

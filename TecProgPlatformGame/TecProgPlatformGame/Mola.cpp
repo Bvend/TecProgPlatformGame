@@ -34,8 +34,8 @@ namespace Entidades
 		{
 			if (estaNoAr)
 			{
-				deslocamentoY += GRAVIDADE * Jogo::getDt();
-				proximaPosicao.atualizarY(deslocamentoY);
+				velocidade.atualizarY(GRAVIDADE);
+				proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
 			}
 		}
 	}

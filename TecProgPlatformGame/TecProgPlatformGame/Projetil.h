@@ -3,7 +3,7 @@
 
 namespace Entidades
 {
-	class Projetil : public Entidade
+	class Polen : public Entidade
 	{
 	private:
 		float deslocamentoY;
@@ -11,8 +11,8 @@ namespace Entidades
 		int direcao;
 
 	public:
-		Projetil(Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), int dir = 1);
-		virtual ~Projetil();
+		Polen(Gerenciadores::Gerenciador_Grafico* ger = NULL, CoordF pos = CoordF(0.0f, 0.0f), int dir = 1);
+		virtual ~Polen();
 
 		void colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar);
 

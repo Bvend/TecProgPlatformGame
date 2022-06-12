@@ -14,8 +14,8 @@ namespace Entidades
 		CoordF posicao;
 		CoordF proximaPosicao;
 		CoordF tamanho;
+		CoordF velocidade;
 		bool estaNoAr;
-		float deslocamentoY;
 		bool estaVivo;
 
 	public:
@@ -38,6 +38,8 @@ namespace Entidades
 		float getCentroX();
 
 		float getCentroY();
+
+		CoordF getCentro();
 
 		CoordF getProximaPosicao();
 

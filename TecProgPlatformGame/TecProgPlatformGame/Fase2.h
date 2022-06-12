@@ -7,6 +7,14 @@ namespace Fases
 	{
 	private:
 	public:
+		Fase2(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL);
+		~Fase2();
+
+		void inicializarEntidades();
+
+		void gerarPlataformas();
+
+		void gerarFlorChefe();
 	};
 }
 

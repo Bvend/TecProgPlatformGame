@@ -1,12 +1,10 @@
 #include "Gerenciador_Grafico.h"
 
-#define LARGURA 1280
-#define ALTURA 720
-
 namespace Gerenciadores
 {
-	Gerenciador_Grafico::Gerenciador_Grafico() :
-		janela(new sf::RenderWindow(sf::VideoMode(1280, 720), "Jogo", sf::Style::Default)),
+	Gerenciador_Grafico::Gerenciador_Grafico():
+		tamanhoJanela(1280.f, 720.f),
+		janela(new sf::RenderWindow(sf::VideoMode(static_cast<unsigned int>(tamanhoJanela.getX()), static_cast<unsigned int>(tamanhoJanela.getY())), "Jogo", sf::Style::Default)),
 		//vista(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
 		mapaTextura()
 	{
@@ -21,6 +19,16 @@ namespace Gerenciadores
 
 		janela = NULL;
 		//delete vista;
+	}
+
+	float Gerenciador_Grafico::getAlturaJanela()
+	{
+		return tamanhoJanela.getY();
+	}
+
+	float Gerenciador_Grafico::getLarguraJanela()
+	{
+		return tamanhoJanela.getX();
 	}
 
 	sf::RenderWindow* Gerenciador_Grafico::getJanela() const

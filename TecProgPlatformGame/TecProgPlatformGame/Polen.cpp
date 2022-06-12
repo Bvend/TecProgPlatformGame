@@ -1,12 +1,12 @@
 #include "Projetil.h"
 #include "Jogo.h"
 
-#define CAMINHO_PROJETIL "./recurssos/Projetil/Polen.png"
+#define CAMINHO_PROJETIL "./recurssos/Polen/Polen.png"
 
 namespace Entidades
 {
-	Projetil::Projetil(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, int dir):
-		Entidade(Id::PROJETIL, ger, pos, CoordF(15.f, 15.f)),
+	Polen::Polen(Gerenciadores::Gerenciador_Grafico* ger, CoordF pos, int dir):
+		Entidade(Id::POLEN, ger, pos, CoordF(15.f, 15.f)),
 		velMov(190.f),
 		direcao(dir)
 	{
@@ -14,14 +14,14 @@ namespace Entidades
 		deslocamentoY = -2.f * velMov * Jogo::getDt();
 	}
 
-	Projetil::~Projetil()
+	Polen::~Polen()
 	{
 	}
 
-	void Projetil::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
+	void Polen::colisao(int direcao_colisao, Entidade* pEntidade, bool reposicionar)
 	{
 		Id ind = pEntidade->getId();
-		if (ind == Id::INIMIGO_B)
+		if (ind == Id::FLORCHEFE)
 		{
 			return;
 		}
@@ -31,12 +31,12 @@ namespace Entidades
 		}
 	}
 
-	void Projetil::executar()
+	void Polen::executar()
 	{
 		mover();
 	}
 
-	void Projetil::mover()
+	void Polen::mover()
 	{
 		if (deslocamentoY < 2 * velMov)
 		{
@@ -47,7 +47,7 @@ namespace Entidades
 		proximaPosicao.atualizarX(direcao * velMov * Jogo::getDt());
 	}
 
-	void Projetil::atualizarPos()
+	void Polen::atualizarPos()
 	{
 		if (proximaPosicao.getX() < 0)
 		{
