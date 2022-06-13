@@ -35,7 +35,14 @@ namespace Menus
 			break;
 
 		case 3:
-
+			if (pJogo->getComecarNaFase1())
+			{
+				pJogo->inicializarFaseJardimVerde();
+			}
+			else
+			{
+				pJogo->inicializarFaseJardimFlores();
+			}
 			break;
 
 		case 4:

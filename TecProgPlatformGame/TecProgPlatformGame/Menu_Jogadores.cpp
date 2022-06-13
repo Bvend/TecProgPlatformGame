@@ -27,10 +27,12 @@ namespace Menus
 		switch (posicao)
 		{
 		case 1:
+			pJogo->setMultiplayer(false);
 			textos[posicao].setFillColor(sf::Color::Red);
 			textos[posicao + 1].setFillColor(sf::Color::Black);
 			break;
 		case 2:
+			pJogo->setMultiplayer(true);
 			textos[posicao].setFillColor(sf::Color::Red);
 			textos[posicao - 1].setFillColor(sf::Color::Black);
 			break;

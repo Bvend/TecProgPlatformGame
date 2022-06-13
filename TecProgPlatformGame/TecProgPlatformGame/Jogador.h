@@ -27,6 +27,8 @@ namespace Entidades
             void executar();
 
             void mover();
+
+            bool intersecta(CoordF pos);
         };
     }
 }

@@ -14,7 +14,7 @@ namespace Entidades
 			pJogador1(NULL),
 			pJogador2(NULL)
 		{
-			intervaloRecarga = 1.f;
+			intervaloRecarga = 10.f;
 
 			inicializarCorpo(CAMINHO_INIMIGO_B, posicao, tamanho);
 

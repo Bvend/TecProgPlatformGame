@@ -15,7 +15,9 @@ enum class Execucao
 	MENU_PRINCIPAL,
 	MENU_FASES,
 	MENU_JOGADORES,
-	MENU_RANKING
+	MENU_RANKING,
+	FASE_JARDIM_VERDE,
+	FASE_JARDIM_FLORES
 };
 
 class Jogo
@@ -23,8 +25,8 @@ class Jogo
 private:
 	Gerenciadores::Gerenciador_Grafico* gerenciadorGrafico;
 	Gerenciadores::Gerenciador_Colisoes* gerenciadorColisoes;
-	Fases::JardimVerde faseJardimVerde;
-	Fases::JardimFlores faseJardimFlores;
+	Fases::JardimVerde* faseJardimVerde;
+	Fases::JardimFlores* faseJardimFlores;
 	Menus::Menu_Principal* menu_principal;
 	Menus::Menu_Fases* menu_fases;
 	Menus::Menu_Jogadores* menu_jogadores;
@@ -49,5 +51,16 @@ public:
 	void executar();
 
 	void renderizar();
+
+	void setMultiplayer(bool multiplayer);
+	bool getMultiplayer() const;
+
+	void setComecarNaFase1(bool comecarNaFase1);
+	bool getComecarNaFase1() const;
+
+	void inicializarFaseJardimVerde();
+	void inicializarFaseJardimFlores();
+
+	void avancarFase(Entidades::Personagens::Jogador* pJog);
 };
 

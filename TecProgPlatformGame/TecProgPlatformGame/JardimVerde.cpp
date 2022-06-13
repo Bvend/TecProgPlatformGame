@@ -5,12 +5,10 @@
 
 namespace Fases
 {
-	JardimVerde::JardimVerde(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo):
-		Fase(GerenciadorGrafico, pGerenciadorColisoes, jogo)
+	JardimVerde::JardimVerde(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo, Id ind):
+		Fase(GerenciadorGrafico, pGerenciadorColisoes, jogo, ind)
 	{
 		pontoFinal = CoordF(1240.f, 190.f);
-		//inicializarEntidades();
-		//pGerenciadorColisoes->setListaEntidades(listaEntidades);
 		inicializarCorpo(CAMINHO_JARDIMVERDE, CoordF(0.f, 0.f), CoordF(1280.f, 720.f));
 	}
 	
@@ -49,7 +47,6 @@ namespace Fases
 				posicao.setX(1280 - (160.f * (j + 1 - i) + LARGURA_PLATAFORMA * (j + 1)));
 				Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(pGerenciadorGrafico, posicao, CoordF(LARGURA_PLATAFORMA, ALTURA_PLATAFORMA));
 				listaEntidades->adicionarEntidade(plataforma);
-				//posicoesDisponiveis.push_back(CoordF(plataforma->getCentroX(), plataforma->getCima()));
 			}
 		}	
 	}

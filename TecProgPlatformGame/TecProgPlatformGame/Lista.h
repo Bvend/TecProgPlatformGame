@@ -112,6 +112,34 @@ namespace Listas
 			return nullptr;
 		}
 
+		void popSemRetorno(TL* item)
+		{
+			Elemento<TL>* temp = pPrimeiro;
+			Elemento<TL>* tempAnt = nullptr;
+
+			while (temp != nullptr) {
+				if (temp->getItem() == item)
+				{
+					if (temp == pPrimeiro) {
+						pPrimeiro = temp->getPprox();
+					}
+					else if (temp == pUltimo) {
+						tempAnt->setPprox(nullptr);
+						pUltimo = tempAnt;
+					}
+					else {
+						tempAnt->setPprox(temp->getPprox());
+					}
+					delete temp;
+					tam--;
+					return;
+				}
+				tempAnt = temp;
+				temp = temp->getPprox();
+			}
+			return;
+		}
+
 		TL* pop(int pos)
 		{
 			if (pos >= tam || pos < 0)

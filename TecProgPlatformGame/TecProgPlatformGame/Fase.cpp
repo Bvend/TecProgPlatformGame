@@ -3,15 +3,17 @@
 
 namespace Fases
 {
-    Fase::Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* GerenciadorColisoes, Jogo* jogo):
-        Ente(Id::FASE, GerenciadorGrafico),
+    Fase::Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* GerenciadorColisoes, Jogo* jogo, Id ind):
+        Ente(ind, GerenciadorGrafico),
         listaEntidades(new Listas::ListaEntidades()),
         pGerenciadorColisoes(GerenciadorColisoes),
         pJogo(jogo),
         pJogador1(NULL),
         pJogador2(NULL),
         posicaoInicialJogador(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR)),
-        pontoFinal(0.f, 0.f)
+        pontoFinal(0.f, 0.f),
+        numJogadores(0),
+        avancarFase(false)
     {
     }
 
@@ -28,12 +30,31 @@ namespace Fases
     {
         pJogador1 = pJogador;
         listaEntidades->adicionarEntidade(pJogador1);
+        numJogadores++;
     }
 
     void Fase::setJogador2(Entidades::Personagens::Jogador* pJogador)
     {
         pJogador2 = pJogador;
         listaEntidades->adicionarEntidade(pJogador2);
+        numJogadores++;
+    }
+
+    void Fase::incrementarNumJogadores()
+    {
+        numJogadores++;
+    }
+
+    void Fase::limparFase()
+    {
+        posicoesDisponiveis.clear();
+
+        listaEntidades->deletarEntidades();
+    }
+
+    void Fase::adicionarEntidade(Entidades::Entidade* pEntidade)
+    {
+        listaEntidades->adicionarEntidade(pEntidade);
     }
 
     void Fase::posicionarJogadores()
@@ -63,7 +84,7 @@ namespace Fases
     {
         Listas::Lista<Entidades::Entidade>::Lista::Elemento<Entidades::Entidade>* pElEntidade = NULL;
 
-        Entidades::Obstaculos::Plataforma* pPlataforma = NULL;
+        Entidades::Entidade* pEntidade = NULL;
 
         int qtdEntidades = listaEntidades->getTamanho();
 
@@ -71,12 +92,14 @@ namespace Fases
 
         for (int i = 0; i < qtdEntidades; i++)
         {
-            if ((pPlataforma = dynamic_cast<Entidades::Obstaculos::Plataforma*>(pElEntidade->getItem())) && (pPlataforma->getCima() != POSICAO_Y_CHAO))
+            pEntidade = pElEntidade->getItem();
+
+            if (pEntidade && (pEntidade->getId() == Id::PLATAFORMA) && (pEntidade->getCima() != POSICAO_Y_CHAO))
             {
-                float j = pPlataforma->getEsquerda() + 60.f;
-                while (j < pPlataforma->getDireita() - 60.f)
+                float j = pEntidade->getEsquerda() + 60.f;
+                while (j < pEntidade->getDireita() - 60.f)
                 {
-                    posicoesDisponiveis.push_back(CoordF(j, pPlataforma->getCima()));
+                    posicoesDisponiveis.push_back(CoordF(j, pEntidade->getCima()));
                     j += 110.f;
                 }
             }
@@ -201,7 +224,7 @@ namespace Fases
         executarEntidades();
         colidirEntidades();
         atualizarPosicaoEntidades();
-        checarVitoria();
+        checarProgresso();
     }
 
     /* Função para mover todas as entidades moveis na fase */
@@ -250,6 +273,11 @@ namespace Fases
             {
                 pEntidade->atualizarPos();
             }
+            else if (pEntidade->getId() == Id::JOGADOR1 || pEntidade->getId() == Id::JOGADOR2)
+            {
+                listaEntidades->removerEntidadeSemDeletar(pEntidade);
+                numJogadores--;
+            }
             else
             {
                 listaEntidades->deletarEntidade(pEntidade);
@@ -257,8 +285,63 @@ namespace Fases
         }
     }
 
-    void Fase::checarVitoria()
+    void Fase::checarProgresso()
     {
+        if (numJogadores == 0 && !avancarFase)
+        {
+            this->limparFase();
+            pJogo->setEmExecucao(Execucao::MENU_PRINCIPAL);
+        }
+        else if (id == Id::FASE1)
+        {
+            if (pJogador1->intersecta(pontoFinal))
+            {
+                listaEntidades->removerEntidadeSemDeletar(pJogador1);
+                pJogo->avancarFase(pJogador1);
+                numJogadores--;
+                pJogador1->setPosicao(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR));
+                avancarFase = true;
+            }
+
+            if (pJogo->getMultiplayer() && pJogador2->intersecta(pontoFinal))
+            {
+                listaEntidades->removerEntidadeSemDeletar(pJogador2);
+                pJogo->avancarFase(pJogador2);
+                numJogadores--;
+                pJogador2->setPosicao(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR));
+                avancarFase = true;
+            }
+
+            if (numJogadores == 0)
+            {
+                std::cout << "hey3" << std::endl;
+                avancarFase = false;
+                this->limparFase();
+                pJogo->setEmExecucao(Execucao::FASE_JARDIM_FLORES);
+            }
+        }
+        else if (id == Id::FASE2)
+        {
+            if (pJogador1->intersecta(pontoFinal))
+            {
+                listaEntidades->removerEntidadeSemDeletar(pJogador1);
+                pJogador1->setPosicao(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR));
+                numJogadores--;
+            }
+
+            if (pJogo->getMultiplayer() && pJogador2->intersecta(pontoFinal))
+            {
+                listaEntidades->removerEntidadeSemDeletar(pJogador2);
+                pJogador2->setPosicao(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR));
+                numJogadores--;
+            }
+
+            if (numJogadores == 0)
+            {
+                this->limparFase();
+                pJogo->setEmExecucao(Execucao::MENU_PRINCIPAL);
+            }
+        }
     }
 
     /* Função para renderizar o corpo de todas as entidades na fase */

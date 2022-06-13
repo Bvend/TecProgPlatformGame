@@ -5,12 +5,11 @@
 
 namespace Fases
 {
-	JardimFlores::JardimFlores(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo):
-		Fase(GerenciadorGrafico, pGerenciadorColisoes, jogo)
+	JardimFlores::JardimFlores(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes, Jogo* jogo, Id ind):
+		Fase(GerenciadorGrafico, pGerenciadorColisoes, jogo, ind)
 	{
-		pontoFinal = CoordF(1240.f, 190.f);
-		//gerarEntidades();
-		//pGrenciadorColisoes->setListaEntidades(listaEntidades);
+		pontoFinal = CoordF(640.f, 170.f);
+
 		inicializarCorpo(CAMINHO_JARDIMFLORES, CoordF(0.f, 0.f), CoordF(1280.f, 720.f));
 	}
 

@@ -9,7 +9,7 @@ namespace Fases
 	private:
 		
 	public:
-		JardimVerde(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL);
+		JardimVerde(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL, Id ind = Id::VAZIO);
 		~JardimVerde();
 
 		void inicializarEntidades();

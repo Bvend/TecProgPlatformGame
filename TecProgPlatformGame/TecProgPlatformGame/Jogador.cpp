@@ -111,6 +111,16 @@ namespace Entidades
                 proximaPosicao.atualizarY(velocidade.getY() * Jogo::getDt());
             }
         }
+
+        bool Jogador::intersecta(CoordF pos)
+        {
+            sf::Rect<float> area(posicao.getX(), posicao.getY(), tamanho.getX(), tamanho.getY());
+            if (area.contains(pos.getX(), pos.getY()))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
 

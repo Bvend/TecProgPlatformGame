@@ -25,13 +25,21 @@ namespace Fases
 		Jogo* pJogo;
 		CoordF posicaoInicialJogador;
 		CoordF pontoFinal;
+		int numJogadores;
+		bool avancarFase;
 
 	public:
-		Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL);
+		Fase(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL, Id ind = Id::VAZIO);
 		virtual ~Fase();
 
 		void setJogador1(Entidades::Personagens::Jogador* pJogador);
 		void setJogador2(Entidades::Personagens::Jogador* pJogador);
+
+		void incrementarNumJogadores();
+
+		void limparFase();
+
+		void adicionarEntidade(Entidades::Entidade* pEntidade);
 
 		virtual void inicializarEntidades() = 0;
 
@@ -59,7 +67,7 @@ namespace Fases
 
 		void atualizarPosicaoEntidades();
 
-		void checarVitoria();
+		void checarProgresso();
 
 		void renderizarEntidades();
 	};

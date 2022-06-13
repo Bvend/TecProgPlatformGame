@@ -41,16 +41,12 @@ namespace Listas
 
 	void ListaEntidades::deletarEntidades()
 	{
-		Entidades::Entidade* pEntidade = NULL;
+		LE->esvaziar();
+	}
 
-		while (LE->getTam())
-		{
-			pEntidade = LE->pop(0);
-			if (pEntidade)
-			{
-				delete pEntidade;
-			}
-		}
+	void ListaEntidades::removerEntidadeSemDeletar(Entidades::Entidade* pEntidade)
+	{
+		LE->popSemRetorno(pEntidade);
 	}
 
 	void ListaEntidades::deletarEntidade(Entidades::Entidade* pEntidade)

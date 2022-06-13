@@ -7,7 +7,7 @@ namespace Fases
 	{
 	private:
 	public:
-		JardimFlores(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL);
+		JardimFlores(Gerenciadores::Gerenciador_Grafico* GerenciadorGrafico = NULL, Gerenciadores::Gerenciador_Colisoes* pGerenciadorColisoes = NULL, Jogo* jogo = NULL, Id ind = Id::VAZIO);
 		~JardimFlores();
 
 		void inicializarEntidades();

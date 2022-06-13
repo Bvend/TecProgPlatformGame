@@ -19,6 +19,7 @@ namespace Listas
 		Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* getElemento(int posicao);
 		void deletarEntidades();
 
+		void removerEntidadeSemDeletar(Entidades::Entidade* pEntidade);
 		void deletarEntidade(Entidades::Entidade* pEntidade);
 	};
 }
