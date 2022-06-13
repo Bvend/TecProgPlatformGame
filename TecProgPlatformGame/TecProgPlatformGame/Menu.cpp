@@ -58,6 +58,13 @@ namespace Menus
 
 	void Menu::executar()
 	{
+		coletarInputSetas();
+
+		coletarInputEnter();
+	}
+
+	void Menu::coletarInputSetas()
+	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			if (posicao < num_botoes - 1 && !aguardarSoltarBotao)
@@ -67,7 +74,6 @@ namespace Menus
 				textos[posicao - 1].setOutlineThickness(0);
 			}
 			botaoPressionado = true;
-			enterPressionado = false;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
@@ -78,7 +84,6 @@ namespace Menus
 				textos[posicao + 1].setOutlineThickness(0);
 			}
 			botaoPressionado = true;
-			enterPressionado = false;
 		}
 
 		if (botaoPressionado)
@@ -89,13 +94,24 @@ namespace Menus
 		{
 			aguardarSoltarBotao = false;
 		}
+	}
 
+	void Menu::coletarInputEnter()
+	{
 		botaoPressionado = false;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !enterPressionado)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterPressionado)
+		{
+			enterPressionado = true;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !enterPressionado)
 		{
 			enterPressionado = true;
 			pressionarBotao();
+		}
+		else
+		{
+			enterPressionado = false;
 		}
 	}
 

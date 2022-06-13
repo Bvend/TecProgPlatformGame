@@ -40,14 +40,20 @@
     <Filter Include="Source Files\Entidades\Obstaculos">
       <UniqueIdentifier>{38099301-64cd-40a7-abc9-ec604e6244ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Fase">
-      <UniqueIdentifier>{391f0b95-101b-4bd0-9a49-a19f3c035910}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Listas">
       <UniqueIdentifier>{110fb33b-6b14-40e0-80bb-6874e027dc9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Entidades\Personagens">
       <UniqueIdentifier>{7f13cc0f-76e7-48b7-8d18-9b2e75dcbebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menus">
+      <UniqueIdentifier>{b198f125-380b-4fe7-818c-6686576d7d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus">
+      <UniqueIdentifier>{53a2cf48-a459-45ce-9e58-d93fadd4ea43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fase">
+      <UniqueIdentifier>{391f0b95-101b-4bd0-9a49-a19f3c035910}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +66,6 @@
     <ClCompile Include="Jogo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Entidade.cpp">
       <Filter>Source Files\Entidades</Filter>
     </ClCompile>
@@ -72,13 +75,7 @@
     <ClCompile Include="Gerenciador_Colisoes.cpp">
       <Filter>Source Files\Gerenciadores</Filter>
     </ClCompile>
-    <ClCompile Include="Gerenciador_Eventos.cpp">
-      <Filter>Source Files\Gerenciadores</Filter>
-    </ClCompile>
     <ClCompile Include="Gerenciador_Grafico.cpp">
-      <Filter>Source Files\Gerenciadores</Filter>
-    </ClCompile>
-    <ClCompile Include="Gerenciador_Input.cpp">
       <Filter>Source Files\Gerenciadores</Filter>
     </ClCompile>
     <ClCompile Include="Plataforma.cpp">
@@ -123,6 +120,21 @@
     <ClCompile Include="Sol.cpp">
       <Filter>Source Files\Entidades\Personagens</Filter>
     </ClCompile>
+    <ClCompile Include="Menu_Principal.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Fases.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Jogadores.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Ranking.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoordenadaTL.h">
@@ -134,25 +146,16 @@
     <ClInclude Include="Jogo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Entidade.h">
       <Filter>Header Files\Entidades</Filter>
     </ClInclude>
-    <ClInclude Include="Projetil.h">
+    <ClInclude Include="Polen.h">
       <Filter>Header Files\Entidades</Filter>
     </ClInclude>
     <ClInclude Include="Gerenciador_Colisoes.h">
       <Filter>Header Files\Gerenciadores</Filter>
     </ClInclude>
-    <ClInclude Include="Gerenciador_Eventos.h">
-      <Filter>Header Files\Gerenciadores</Filter>
-    </ClInclude>
     <ClInclude Include="Gerenciador_Grafico.h">
-      <Filter>Header Files\Gerenciadores</Filter>
-    </ClInclude>
-    <ClInclude Include="Gerenciador_Input.h">
       <Filter>Header Files\Gerenciadores</Filter>
     </ClInclude>
     <ClInclude Include="Jogador.h">
@@ -179,9 +182,6 @@
     <ClInclude Include="JardimFlores.h">
       <Filter>Header Files\Fase</Filter>
     </ClInclude>
-    <ClInclude Include="Elemento.h">
-      <Filter>Header Files\Listas</Filter>
-    </ClInclude>
     <ClInclude Include="ListaEntidades.h">
       <Filter>Header Files\Listas</Filter>
     </ClInclude>
@@ -202,6 +202,21 @@
     </ClInclude>
     <ClInclude Include="Sol.h">
       <Filter>Header Files\Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu_Principal.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu_Fases.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu_Jogadores.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu_Ranking.h">
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

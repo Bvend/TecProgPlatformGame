@@ -9,7 +9,6 @@ const float Jogo::getDt()
 
 Jogo::Jogo() :
     gerenciadorGrafico(new Gerenciadores::Gerenciador_Grafico()),
-    gerenciadorEventos(new Gerenciadores::Gerenciador_Eventos(gerenciadorGrafico)),
     gerenciadorColisoes(new Gerenciadores::Gerenciador_Colisoes()),
     jogador1(new Entidades::Personagens::Jogador(Id::JOGADOR1, gerenciadorGrafico)),
     jogador2(new Entidades::Personagens::Jogador(Id::JOGADOR2, gerenciadorGrafico)),
@@ -21,16 +20,12 @@ Jogo::Jogo() :
     menu_ranking(new Menus::Menu_Ranking(gerenciadorGrafico, this)),
     emExecucao(Execucao::MENU_PRINCIPAL)
 {
-    //faseTeste.setJogador1(jogador1);
-    //faseTeste.setJogador2(jogador2);
-    //faseTeste.inicializarEntidades();
 	loopPrincipal();
 }
 
 Jogo::~Jogo()
 {
     delete gerenciadorGrafico;
-    delete gerenciadorEventos;
     delete gerenciadorColisoes;
     delete menu_principal;
     delete menu_fases;
@@ -55,7 +50,7 @@ void Jogo::loopPrincipal()
     while (gerenciadorGrafico->janelaEstaAberta())
     {
         // Processa eventos
-        gerenciadorEventos->verificarEvents();
+        gerenciadorGrafico->verificarEvento();
 
         // Gerenciar Tempo com 60 fps
         tempoDesdeUltimoUpdate += clock.restart();

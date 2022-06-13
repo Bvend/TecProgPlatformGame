@@ -6,7 +6,6 @@
 #include "Menu_Fases.h"
 #include "Menu_Jogadores.h"
 #include "Menu_Ranking.h"
-#include "Gerenciador_Eventos.h"
 
 class Fase;
 class Fase2;
@@ -23,9 +22,8 @@ class Jogo
 {
 private:
 	Gerenciadores::Gerenciador_Grafico* gerenciadorGrafico;
-	Gerenciadores::Gerenciador_Eventos* gerenciadorEventos;
 	Gerenciadores::Gerenciador_Colisoes* gerenciadorColisoes;
-	Fases::JardimFlores faseJardimVerde;
+	Fases::JardimVerde faseJardimVerde;
 	Fases::JardimFlores faseJardimFlores;
 	Menus::Menu_Principal* menu_principal;
 	Menus::Menu_Fases* menu_fases;
@@ -33,6 +31,8 @@ private:
 	Menus::Menu_Ranking* menu_ranking;
 	static const float dt;
 	Execucao emExecucao;
+	bool multiplayer;
+	bool comecarNaFase1;
 	Entidades::Personagens::Jogador* jogador1;
 	Entidades::Personagens::Jogador* jogador2;
 

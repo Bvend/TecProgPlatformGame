@@ -21,6 +21,8 @@ namespace Gerenciadores
 
 		sf::RenderWindow* getJanela() const;
 
+		void verificarEvento();
+
 		bool janelaEstaAberta();
 
 		void limparJanela();

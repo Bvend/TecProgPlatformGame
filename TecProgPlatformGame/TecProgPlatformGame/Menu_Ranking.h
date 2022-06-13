@@ -11,8 +11,6 @@ namespace Menus
 		Menu_Ranking(Gerenciadores::Gerenciador_Grafico* ger = NULL, Jogo* jogo = NULL);
 		~Menu_Ranking();
 
-		void executar();
-
 		void pressionarBotao();
 	};
 }

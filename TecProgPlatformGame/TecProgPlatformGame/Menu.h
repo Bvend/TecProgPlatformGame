@@ -31,6 +31,10 @@ namespace Menus
 
 		virtual void executar();
 
+		void coletarInputSetas();
+
+		void coletarInputEnter();
+
 		void inicializarBotoes();
 
 		void renderizar();

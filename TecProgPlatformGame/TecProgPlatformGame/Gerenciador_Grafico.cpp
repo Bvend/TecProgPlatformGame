@@ -33,6 +33,22 @@ namespace Gerenciadores
 		return janela;
 	}
 
+	void Gerenciador_Grafico::verificarEvento()
+	{
+		sf::Event event;
+
+		if (janelaEstaAberta())
+		{
+			while (janela->pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+				{
+					fecharJanela();
+				}
+			}
+		}
+	}
+
 	bool Gerenciador_Grafico::janelaEstaAberta()
 	{
 		return (janela->isOpen());

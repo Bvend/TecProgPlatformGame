@@ -9,7 +9,7 @@ namespace Menus
 		Menu(Id::MENU_JOGADORES, ger, jogo)
 	{
 		opcoes = { "Selecionar Jogadores", "Um Jogador", "Dois Jogadores", "Voltar" };
-		coordenadas = { {100.f,47.f}, {45.f,205.f}, {44.f,303.f}, {45.f,399.f} };
+		coordenadas = { {70.f,47.f}, {45.f,205.f}, {44.f,303.f}, {45.f,399.f} };
 		tamanhos = { 50, 35, 35, 35 };
 		num_botoes = opcoes.size();
 
@@ -36,6 +36,9 @@ namespace Menus
 			break;
 
 		case 3:
+			textos[posicao].setOutlineThickness(0);
+			posicao = 1;
+			textos[posicao].setOutlineThickness(4);
 			pJogo->setEmExecucao(Execucao::MENU_PRINCIPAL);
 			break;
 		}

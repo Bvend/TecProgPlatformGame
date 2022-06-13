@@ -37,6 +37,9 @@ namespace Menus
 			break;
 
 		case 3:
+			textos[posicao].setOutlineThickness(0);
+			posicao = 1;
+			textos[posicao].setOutlineThickness(4);
 			pJogo->setEmExecucao(Execucao::MENU_PRINCIPAL);
 			break;
 		}
