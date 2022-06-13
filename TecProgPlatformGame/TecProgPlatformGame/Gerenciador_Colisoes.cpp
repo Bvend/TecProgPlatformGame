@@ -32,7 +32,7 @@ namespace Gerenciadores
 
 		Entidades::Personagens::Personagem* pPersonagem = NULL;
 
-		int qtdEntidades = pListaEntidades->getLength();
+		int qtdEntidades = pListaEntidades->getTamanho();
 
 		bool estaNoChao = false;
 

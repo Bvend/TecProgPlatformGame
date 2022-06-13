@@ -5,10 +5,8 @@ namespace Gerenciadores
 	Gerenciador_Grafico::Gerenciador_Grafico():
 		tamanhoJanela(1280.f, 720.f),
 		janela(new sf::RenderWindow(sf::VideoMode(static_cast<unsigned int>(tamanhoJanela.getX()), static_cast<unsigned int>(tamanhoJanela.getY())), "Jogo", sf::Style::Default)),
-		//vista(new sf::View(sf::Vector2f(LARGURA / 2.f, ALTURA / 2.f), sf::Vector2f((float) LARGURA, (float) ALTURA))),
 		mapaTextura()
 	{
-		//janela->setView(*vista);
 	}
 
 	Gerenciador_Grafico::~Gerenciador_Grafico()
@@ -18,7 +16,6 @@ namespace Gerenciadores
 		}
 
 		janela = NULL;
-		//delete vista;
 	}
 
 	float Gerenciador_Grafico::getAlturaJanela()
@@ -49,11 +46,19 @@ namespace Gerenciadores
 		}
 	}
 
-	void Gerenciador_Grafico::renderizar(sf::RectangleShape* body)
+	void Gerenciador_Grafico::renderizarCorpo(sf::RectangleShape* corpo)
 	{
 		if (janelaEstaAberta())
 		{
-			janela->draw(*body);
+			janela->draw(*corpo);
+		}
+	}
+
+	void Gerenciador_Grafico::renderizarTexto(sf::Text* texto)
+	{
+		if (janelaEstaAberta())
+		{
+			janela->draw(*texto);
 		}
 	}
 

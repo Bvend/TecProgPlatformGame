@@ -75,6 +75,6 @@ void Ente::renderizar()
 {
 	if (pGerenciadorGrafico)
 	{
-		pGerenciadorGrafico->renderizar(&forma);
+		pGerenciadorGrafico->renderizarCorpo(&forma);
 	}
 }

@@ -1,4 +1,4 @@
-#include "Projetil.h"
+#include "Polen.h"
 #include "Jogo.h"
 
 #define CAMINHO_POLEN "./recurssos/Polen/Polen.png"

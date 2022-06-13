@@ -13,7 +13,7 @@ namespace Listas
 		ListaEntidades();
 		~ListaEntidades();
 
-		int getLength();
+		int getTamanho();
 		void adicionarEntidade(Entidades::Entidade* E);
 		Entidades::Entidade* operator[](int i);
 		Lista<Entidades::Entidade>::Elemento<Entidades::Entidade>* getElemento(int posicao);

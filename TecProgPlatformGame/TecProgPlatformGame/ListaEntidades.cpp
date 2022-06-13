@@ -13,7 +13,7 @@ namespace Listas
 		delete LE;
 	}
 
-	int ListaEntidades::getLength()
+	int ListaEntidades::getTamanho()
 	{
 		return LE->getTam();
 	}

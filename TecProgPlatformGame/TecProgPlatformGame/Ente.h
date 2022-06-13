@@ -14,7 +14,11 @@ enum class Id
 	SOL,
 	FLORCHEFE,
 	POLEN,
-	FASE
+	FASE,
+	MENU_PRINCIPAL,
+	MENU_FASES,
+	MENU_JOGADORES,
+	MENU_RANKING
 };
 
 class Ente
@@ -39,7 +43,7 @@ public:
 
 	void inicializarCorpo(const char* caminho, CoordF posicao, CoordF tamanho, Gerenciadores::Gerenciador_Grafico* ger = NULL);
 
-	void renderizar();
+	virtual void renderizar();
 
 	virtual void setPosicao(CoordF posicao);
 

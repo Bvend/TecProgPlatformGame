@@ -19,6 +19,8 @@ namespace Fases
     {
         pGerenciadorColisoes = NULL;
 
+        posicoesDisponiveis.clear();
+
         delete listaEntidades;
     }
 
@@ -63,7 +65,7 @@ namespace Fases
 
         Entidades::Obstaculos::Plataforma* pPlataforma = NULL;
 
-        int qtdEntidades = listaEntidades->getLength();
+        int qtdEntidades = listaEntidades->getTamanho();
 
         pElEntidade = listaEntidades->getElemento(0);
 
@@ -75,7 +77,7 @@ namespace Fases
                 while (j < pPlataforma->getDireita() - 60.f)
                 {
                     posicoesDisponiveis.push_back(CoordF(j, pPlataforma->getCima()));
-                    j += 100.f;
+                    j += 110.f;
                 }
             }
             pElEntidade = pElEntidade->getPprox();
@@ -92,7 +94,7 @@ namespace Fases
         {
             for (it = posicoesDisponiveis.begin(); it != posicoesDisponiveis.end();)
             {
-                if (rand() % 2 == 0)
+                if (rand() % 5 == 0)
                 {
                     Entidades::Obstaculos::Mola* mola = new Entidades::Obstaculos::Mola(pGerenciadorGrafico, *it + CoordF(0.f, -30.f));
                     listaEntidades->adicionarEntidade(mola);
@@ -118,7 +120,7 @@ namespace Fases
         {
             for (it = posicoesDisponiveis.begin(); it != posicoesDisponiveis.end();)
             {
-                if (rand() % 2 == 0)
+                if (rand() % 4 == 0)
                 {
                     Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pGerenciadorGrafico, *it + CoordF(0.f, -30.f));
                     listaEntidades->adicionarEntidade(espinho);
@@ -176,7 +178,7 @@ namespace Fases
         {
             for (it = copiaPosicoes.begin(); it != copiaPosicoes.end();)
             {
-                if (rand() % 4 == 0 && it->getY() != POSICAO_Y_CHAO)
+                if ((rand() % 4 == 0) && (it->getY() != POSICAO_Y_CHAO))
                 {
                     Entidades::Personagens::Sol* sol = new Entidades::Personagens::Sol(pGerenciadorGrafico, *it + CoordF(0.f, -100.f));
                     listaEntidades->adicionarEntidade(sol);
@@ -209,7 +211,7 @@ namespace Fases
 
         Entidades::Entidade* pEntidade = NULL;
 
-        int qtdEntidades = listaEntidades->getLength();
+        int qtdEntidades = listaEntidades->getTamanho();
 
         pElEntidade = listaEntidades->getElemento(0);
 
@@ -236,7 +238,7 @@ namespace Fases
 
         Entidades::Entidade* pEntidade = NULL;
 
-        int qtdEntidades = listaEntidades->getLength();
+        int qtdEntidades = listaEntidades->getTamanho();
 
         pElEntidade = listaEntidades->getElemento(0);
 
@@ -268,7 +270,7 @@ namespace Fases
 
         Entidades::Entidade* pEntidade = NULL;
 
-        int qtdEntidades = listaEntidades->getLength();
+        int qtdEntidades = listaEntidades->getTamanho();
 
         pElEntidade = listaEntidades->getElemento(0);
 

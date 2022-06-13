@@ -25,7 +25,9 @@ namespace Gerenciadores
 
 		void limparJanela();
 
-		void renderizar(sf::RectangleShape* body);
+		void renderizarCorpo(sf::RectangleShape* corpo);
+
+		void renderizarTexto(sf::Text* texto);
 
 		void display();
 
