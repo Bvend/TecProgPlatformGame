@@ -1,2 +1,3 @@
 # TecProgPlatformGame
-Platform game developed in C++ using SFML, for the academic subject TecProg (Técnicas de Programação).
+Compilador: utilizado o compilador próprio do Visual Studio Community 2022
+Biblioteca Gráfica: SFML 2.5.1 32 bits
