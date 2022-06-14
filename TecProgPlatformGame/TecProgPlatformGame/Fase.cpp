@@ -294,28 +294,22 @@ namespace Fases
         }
         else if (id == Id::FASE1)
         {
-            if (pJogador1->intersecta(pontoFinal))
+            if (pJogador1 && pJogador1->intersecta(pontoFinal))
             {
                 listaEntidades->removerEntidadeSemDeletar(pJogador1);
-                pJogo->avancarFase(pJogador1);
                 numJogadores--;
                 pJogador1->setPosicao(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR));
-                avancarFase = true;
             }
 
             if (pJogo->getMultiplayer() && pJogador2->intersecta(pontoFinal))
             {
                 listaEntidades->removerEntidadeSemDeletar(pJogador2);
-                pJogo->avancarFase(pJogador2);
                 numJogadores--;
                 pJogador2->setPosicao(CoordF(0.f, POSICAO_Y_CHAO - ALTURA_JOGADOR));
-                avancarFase = true;
             }
 
             if (numJogadores == 0)
             {
-                std::cout << "hey3" << std::endl;
-                avancarFase = false;
                 this->limparFase();
                 pJogo->setEmExecucao(Execucao::FASE_JARDIM_FLORES);
             }

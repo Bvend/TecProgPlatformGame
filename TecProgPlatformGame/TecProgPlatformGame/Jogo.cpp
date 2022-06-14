@@ -122,7 +122,6 @@ void Jogo::renderizar()
 void Jogo::setMultiplayer(bool multiplayer)
 {
     this->multiplayer = multiplayer;
-    std::cout << multiplayer << std::endl;
 }
 
 bool Jogo::getMultiplayer() const
@@ -133,7 +132,6 @@ bool Jogo::getMultiplayer() const
 void Jogo::setComecarNaFase1(bool comecarNaFase1)
 {
     this->comecarNaFase1 = comecarNaFase1;
-    std::cout << comecarNaFase1 << std::endl;
 }
 
 bool Jogo::getComecarNaFase1() const
@@ -169,6 +167,6 @@ void Jogo::inicializarFaseJardimFlores()
 
 void Jogo::avancarFase(Entidades::Personagens::Jogador* pJog)
 {
-    faseJardimFlores->adicionarEntidade(static_cast<Entidades::Entidade*>(pJog));
+    faseJardimFlores->adicionarEntidade(pJog);
     faseJardimFlores->incrementarNumJogadores();
 }

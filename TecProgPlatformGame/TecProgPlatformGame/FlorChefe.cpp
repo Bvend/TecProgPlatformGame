@@ -14,7 +14,7 @@ namespace Entidades
 			pJogador1(NULL),
 			pJogador2(NULL)
 		{
-			intervaloRecarga = 10.f;
+			intervaloRecarga = 2.f;
 
 			inicializarCorpo(CAMINHO_INIMIGO_B, posicao, tamanho);
 
@@ -71,11 +71,11 @@ namespace Entidades
 			{
 				return NULL;
 			}
-			else if (pJogador1 == NULL)
+			else if (pJogador1 == NULL || !(pJogador1->getEstaVivo()))
 			{
 				return pJogador2;
 			}
-			else if (pJogador2 == NULL)
+			else if (pJogador2 == NULL || !(pJogador2->getEstaVivo()))
 			{
 				return pJogador1;
 			}
